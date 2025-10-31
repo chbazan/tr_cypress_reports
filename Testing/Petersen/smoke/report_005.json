@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2025-10-31T17:34:59.842Z",
-    "end": "2025-10-31T17:39:08.027Z",
-    "duration": 248185,
+    "start": "2025-10-31T17:51:49.362Z",
+    "end": "2025-10-31T17:55:59.713Z",
+    "duration": 250351,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "f808042b-0f55-4b1b-9e2b-1e8ba69a431c",
+      "uuid": "2c01e006-9e53-4704-a1a9-0ec78927b225",
       "title": "",
       "fullFile": "cypress/e2e/smoke/06_consultas.cy.js",
       "file": "cypress/e2e/smoke/06_consultas.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d65c4ea7-d897-482f-87df-8c715cfd2140",
+          "uuid": "e9305355-8109-4813-ad75-2723babab8b3",
           "title": "Consultas",
           "fullFile": "",
           "file": "",
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.contains('Consultas').click();\ncy.get('ul.dropdown-menu').eq(2).first().contains('Operaciones').should('contain.text', 'Operaciones').click();\ncy.CheckLoad();",
               "err": {},
-              "uuid": "60ba737d-c607-4304-974d-78f87812a8c0",
-              "parentUUID": "d65c4ea7-d897-482f-87df-8c715cfd2140",
+              "uuid": "c304f1e1-3ac5-46da-8372-6275ef1e0e3f",
+              "parentUUID": "e9305355-8109-4813-ad75-2723babab8b3",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Consultar 3000 operaciones",
               "fullTitle": "Consultas Consultar 3000 operaciones",
               "timedOut": null,
-              "duration": 241778,
+              "duration": 243847,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "cy.get('div[data-original-title=\"Estado\"]').click();\ncy.get('span[class=\"text\"]').contains('Confirmado').click();\ncy.get('.dataTables_empty').should('be.visible').click();\ncy.get('button[class=\"btn btn-default btn-sm btn optional-query-filter-close-button\"]').eq(1).click();\ncy.get('button[class=\"btn btn-default btn-sm btn optional-query-filter-close-button\"]').eq(1).should('not.exist');\n// Escribir la fecha en el campo \"Desde y Hasta\"\ncy.get('input.text-center.form-control.text-center[placeholder=\"Desde\"]').should('be.visible').click().clear().type('04/08/2025');\ncy.get('input.text-center.form-control.text-center[placeholder=\"Hasta\"]').should('be.visible').click().clear().type('04/08/2025');\n//Desesleccionar tipo de instrumento y seleccionar Título y Caución\ncy.contains('button', 'Tipo de Instrumento').click();\ncy.get('button.bs-deselect-all').eq(1).click();\ncy.get('span.text').contains('Tï¿½tulo').click();\ncy.get('span.text').contains('Cauciï¿½n').click();\n//Click en Buscar\ncy.contains(' Buscar').click();\n//Resultado Esperado: Aprox 3100 registros\ncy.get('span.companyTag', {\n  timeout: 300000\n}).then($elements => {\n  cy.log('Cantidad de registros encontrados:', $elements.length);\n  console.log('Cantidad de registros encontrados:', $elements.length); // También log en la consola de cypress\n});",
               "err": {},
-              "uuid": "8f5ca0fa-2466-44e0-ad44-8710064504be",
-              "parentUUID": "d65c4ea7-d897-482f-87df-8c715cfd2140",
+              "uuid": "3f581173-4342-4d1d-9696-3c117ae6ea53",
+              "parentUUID": "e9305355-8109-4813-ad75-2723babab8b3",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "60ba737d-c607-4304-974d-78f87812a8c0",
-            "8f5ca0fa-2466-44e0-ad44-8710064504be"
+            "c304f1e1-3ac5-46da-8372-6275ef1e0e3f",
+            "3f581173-4342-4d1d-9696-3c117ae6ea53"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 245695,
+          "duration": 247764,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
