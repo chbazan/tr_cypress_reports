@@ -1,0 +1,20 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
+2025-10-31T12:52:52-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Banco Central,V4.686,11264.15,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Intradiario,V4.686,17267.9,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Consultas,Consultar 3000 operaciones,V4.686,265504.85,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Consultas,Ingresar en consultas de operaciones,V4.686,3891.45,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Mesa,V4.686,1290.9,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Tesorería,V4.686,1390.4,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Dashboard,Ingreso al Dashboard,V4.686,3867.9,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Login,Login,V4.686,5104.05,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Límites,Agregar un límite para un Call,V4.686,1936.45,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Límites,Dar de alta una operación de Call afectada por un límite,V4.686,83346.25,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Límites,Eliminar el límite creado,V4.686,2135.9,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Límites,Ingresar en Administrar Límites,V4.686,4194.1,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,V4.686,1358.0,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Operaciones,Anular una operación de Repos,V4.686,1000.1,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Operaciones,Anular una operación de Títulos,V4.686,876.85,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Repos,V4.686,8765.6,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Títulos,V4.686,4413.9,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Operaciones,Modificar una operación de Repos,V4.686,2437.2,2
+2025-10-31T12:52:52-03:00,Petersen,Testing,Operaciones,Modificar una operación de Títulos,V4.686,2287.15,2
