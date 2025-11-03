@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2025-11-03T13:53:09.095Z",
-    "end": "2025-11-03T13:53:17.503Z",
-    "duration": 8408,
+    "start": "2025-11-03T19:31:31.466Z",
+    "end": "2025-11-03T19:31:40.109Z",
+    "duration": 8643,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "15fee5c7-da9f-4790-8622-60f99364c459",
+      "uuid": "3641ccea-b7b7-444f-a369-f30e8e338a20",
       "title": "",
       "fullFile": "cypress/e2e/smoke/02_dashboard.cy.js",
       "file": "cypress/e2e/smoke/02_dashboard.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "9f4a292e-c519-4425-8c41-5d91339b3dce",
+          "uuid": "ced725f1-5dad-456c-a863-7e3e50bf527a",
           "title": "Dashboard",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Ingreso al Dashboard",
               "fullTitle": "Dashboard Ingreso al Dashboard",
               "timedOut": null,
-              "duration": 3314,
+              "duration": 3418,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.CheckLoad();\ncy.get('.panel-collapse').should('be.visible');",
               "err": {},
-              "uuid": "a5e63f19-4c5a-44b9-aa3b-536dbe55e5de",
-              "parentUUID": "9f4a292e-c519-4425-8c41-5d91339b3dce",
+              "uuid": "a8f87f40-ae2c-473e-bc02-81eadb979440",
+              "parentUUID": "ced725f1-5dad-456c-a863-7e3e50bf527a",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Cambio de vista a Default Tesorería",
               "fullTitle": "Dashboard Cambio de vista a Default Tesorería",
               "timedOut": null,
-              "duration": 1371,
+              "duration": 1285,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "const normalizeText = text => text.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').trim();\ncy.get('span.filter-option.pull-left').then($span => {\n  const currentValue = normalizeText($span.text());\n  if (currentValue !== 'Default Tesoreria') {\n    cy.get('button[class=\"btn dropdown-toggle btn-default btn-sm selectpicker\"]').click();\n    cy.contains(/^Default Tesorer[íi]a|Default Tesorerï¿½a$/).click();\n    cy.log('La vista fue cambiada a Default Tesorería');\n  } else {\n    cy.log('La vista ya era Default Tesorería, no fue necesario cambiarla');\n  }\n  cy.CheckLoad();\n  cy.get('h4[class=\"panel-title\"]').should('be.visible');\n  cy.get('.panel-body').should('be.visible');\n});",
               "err": {},
-              "uuid": "1550508e-4867-4622-bc26-47be41803bdb",
-              "parentUUID": "9f4a292e-c519-4425-8c41-5d91339b3dce",
+              "uuid": "8b8d859e-abea-4150-9c5e-38c640eadb1e",
+              "parentUUID": "ced725f1-5dad-456c-a863-7e3e50bf527a",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "Cambio de vista a Default Mesa",
               "fullTitle": "Dashboard Cambio de vista a Default Mesa",
               "timedOut": null,
-              "duration": 1241,
+              "duration": 1299,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "cy.get('button[class=\"btn dropdown-toggle btn-default btn-sm selectpicker\"]').click();\ncy.contains('Default Mesa').click();\ncy.CheckLoad();\ncy.get('h4[class=\"panel-title\"]').should('be.visible');\ncy.get('.panel-body').should('be.visible');",
               "err": {},
-              "uuid": "7bd47e99-70c7-454e-a452-fc66943b1757",
-              "parentUUID": "9f4a292e-c519-4425-8c41-5d91339b3dce",
+              "uuid": "79bb8793-1edc-4426-bdee-73d0f3a29aa4",
+              "parentUUID": "ced725f1-5dad-456c-a863-7e3e50bf527a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a5e63f19-4c5a-44b9-aa3b-536dbe55e5de",
-            "1550508e-4867-4622-bc26-47be41803bdb",
-            "7bd47e99-70c7-454e-a452-fc66943b1757"
+            "a8f87f40-ae2c-473e-bc02-81eadb979440",
+            "8b8d859e-abea-4150-9c5e-38c640eadb1e",
+            "79bb8793-1edc-4426-bdee-73d0f3a29aa4"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5926,
+          "duration": 6002,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
