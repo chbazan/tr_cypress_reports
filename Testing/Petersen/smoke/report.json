@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-11-03T19:31:22.207Z",
-    "end": "2025-11-03T19:31:28.661Z",
-    "duration": 6454,
+    "start": "2025-11-04T12:48:48.524Z",
+    "end": "2025-11-04T12:48:55.330Z",
+    "duration": 6806,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b0553c84-04bf-4579-b25f-9fa4e2dd8523",
+      "uuid": "67dc1967-8c64-4ea5-87b7-c0e1a3d7c007",
       "title": "",
       "fullFile": "cypress/e2e/smoke/01_login.cy.js",
       "file": "cypress/e2e/smoke/01_login.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ae5fd703-cf0b-40e4-a9b3-2ac387f7e377",
+          "uuid": "5145212f-274c-4794-aa39-dfa5a32903e0",
           "title": "Login",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Login",
               "fullTitle": "Login Login",
               "timedOut": null,
-              "duration": 3719,
+              "duration": 3861,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "cy.clearAllCookies();\ncy.clearAllLocalStorage();\ncy.clearAllSessionStorage();\ncy.sessionTR();",
               "err": {},
-              "uuid": "fa3e1c76-d1ba-4dd6-b0fc-da4c34d79be3",
-              "parentUUID": "ae5fd703-cf0b-40e4-a9b3-2ac387f7e377",
+              "uuid": "72deedd7-264d-4767-b529-9707150e6a49",
+              "parentUUID": "5145212f-274c-4794-aa39-dfa5a32903e0",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "fa3e1c76-d1ba-4dd6-b0fc-da4c34d79be3"
+            "72deedd7-264d-4767-b529-9707150e6a49"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 3719,
+          "duration": 3861,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
