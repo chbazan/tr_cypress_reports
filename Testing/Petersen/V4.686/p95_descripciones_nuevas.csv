@@ -1,20 +1,20 @@
 Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
-2025-11-04T13:09:07-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Banco Central,V4.686,17667.7,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Intradiario,V4.686,17442.4,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Consultas,Consultar 3000 operaciones,V4.686,259907.8,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Consultas,Ingresar en consultas de operaciones,V4.686,4649.5,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Mesa,V4.686,1312.3,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Tesorería,V4.686,1416.2,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Dashboard,Ingreso al Dashboard,V4.686,3782.1,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Login,Login,V4.686,4794.3,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Límites,Agregar un límite para un Call,V4.686,1939.8,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Límites,Dar de alta una operación de Call afectada por un límite,V4.686,84424.8,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Límites,Eliminar el límite creado,V4.686,2171.8,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Límites,Ingresar en Administrar Límites,V4.686,4160.4,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,V4.686,1414.7,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Operaciones,Anular una operación de Repos,V4.686,985.8,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Operaciones,Anular una operación de Títulos,V4.686,877.9,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Repos,V4.686,9586.6,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Títulos,V4.686,4452.6,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Operaciones,Modificar una operación de Repos,V4.686,2441.4,7
-2025-11-04T13:09:07-03:00,Petersen,Testing,Operaciones,Modificar una operación de Títulos,V4.686,2281.8,7
+2025-11-05T10:43:18-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Banco Central,V4.686,22976.45,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Intradiario,V4.686,17905.8,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Consultas,Consultar 3000 operaciones,V4.686,268687.7,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Consultas,Ingresar en consultas de operaciones,V4.686,4632.7,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Mesa,V4.686,1312.4,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Tesorería,V4.686,1414.9,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Dashboard,Ingreso al Dashboard,V4.686,3763.95,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Login,Login,V4.686,4732.35,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Límites,Agregar un límite para un Call,V4.686,1973.5,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Límites,Dar de alta una operación de Call afectada por un límite,V4.686,87902.25,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Límites,Eliminar el límite creado,V4.686,2200.7,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Límites,Ingresar en Administrar Límites,V4.686,4153.3,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,V4.686,1412.15,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Operaciones,Anular una operación de Repos,V4.686,986.8,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Operaciones,Anular una operación de Títulos,V4.686,877.55,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Repos,V4.686,9602.8,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Títulos,V4.686,4451.2,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Operaciones,Modificar una operación de Repos,V4.686,2442.65,8
+2025-11-05T10:43:18-03:00,Petersen,Testing,Operaciones,Modificar una operación de Títulos,V4.686,2297.2,8
