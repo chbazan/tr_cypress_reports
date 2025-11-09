@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-11-08T13:05:20.387Z",
-    "end": "2025-11-08T13:05:20.470Z",
-    "duration": 83,
+    "start": "2025-11-09T13:05:21.119Z",
+    "end": "2025-11-09T13:05:21.201Z",
+    "duration": 82,
     "testsRegistered": 2,
     "passPercent": 50,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "ff4c023e-e3a9-461c-84cc-97c7e94b382a",
+      "uuid": "21a04233-4b9b-485e-86e5-9ea72d427b1b",
       "title": "",
       "fullFile": "cypress/e2e/smoke/06_consultas.cy.js",
       "file": "cypress/e2e/smoke/06_consultas.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e47cffa7-6d4b-4ff1-b444-a9d1316e10a5",
+          "uuid": "d0038d61-fa26-41f7-863f-be52cd6e31c6",
           "title": "Consultas",
           "fullFile": "",
           "file": "",
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.contains('Consultas').click();\ncy.get('ul.dropdown-menu').eq(2).first().contains('Operaciones').should('contain.text', 'Operaciones').click();\ncy.CheckLoad();",
               "err": {},
-              "uuid": "28d13dd4-feb1-48e9-bd77-6e0c03eae2c4",
-              "parentUUID": "e47cffa7-6d4b-4ff1-b444-a9d1316e10a5",
+              "uuid": "491063fc-617b-4bd1-a387-6c69d603a34b",
+              "parentUUID": "d0038d61-fa26-41f7-863f-be52cd6e31c6",
               "isHook": false,
               "skipped": false
             },
@@ -65,20 +65,20 @@
               "context": null,
               "code": "cy.get('div[data-original-title=\"Estado\"]').click();\ncy.get('span[class=\"text\"]').contains('Confirmado').click();\ncy.get('.dataTables_empty').should('be.visible').click();\ncy.get('button[class=\"btn btn-default btn-sm btn optional-query-filter-close-button\"]').eq(1).click();\ncy.get('button[class=\"btn btn-default btn-sm btn optional-query-filter-close-button\"]').eq(1).should('not.exist');\n// Escribir la fecha en el campo \"Desde y Hasta\"\ncy.get('input.text-center.form-control.text-center[placeholder=\"Desde\"]').should('be.visible').click().clear().type('04/08/2025');\ncy.get('input.text-center.form-control.text-center[placeholder=\"Hasta\"]').should('be.visible').click().clear().type('04/08/2025');\n//Desesleccionar tipo de instrumento y seleccionar Título y Caución\ncy.contains('button', 'Tipo de Instrumento').click();\ncy.get('button.bs-deselect-all').eq(1).click();\ncy.get('span.text').contains('Tï¿½tulo').click();\ncy.get('span.text').contains('Cauciï¿½n').click();\n//Click en Buscar\ncy.contains(' Buscar').click();\n//Resultado Esperado: Aprox 3100 registros\ncy.get('span.companyTag', {\n  timeout: 300000\n}).then($elements => {\n  cy.log('Cantidad de registros encontrados:', $elements.length);\n  console.log('Cantidad de registros encontrados:', $elements.length); // También log en la consola de cypress\n});",
               "err": {},
-              "uuid": "6ebfbff5-6e34-4fe0-8e21-935aefa341b6",
-              "parentUUID": "e47cffa7-6d4b-4ff1-b444-a9d1316e10a5",
+              "uuid": "e871bfbf-80fc-4642-812b-a785ec3f19d1",
+              "parentUUID": "d0038d61-fa26-41f7-863f-be52cd6e31c6",
               "isHook": false,
               "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "28d13dd4-feb1-48e9-bd77-6e0c03eae2c4"
+            "491063fc-617b-4bd1-a387-6c69d603a34b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [
-            "6ebfbff5-6e34-4fe0-8e21-935aefa341b6"
+            "e871bfbf-80fc-4642-812b-a785ec3f19d1"
           ],
           "duration": 0,
           "root": false,
