@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2025-11-07T13:04:37.287Z",
-    "end": "2025-11-07T13:12:08.660Z",
-    "duration": 451373
+    "start": "2025-11-10T13:05:08.933Z",
+    "end": "2025-11-10T13:12:22.412Z",
+    "duration": 433479
   },
   "results": [
     {
-      "uuid": "0920a9a8-1b20-41dd-9198-f56c36119a8c",
+      "uuid": "8dbbdda5-454c-4f43-844d-ce81fa9ac383",
       "title": "",
       "fullFile": "cypress/e2e/smoke/01_login.cy.js",
       "file": "cypress/e2e/smoke/01_login.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "2495c59c-a986-4419-8998-9c98bd07e00c",
+          "uuid": "c3f11263-12e4-46de-b939-1219a31c1436",
           "title": "Login",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Login",
               "fullTitle": "Login Login",
               "timedOut": null,
-              "duration": 3796,
+              "duration": 3729,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "cy.clearAllCookies();\ncy.clearAllLocalStorage();\ncy.clearAllSessionStorage();\ncy.sessionTR();",
               "err": {},
-              "uuid": "3644b9a7-dbc6-4eda-9603-661aca35d958",
-              "parentUUID": "2495c59c-a986-4419-8998-9c98bd07e00c",
+              "uuid": "f413b57b-78d6-4631-a51f-69bbc9dd19d8",
+              "parentUUID": "c3f11263-12e4-46de-b939-1219a31c1436",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "3644b9a7-dbc6-4eda-9603-661aca35d958"
+            "f413b57b-78d6-4631-a51f-69bbc9dd19d8"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 3796,
+          "duration": 3729,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -76,7 +76,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "95c076b2-cf1a-4bf4-905f-ded87c0b1225",
+      "uuid": "0a87e3d6-1222-43f4-a05f-bda7c0f9599f",
       "title": "",
       "fullFile": "cypress/e2e/smoke/02_dashboard.cy.js",
       "file": "cypress/e2e/smoke/02_dashboard.cy.js",
@@ -85,7 +85,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e991afba-fcdd-4a56-9288-ae92c2fb17f9",
+          "uuid": "271ae82b-bafe-41ff-b7e1-2ed52402ed2f",
           "title": "Dashboard",
           "fullFile": "",
           "file": "",
@@ -96,7 +96,7 @@
               "title": "Ingreso al Dashboard",
               "fullTitle": "Dashboard Ingreso al Dashboard",
               "timedOut": null,
-              "duration": 3282,
+              "duration": 3556,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -105,8 +105,8 @@
               "context": null,
               "code": "cy.CheckLoad();\ncy.get('.panel-collapse').should('be.visible');",
               "err": {},
-              "uuid": "2e4692a9-f20b-42b4-90b7-307513468145",
-              "parentUUID": "e991afba-fcdd-4a56-9288-ae92c2fb17f9",
+              "uuid": "a037f410-501a-45f7-9c15-853acdc1460a",
+              "parentUUID": "271ae82b-bafe-41ff-b7e1-2ed52402ed2f",
               "isHook": false,
               "skipped": false
             },
@@ -114,7 +114,7 @@
               "title": "Cambio de vista a Default Tesorería",
               "fullTitle": "Dashboard Cambio de vista a Default Tesorería",
               "timedOut": null,
-              "duration": 1327,
+              "duration": 1321,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -123,8 +123,8 @@
               "context": null,
               "code": "const normalizeText = text => text.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').trim();\ncy.get('span.filter-option.pull-left').then($span => {\n  const currentValue = normalizeText($span.text());\n  if (currentValue !== 'Default Tesoreria') {\n    cy.get('button[class=\"btn dropdown-toggle btn-default btn-sm selectpicker\"]').click();\n    cy.contains(/^Default Tesorer[íi]a|Default Tesorerï¿½a$/).click();\n    cy.log('La vista fue cambiada a Default Tesorería');\n  } else {\n    cy.log('La vista ya era Default Tesorería, no fue necesario cambiarla');\n  }\n  cy.CheckLoad();\n  cy.get('h4[class=\"panel-title\"]').should('be.visible');\n  cy.get('.panel-body').should('be.visible');\n});",
               "err": {},
-              "uuid": "23b534c5-ec7b-4146-8144-d5f1586bc8ef",
-              "parentUUID": "e991afba-fcdd-4a56-9288-ae92c2fb17f9",
+              "uuid": "10281d0e-7ff1-47cf-9f6b-5fb90b86c20e",
+              "parentUUID": "271ae82b-bafe-41ff-b7e1-2ed52402ed2f",
               "isHook": false,
               "skipped": false
             },
@@ -132,7 +132,7 @@
               "title": "Cambio de vista a Default Mesa",
               "fullTitle": "Dashboard Cambio de vista a Default Mesa",
               "timedOut": null,
-              "duration": 1255,
+              "duration": 1281,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -141,22 +141,22 @@
               "context": null,
               "code": "cy.get('button[class=\"btn dropdown-toggle btn-default btn-sm selectpicker\"]').click();\ncy.contains('Default Mesa').click();\ncy.CheckLoad();\ncy.get('h4[class=\"panel-title\"]').should('be.visible');\ncy.get('.panel-body').should('be.visible');",
               "err": {},
-              "uuid": "89c96f7c-5999-4752-ad7b-cffa22fb824f",
-              "parentUUID": "e991afba-fcdd-4a56-9288-ae92c2fb17f9",
+              "uuid": "06b12055-a3a9-41f6-b43a-f2f8aed3c06a",
+              "parentUUID": "271ae82b-bafe-41ff-b7e1-2ed52402ed2f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "2e4692a9-f20b-42b4-90b7-307513468145",
-            "23b534c5-ec7b-4146-8144-d5f1586bc8ef",
-            "89c96f7c-5999-4752-ad7b-cffa22fb824f"
+            "a037f410-501a-45f7-9c15-853acdc1460a",
+            "10281d0e-7ff1-47cf-9f6b-5fb90b86c20e",
+            "06b12055-a3a9-41f6-b43a-f2f8aed3c06a"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5864,
+          "duration": 6158,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -172,7 +172,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "f57cc85e-0376-476f-a83e-5b84069e897a",
+      "uuid": "91a36e97-2a3a-4f7b-9c44-e1c11995555a",
       "title": "",
       "fullFile": "cypress/e2e/smoke/03_cashflow.cy.js",
       "file": "cypress/e2e/smoke/03_cashflow.cy.js",
@@ -181,7 +181,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "5bbb5394-c0eb-4b6f-8797-5694fde76c20",
+          "uuid": "c3457de5-b795-4e45-b794-42106a0b8d60",
           "title": "Cashflow",
           "fullFile": "",
           "file": "",
@@ -192,17 +192,17 @@
               "title": "Visualizar el cashflow Banco Central",
               "fullTitle": "Cashflow Visualizar el cashflow Banco Central",
               "timedOut": null,
-              "duration": 16887,
+              "duration": 7350,
               "state": "passed",
-              "speed": "slow",
+              "speed": "medium",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.contains('Cashflow').click();\ncy.contains('Banco Central').click();\ncy.CheckLoad();\ncy.get('div[class=\"static-treegrid-container\"]').should('be.visible');",
               "err": {},
-              "uuid": "a79daf82-7e99-400a-9868-89151f89b3db",
-              "parentUUID": "5bbb5394-c0eb-4b6f-8797-5694fde76c20",
+              "uuid": "fa984ea7-92d4-427a-a0c0-288c9f803f6f",
+              "parentUUID": "c3457de5-b795-4e45-b794-42106a0b8d60",
               "isHook": false,
               "skipped": false
             },
@@ -210,7 +210,7 @@
               "title": "Visualizar el cashflow Intradiario",
               "fullTitle": "Cashflow Visualizar el cashflow Intradiario",
               "timedOut": null,
-              "duration": 17341,
+              "duration": 17365,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -219,21 +219,21 @@
               "context": null,
               "code": "cy.contains('Cashflow').click();\ncy.contains('Intradiario').click();\ncy.CheckLoad();\ncy.get('table[class=\"static-treegrid-container table tree-table table-condensed table-hover editable-daily-cashflow-balance-table\"]').should('be.visible');",
               "err": {},
-              "uuid": "164643e6-7663-441a-a5aa-3726addfe42f",
-              "parentUUID": "5bbb5394-c0eb-4b6f-8797-5694fde76c20",
+              "uuid": "a764b2a8-1964-4062-b558-0143583279d4",
+              "parentUUID": "c3457de5-b795-4e45-b794-42106a0b8d60",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a79daf82-7e99-400a-9868-89151f89b3db",
-            "164643e6-7663-441a-a5aa-3726addfe42f"
+            "fa984ea7-92d4-427a-a0c0-288c9f803f6f",
+            "a764b2a8-1964-4062-b558-0143583279d4"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 34228,
+          "duration": 24715,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -249,7 +249,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "6ddc8215-24ea-4b27-8898-0edc877c1fbc",
+      "uuid": "bd69e538-087e-4355-aaac-d04166168a99",
       "title": "",
       "fullFile": "cypress/e2e/smoke/04_operaciones.cy.js",
       "file": "cypress/e2e/smoke/04_operaciones.cy.js",
@@ -258,7 +258,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "41be0ddc-4c22-4668-8f30-6571d46cf271",
+          "uuid": "ce2e1efd-ab7b-42fc-b468-ae40f3a96c2e",
           "title": "Operaciones",
           "fullFile": "",
           "file": "",
@@ -269,7 +269,7 @@
               "title": "Dar de alta una operación de Repos",
               "fullTitle": "Operaciones Dar de alta una operación de Repos",
               "timedOut": null,
-              "duration": 8157,
+              "duration": 8446,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -278,8 +278,8 @@
               "context": null,
               "code": "cy.contains('Operaciones').click();\ncy.contains('Repos').click();\ncy.contains('Registrar').click();\ncy.contains('Seleccione el banco').click();\ncy.get('.text').contains('BSJ').click();\ncy.get('button[class=\"btn btn-default\"]').contains('Activo').click();\ncy.get('input[placeholder=\"ID/Nombre\"]').eq(1).type('BBVA');\ncy.get('ul.typeahead.dropdown-menu[role=\"listbox\"] li').should('be.visible').first().click({\n  force: true\n});\n// Funcion y manejo de plazo para evitar caer en vencimiento con dias no hábiles\ncy.IngresarPlazoValido();\ncy.contains('MAE').click();\ncy.get('input[placeholder=\"Nominales\"]').click().type('10000');\ncy.get('input[placeholder=\"Precio\"]').click().type('100');\ncy.get('input[placeholder=\"Valor de la Tasa\"]').click().type('10');\ncy.get('input[placeholder=\"Título\"], input[placeholder=\"Tï¿½tulo\"]').should('be.visible').click().type('AL30');\ncy.get('ul.typeahead.dropdown-menu').should('be.visible');\ncy.focused().type('{enter}').click({\n  force: true\n});\ncy.get('.form-control-static').should('not.contain.text', 'N/A');\ncy.contains('Aceptar').click();\ncy.CheckLoad();\nlet found = false;\ncy.get('tr').each($tr => {\n  const text = $tr.text();\n  if (text.includes('AL30') && text.includes('10.000,0000') && text.includes('10,00%')) {\n    found = true;\n    cy.log('✅ La operación registrada fue validada correctamente');\n  }\n}).then(() => {\n  if (!found) {\n    throw new Error('❌ No se encontró ninguna fila con los valores esperados: AL30, 10.000,0000 y 10,00%');\n  }\n});",
               "err": {},
-              "uuid": "1e545124-2a6e-4957-8cfb-33d0590c98cd",
-              "parentUUID": "41be0ddc-4c22-4668-8f30-6571d46cf271",
+              "uuid": "447e70dc-099e-4848-bb4b-f510377d2b9a",
+              "parentUUID": "ce2e1efd-ab7b-42fc-b468-ae40f3a96c2e",
               "isHook": false,
               "skipped": false
             },
@@ -287,7 +287,7 @@
               "title": "Modificar una operación de Repos",
               "fullTitle": "Operaciones Modificar una operación de Repos",
               "timedOut": null,
-              "duration": 2389,
+              "duration": 2376,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -296,8 +296,8 @@
               "context": null,
               "code": "cy.get('tbody tr').each($row => {\n  const rowText = $row.text();\n  if (rowText.includes('AL30') && rowText.includes('10.000,0000') && rowText.includes('10,00%')) {\n    cy.wrap($row).find('[data-original-title=\"Modificar\"]').click();\n    // Cortamos el each para evitar múltiples clics\n    return false;\n  }\n});\ncy.get('input[placeholder=\"Nominales\"]').click().clear().type('20000');\ncy.get('input[placeholder=\"Valor de la Tasa\"]').click().clear().type('20');\ncy.contains('Aceptar').click();\ncy.CheckLoad();\nlet found = false;\ncy.get('tr').each($tr => {\n  const text = $tr.text();\n  if (text.includes('AL30') && text.includes('20.000,0000') && text.includes('20,00%')) {\n    found = true;\n    cy.log('✅ La operación modificada fue validada correctamente');\n  }\n}).then(() => {\n  if (!found) {\n    throw new Error('❌ No se encontró ninguna fila con los valores esperados: AL30, 20.000,0000 y 20,00%');\n  }\n});",
               "err": {},
-              "uuid": "e1d54523-abbd-451f-9ccd-97c67baa42f0",
-              "parentUUID": "41be0ddc-4c22-4668-8f30-6571d46cf271",
+              "uuid": "20b32b25-bc3d-46ab-8eff-e59015a97ab5",
+              "parentUUID": "ce2e1efd-ab7b-42fc-b468-ae40f3a96c2e",
               "isHook": false,
               "skipped": false
             },
@@ -305,7 +305,7 @@
               "title": "Anular una operación de Repos",
               "fullTitle": "Operaciones Anular una operación de Repos",
               "timedOut": null,
-              "duration": 928,
+              "duration": 962,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -314,8 +314,8 @@
               "context": null,
               "code": "cy.get('tbody tr').each($row => {\n  const rowText = $row.text();\n  if (rowText.includes('AL30') && rowText.includes('20.000,0000') && rowText.includes('20,00%')) {\n    cy.wrap($row).find('[data-original-title=\"Anular\"]').click();\n    return false;\n  }\n});\ncy.contains('Aceptar').click();\ncy.CheckLoad();\ncy.get('tbody tr').filter((index, tr) => {\n  const text = tr.textContent;\n  return text.includes('AL30') && text.includes('20.000,0000') && text.includes('20,00%');\n}).should('not.exist');",
               "err": {},
-              "uuid": "23c28801-515b-4479-8856-9f5a85670ae8",
-              "parentUUID": "41be0ddc-4c22-4668-8f30-6571d46cf271",
+              "uuid": "54ae56db-7726-4be3-afff-8e214421ffb1",
+              "parentUUID": "ce2e1efd-ab7b-42fc-b468-ae40f3a96c2e",
               "isHook": false,
               "skipped": false
             },
@@ -323,7 +323,7 @@
               "title": "Dar de alta una operación de Títulos",
               "fullTitle": "Operaciones Dar de alta una operación de Títulos",
               "timedOut": null,
-              "duration": 4253,
+              "duration": 4421,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -332,8 +332,8 @@
               "context": null,
               "code": "cy.contains('Operaciones').click();\ncy.contains('a[role=\"button\"]', 'Títulos').click();\ncy.CheckLoad();\ncy.contains('Registrar').click();\ncy.contains('Seleccione el banco').click();\ncy.get('.text').contains('NBER').click();\ncy.get('button[class=\"btn btn-default\"]').contains('Compra').click();\ncy.IngresarPlazoValido();\ncy.get('input[placeholder=\"ID/Nombre\"]').eq(1).type('BBVA');\ncy.get('ul.typeahead.dropdown-menu').should('be.visible').type('{enter}');\ncy.get('input[placeholder=\"Nominales\"]').click().type('10000');\ncy.get('div[data-toggle=\"buttons\"]').contains('button.btn.btn-default', 'BYMA').click({\n  force: true\n});\ncy.get('input[placeholder=\"Precio\"]').click().type('75,9');\ncy.get('input[placeholder=\"Título\"], input[placeholder=\"Tï¿½tulo\"]').should('be.visible').click().type('AL30');\ncy.get('ul.typeahead.dropdown-menu').should('be.visible');\ncy.focused().type('{enter}');\ncy.contains('Aceptar').click();\ncy.CheckLoad();\nlet found = false;\ncy.get('tr').each($tr => {\n  const text = $tr.text();\n  if (text.includes('AL30') && text.includes('75,90000000') && text.includes('10.000')) {\n    found = true;\n    cy.log('✅ La operación registrada fue validada correctamente');\n  }\n}).then(() => {\n  if (!found) {\n    throw new Error('❌ No se encontró ninguna fila con los valores esperados: AL30, 75,90000000 y 10.000');\n  }\n});",
               "err": {},
-              "uuid": "45541ec5-972e-4899-aa29-4957d6674075",
-              "parentUUID": "41be0ddc-4c22-4668-8f30-6571d46cf271",
+              "uuid": "c0ba17c5-c6c4-4f2f-9ce8-d42d19f57fb3",
+              "parentUUID": "ce2e1efd-ab7b-42fc-b468-ae40f3a96c2e",
               "isHook": false,
               "skipped": false
             },
@@ -341,7 +341,7 @@
               "title": "Modificar una operación de Títulos",
               "fullTitle": "Operaciones Modificar una operación de Títulos",
               "timedOut": null,
-              "duration": 2361,
+              "duration": 2399,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -350,8 +350,8 @@
               "context": null,
               "code": "cy.get('tbody tr').each($row => {\n  const rowText = $row.text();\n  if (rowText.includes('AL30') && rowText.includes('75,90000000') && rowText.includes('10.000')) {\n    cy.wrap($row).find('[data-original-title=\"Modificar\"]').click();\n    // Cortamos el each para evitar múltiples clics\n    return false;\n  }\n});\ncy.get('input[placeholder=\"Nominales\"]').click().clear().type('20000');\ncy.get('input[placeholder=\"Precio\"]').click().clear().type('120');\ncy.contains('Aceptar').click();\ncy.CheckLoad();\nlet found = false;\ncy.get('tr').each($tr => {\n  const text = $tr.text();\n  if (text.includes('AL30') && text.includes('120,00000000') && text.includes('20.000')) {\n    found = true;\n    cy.log('✅ La operación modificada fue validada correctamente');\n  }\n}).then(() => {\n  if (!found) {\n    throw new Error('❌ No se encontró ninguna fila con los valores esperados: AL30, 120,00000000 y 20.000');\n  }\n});",
               "err": {},
-              "uuid": "86f3a9d2-7a9b-4914-8771-20818d1af9b3",
-              "parentUUID": "41be0ddc-4c22-4668-8f30-6571d46cf271",
+              "uuid": "efa60756-1746-495d-8b0a-8d03218cb346",
+              "parentUUID": "ce2e1efd-ab7b-42fc-b468-ae40f3a96c2e",
               "isHook": false,
               "skipped": false
             },
@@ -359,7 +359,7 @@
               "title": "Anular una operación de Títulos",
               "fullTitle": "Operaciones Anular una operación de Títulos",
               "timedOut": null,
-              "duration": 852,
+              "duration": 884,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -368,25 +368,25 @@
               "context": null,
               "code": "cy.get('tbody tr').each($row => {\n  const rowText = $row.text();\n  if (rowText.includes('AL30') && rowText.includes('120,00000000') && rowText.includes('20.000')) {\n    cy.wrap($row).find('[data-original-title=\"Anular\"]').click();\n    return false;\n  }\n});\ncy.contains('Aceptar').click();\ncy.CheckLoad();\ncy.get('tbody tr').filter((index, tr) => {\n  const text = tr.textContent;\n  return text.includes('AL30') && text.includes('20.000,0000') && text.includes('20,00%');\n}).should('not.exist');",
               "err": {},
-              "uuid": "b9e07420-350b-4977-bade-9e29fac840a2",
-              "parentUUID": "41be0ddc-4c22-4668-8f30-6571d46cf271",
+              "uuid": "c65a0dd1-40b6-49c7-b74a-d86bf2958713",
+              "parentUUID": "ce2e1efd-ab7b-42fc-b468-ae40f3a96c2e",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "1e545124-2a6e-4957-8cfb-33d0590c98cd",
-            "e1d54523-abbd-451f-9ccd-97c67baa42f0",
-            "23c28801-515b-4479-8856-9f5a85670ae8",
-            "45541ec5-972e-4899-aa29-4957d6674075",
-            "86f3a9d2-7a9b-4914-8771-20818d1af9b3",
-            "b9e07420-350b-4977-bade-9e29fac840a2"
+            "447e70dc-099e-4848-bb4b-f510377d2b9a",
+            "20b32b25-bc3d-46ab-8eff-e59015a97ab5",
+            "54ae56db-7726-4be3-afff-8e214421ffb1",
+            "c0ba17c5-c6c4-4f2f-9ce8-d42d19f57fb3",
+            "efa60756-1746-495d-8b0a-8d03218cb346",
+            "c65a0dd1-40b6-49c7-b74a-d86bf2958713"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 18940,
+          "duration": 19488,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -402,7 +402,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "2c5bc227-8c65-4ff9-8285-fdd250602342",
+      "uuid": "162a0530-477b-4cfd-a888-d8c3dde84a43",
       "title": "",
       "fullFile": "cypress/e2e/smoke/05_limites.cy.js",
       "file": "cypress/e2e/smoke/05_limites.cy.js",
@@ -411,7 +411,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "1b16c624-d4de-4b3a-9103-a2f201fe920a",
+          "uuid": "7d14461f-9972-4a87-aa4c-a7e7407391dd",
           "title": "Límites",
           "fullFile": "",
           "file": "",
@@ -422,7 +422,7 @@
               "title": "Ingresar en Administrar Límites",
               "fullTitle": "Límites Ingresar en Administrar Límites",
               "timedOut": null,
-              "duration": 4024,
+              "duration": 3903,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -431,8 +431,8 @@
               "context": null,
               "code": "cy.contains('Límites').click();\ncy.contains('Administrar').click();\ncy.CheckLoad();",
               "err": {},
-              "uuid": "d9885bf1-bae1-48fa-9fb6-9ff34c9e8936",
-              "parentUUID": "1b16c624-d4de-4b3a-9103-a2f201fe920a",
+              "uuid": "d10ad769-5dd9-49ff-b36e-290b05f2ef7d",
+              "parentUUID": "7d14461f-9972-4a87-aa4c-a7e7407391dd",
               "isHook": false,
               "skipped": false
             },
@@ -440,7 +440,7 @@
               "title": "Agregar un límite para un Call",
               "fullTitle": "Límites Agregar un límite para un Call",
               "timedOut": null,
-              "duration": 1883,
+              "duration": 1989,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -449,8 +449,8 @@
               "context": null,
               "code": "cy.contains('Agregar').click();\ncy.contains('.form-group.form-group-sm label', 'Nombre').parent().find('input.form-control').click().type('Limite Test Call Activo');\ncy.get('div[class=\"btn-group bootstrap-select show-tick form-control\"]').click();\ncy.get('span[class=\"text\"]').contains('Call').click();\ncy.get('button[class=\"btn btn-default companyButton\"]').contains('BSJ').click();\ncy.get('input[placeholder=\"Monto\"]').click().type('1000');\ncy.get('input[placeholder=\"Desde\"]').click();\ncy.contains('Hoy').click();\ncy.get('input[placeholder=\"Hasta\"]').click();\ncy.contains('Hoy').click();\ncy.contains('Aceptar').click();",
               "err": {},
-              "uuid": "e8fdb86c-a3c1-4bbe-a279-368f9f5bcf21",
-              "parentUUID": "1b16c624-d4de-4b3a-9103-a2f201fe920a",
+              "uuid": "d09556ea-0a05-4551-87fd-3cc4425e7106",
+              "parentUUID": "7d14461f-9972-4a87-aa4c-a7e7407391dd",
               "isHook": false,
               "skipped": false
             },
@@ -458,7 +458,7 @@
               "title": "Dar de alta una operación de Call afectada por un límite",
               "fullTitle": "Límites Dar de alta una operación de Call afectada por un límite",
               "timedOut": null,
-              "duration": 82737,
+              "duration": 85409,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -467,8 +467,8 @@
               "context": null,
               "code": "cy.contains('Operaciones').click();\ncy.contains('Calls').click();\ncy.CheckLoad();\ncy.get('button[class=\"btn btn btn-primary btn-sm\"]').click();\ncy.contains('Call (Activo)').click();\ncy.get('input[placeholder=\"ID/Nombre\"]').eq(1).type('BBVA');\ncy.get('ul.typeahead.dropdown-menu[role=\"listbox\"] li').first().should('be.visible').click();\ncy.contains('Seleccione el banco').click();\ncy.get('.text').contains('BSJ').click();\ncy.get('input[class=\"text-center form-control text-center\"]').click();\ncy.contains('Hoy').click();\n// Funcion y manejo de plazo para evitar caer en vencimiento con dias no hábiles\ncy.IngresarPlazoValido();\ncy.get('input[placeholder=\"Monto\"]').click().type('100000');\ncy.get('input[placeholder=\"Valor de la Tasa\"]').click().type('40{enter}');\ncy.contains('Aceptar').click({\n  force: true\n});\ncy.get('h4.modal-title').contains('Lï¿½mites de Contraparte', {\n  timeout: 120000\n});\ncy.get('.modal-header').should('be.visible');\ncy.get('.modal-footer').eq(1).first().within(() => {\n  cy.contains('Aceptar').click({\n    force: true\n  });\n});\ncy.contains('Validando', {\n  timeout: 120000\n}, {\n  matchCase: false\n}).should('not.exist');\ncy.CheckLoad();\ncy.get('div.sk-three-bounce', {\n  timeout: 120000\n}).should('not.exist');",
               "err": {},
-              "uuid": "075ed6a6-b03e-4c99-9cc6-1f490527a4df",
-              "parentUUID": "1b16c624-d4de-4b3a-9103-a2f201fe920a",
+              "uuid": "4038a54d-933e-474d-9f43-1ab72e6ebff8",
+              "parentUUID": "7d14461f-9972-4a87-aa4c-a7e7407391dd",
               "isHook": false,
               "skipped": false
             },
@@ -476,7 +476,7 @@
               "title": "Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización",
               "fullTitle": "Límites Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización",
               "timedOut": null,
-              "duration": 1228,
+              "duration": 1218,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -485,8 +485,8 @@
               "context": null,
               "code": "cy.contains('Operaciones').click();\ncy.contains('Operaciones Pendientes').click();\ncy.CheckLoad();\ncy.get('input[placeholder=\"Desde\"]').click();\ncy.contains('Hoy').click();\ncy.contains(' Buscar').click();\ncy.get('td').should('contain.text', 'Call', 'Activo', 'BBVA Banco Francés');\ncy.get('td[class=\" number-cell\"]').should('contain.text', '40,00%', '103.287,6700', '30');",
               "err": {},
-              "uuid": "8f271a89-6048-4b77-a882-acfff6486b79",
-              "parentUUID": "1b16c624-d4de-4b3a-9103-a2f201fe920a",
+              "uuid": "27e3b210-7fe7-4358-b256-7155c8115ec7",
+              "parentUUID": "7d14461f-9972-4a87-aa4c-a7e7407391dd",
               "isHook": false,
               "skipped": false
             },
@@ -494,7 +494,7 @@
               "title": "Eliminar el límite creado",
               "fullTitle": "Límites Eliminar el límite creado",
               "timedOut": null,
-              "duration": 2171,
+              "duration": 2240,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -503,24 +503,24 @@
               "context": null,
               "code": "cy.contains('Límites').click();\ncy.contains('Administrar').click();\ncy.CheckLoad();\ncy.get('tbody tr').each($row => {\n  const rowText = $row.text();\n  if (rowText.includes('Call') && rowText.includes('1.000,00')) {\n    cy.wrap($row).find('[data-original-title=\"Eliminar\"]').click();\n    // Cortamos el each apenas hacemos el click para evitar múltiples clics\n    return false;\n  }\n});\ncy.contains('Aceptar').click();\ncy.contains('Validando', {\n  timeout: 120000\n}, {\n  matchCase: false\n}).should('not.exist');\ncy.CheckLoad();\n// Valida que no exista más la fila eliminada\nlet filaEncontrada = false;\ncy.get('tbody tr').each($row => {\n  const rowText = $row.text();\n  if (rowText.includes('Call') && rowText.includes('1.000,00')) {\n    filaEncontrada = true;\n  }\n}).then(() => {\n  if (filaEncontrada) {\n    throw new Error('La fila con \"Call\" y \"1.000,00 ARS\" todavía existe en la tabla');\n  }\n  cy.log('✅ El límite fue eliminado correctamente');\n});",
               "err": {},
-              "uuid": "7eb0cd55-fb82-41b6-9d72-7614d3191e0b",
-              "parentUUID": "1b16c624-d4de-4b3a-9103-a2f201fe920a",
+              "uuid": "70b97827-d363-453c-95cc-f72c99b587fe",
+              "parentUUID": "7d14461f-9972-4a87-aa4c-a7e7407391dd",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d9885bf1-bae1-48fa-9fb6-9ff34c9e8936",
-            "e8fdb86c-a3c1-4bbe-a279-368f9f5bcf21",
-            "075ed6a6-b03e-4c99-9cc6-1f490527a4df",
-            "8f271a89-6048-4b77-a882-acfff6486b79",
-            "7eb0cd55-fb82-41b6-9d72-7614d3191e0b"
+            "d10ad769-5dd9-49ff-b36e-290b05f2ef7d",
+            "d09556ea-0a05-4551-87fd-3cc4425e7106",
+            "4038a54d-933e-474d-9f43-1ab72e6ebff8",
+            "27e3b210-7fe7-4358-b256-7155c8115ec7",
+            "70b97827-d363-453c-95cc-f72c99b587fe"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 92043,
+          "duration": 94759,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -536,7 +536,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "9fe170f2-e03b-42ec-93db-c518460746b2",
+      "uuid": "503ec02c-eb7a-4725-81bc-dd25d382eb5b",
       "title": "",
       "fullFile": "cypress/e2e/smoke/06_consultas.cy.js",
       "file": "cypress/e2e/smoke/06_consultas.cy.js",
@@ -545,7 +545,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "5b5ad958-dcba-48b4-8179-6f26cd630337",
+          "uuid": "1ebb7c9d-afd6-43ec-be78-703a753c234d",
           "title": "Consultas",
           "fullFile": "",
           "file": "",
@@ -556,7 +556,7 @@
               "title": "Ingresar en consultas de operaciones",
               "fullTitle": "Consultas Ingresar en consultas de operaciones",
               "timedOut": null,
-              "duration": 3982,
+              "duration": 4173,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -565,8 +565,8 @@
               "context": null,
               "code": "cy.contains('Consultas').click();\ncy.get('ul.dropdown-menu').eq(2).first().contains('Operaciones').should('contain.text', 'Operaciones').click();\ncy.CheckLoad();",
               "err": {},
-              "uuid": "926bb423-7334-4a19-8077-f4d6f3d16a08",
-              "parentUUID": "5b5ad958-dcba-48b4-8179-6f26cd630337",
+              "uuid": "90b95c42-04c6-4712-99e9-ca08e691c4cb",
+              "parentUUID": "1ebb7c9d-afd6-43ec-be78-703a753c234d",
               "isHook": false,
               "skipped": false
             },
@@ -574,7 +574,7 @@
               "title": "Consultar 3000 operaciones",
               "fullTitle": "Consultas Consultar 3000 operaciones",
               "timedOut": null,
-              "duration": 262222,
+              "duration": 250046,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -583,21 +583,21 @@
               "context": null,
               "code": "cy.get('div[data-original-title=\"Estado\"]').click();\ncy.get('span[class=\"text\"]').contains('Confirmado').click();\ncy.get('.dataTables_empty').should('be.visible').click();\ncy.get('button[class=\"btn btn-default btn-sm btn optional-query-filter-close-button\"]').eq(1).click();\ncy.get('button[class=\"btn btn-default btn-sm btn optional-query-filter-close-button\"]').eq(1).should('not.exist');\n// Escribir la fecha en el campo \"Desde y Hasta\"\ncy.get('input.text-center.form-control.text-center[placeholder=\"Desde\"]').should('be.visible').click().clear().type('04/08/2025');\ncy.get('input.text-center.form-control.text-center[placeholder=\"Hasta\"]').should('be.visible').click().clear().type('04/08/2025');\n//Desesleccionar tipo de instrumento y seleccionar Título y Caución\ncy.contains('button', 'Tipo de Instrumento').click();\ncy.get('button.bs-deselect-all').eq(1).click();\ncy.get('span.text').contains('Tï¿½tulo').click();\ncy.get('span.text').contains('Cauciï¿½n').click();\n//Click en Buscar\ncy.contains(' Buscar').click();\n//Resultado Esperado: Aprox 3100 registros\ncy.get('span.companyTag', {\n  timeout: 300000\n}).then($elements => {\n  cy.log('Cantidad de registros encontrados:', $elements.length);\n  console.log('Cantidad de registros encontrados:', $elements.length); // También log en la consola de cypress\n});",
               "err": {},
-              "uuid": "cd338f74-420c-4b1d-825e-873ab8437c31",
-              "parentUUID": "5b5ad958-dcba-48b4-8179-6f26cd630337",
+              "uuid": "1110669d-e343-4433-81b9-59b115208715",
+              "parentUUID": "1ebb7c9d-afd6-43ec-be78-703a753c234d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "926bb423-7334-4a19-8077-f4d6f3d16a08",
-            "cd338f74-420c-4b1d-825e-873ab8437c31"
+            "90b95c42-04c6-4712-99e9-ca08e691c4cb",
+            "1110669d-e343-4433-81b9-59b115208715"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 266204,
+          "duration": 254219,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
