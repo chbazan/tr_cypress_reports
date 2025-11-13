@@ -1,20 +1,20 @@
 Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
-2025-11-12T10:38:07-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Banco Central,V4.686,23227.2,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Intradiario,V4.686,18236.0,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Consultas,Consultar 3000 operaciones,V4.686,270140.2,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Consultas,Ingresar en consultas de operaciones,V4.686,4729.6,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Mesa,V4.686,1308.4,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Tesorería,V4.686,1440.4,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Dashboard,Ingreso al Dashboard,V4.686,3690.0,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Login,Login,V4.686,4422.6,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Límites,Agregar un límite para un Call,V4.686,2043.8,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Límites,Dar de alta una operación de Call afectada por un límite,V4.686,87697.8,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Límites,Eliminar el límite creado,V4.686,2224.4,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Límites,Ingresar en Administrar Límites,V4.686,4198.2,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,V4.686,1399.4,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Operaciones,Anular una operación de Repos,V4.686,979.2,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Operaciones,Anular una operación de Títulos,V4.686,881.6,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Repos,V4.686,9374.8,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Títulos,V4.686,4457.4,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Operaciones,Modificar una operación de Repos,V4.686,2442.4,13
-2025-11-12T10:38:07-03:00,Petersen,Testing,Operaciones,Modificar una operación de Títulos,V4.686,2410.2,13
+2025-11-13T10:12:50-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Banco Central,V4.686,23012.05,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Cashflow,Visualizar el cashflow Intradiario,V4.686,18223.25,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Consultas,Consultar 3000 operaciones,V4.686,270086.3,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Consultas,Ingresar en consultas de operaciones,V4.686,4717.9,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Mesa,V4.686,1307.6,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Dashboard,Cambio de vista a Default Tesorería,V4.686,1438.35,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Dashboard,Ingreso al Dashboard,V4.686,3673.25,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Login,Login,V4.686,4440.6,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Límites,Agregar un límite para un Call,V4.686,2037.2,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Límites,Dar de alta una operación de Call afectada por un límite,V4.686,87542.95,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Límites,Eliminar el límite creado,V4.686,2226.35,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Límites,Ingresar en Administrar Límites,V4.686,4197.8,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,V4.686,1396.85,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Operaciones,Anular una operación de Repos,V4.686,977.05,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Operaciones,Anular una operación de Títulos,V4.686,881.4,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Repos,V4.686,9359.1,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Operaciones,Dar de alta una operación de Títulos,V4.686,4510.7,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Operaciones,Modificar una operación de Repos,V4.686,2442.35,14
+2025-11-13T10:12:50-03:00,Petersen,Testing,Operaciones,Modificar una operación de Títulos,V4.686,2408.8,14
