@@ -1,7 +1,7 @@
 Timestamp,Cliente,Ambiente,Sección,Versión,P95 (ms) actual,Cantidad de muestras de la sección
-2025-11-17T10:12:17-03:00,Petersen,Testing,Cashflow,V4.686,23442.35,32
-2025-11-17T10:12:17-03:00,Petersen,Testing,Consultas,V4.686,269025.35,32
-2025-11-17T10:12:17-03:00,Petersen,Testing,Dashboard,V4.686,3576.8,48
-2025-11-17T10:12:17-03:00,Petersen,Testing,Login,V4.686,4329.0,16
-2025-11-17T10:12:17-03:00,Petersen,Testing,Límites,V4.686,85461.5,80
-2025-11-17T10:12:17-03:00,Petersen,Testing,Operaciones,V4.686,8906.25,96
+2025-11-17T11:04:42-03:00,Petersen,Testing,Cashflow,V4.686,23012.05,34
+2025-11-17T11:04:42-03:00,Petersen,Testing,Consultas,V4.686,268901.05,34
+2025-11-17T11:04:42-03:00,Petersen,Testing,Dashboard,V4.686,3590.25,52
+2025-11-17T11:04:42-03:00,Petersen,Testing,Login,V4.686,4329.0,16
+2025-11-17T11:04:42-03:00,Petersen,Testing,Límites,V4.686,85293.4,85
+2025-11-17T11:04:42-03:00,Petersen,Testing,Operaciones,V4.686,8869.55,102
