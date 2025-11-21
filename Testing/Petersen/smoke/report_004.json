@@ -1,24 +1,24 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 2,
-    "passes": 2,
+    "tests": 1,
+    "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-11-20T13:06:43.533Z",
-    "end": "2025-11-20T13:07:52.748Z",
-    "duration": 69215,
+    "start": "2025-11-21T13:06:44.678Z",
+    "end": "2025-11-21T13:06:44.761Z",
+    "duration": 83,
     "testsRegistered": 2,
-    "passPercent": 100,
+    "passPercent": 50,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
-    "skipped": 0,
-    "hasSkipped": false
+    "skipped": 1,
+    "hasSkipped": true
   },
   "results": [
     {
-      "uuid": "062ffa95-f67c-4cdd-b600-d4b09ca98f7f",
+      "uuid": "34854bc3-330e-4312-bb1c-5174b0792efc",
       "title": "",
       "fullFile": "cypress/e2e/smoke/05_consultas.cy.js",
       "file": "cypress/e2e/smoke/05_consultas.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "6de79cba-e447-44ba-9dac-cfb717b3a6ce",
+          "uuid": "97e4a48f-f6a0-4e57-9d2e-782b3518a52b",
           "title": "Consultas",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Ingresar en consultas de operaciones",
               "fullTitle": "Consultas Ingresar en consultas de operaciones",
               "timedOut": null,
-              "duration": 4012,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.contains('Consultas').click();\ncy.get('ul.dropdown-menu').eq(2).first().contains('Operaciones').should('contain.text', 'Operaciones').click();\ncy.CheckLoad();",
               "err": {},
-              "uuid": "bd55b8f4-e71f-402c-bde5-09eac1b4d6f8",
-              "parentUUID": "6de79cba-e447-44ba-9dac-cfb717b3a6ce",
+              "uuid": "9af06b00-8d04-4a8d-b3f8-5b77f100d3aa",
+              "parentUUID": "97e4a48f-f6a0-4e57-9d2e-782b3518a52b",
               "isHook": false,
               "skipped": false
             },
@@ -56,30 +56,31 @@
               "title": "Consultar 3000 operaciones",
               "fullTitle": "Consultas Consultar 3000 operaciones",
               "timedOut": null,
-              "duration": 62634,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.get('div[data-original-title=\"Estado\"]').click();\ncy.get('span[class=\"text\"]').contains('Confirmado').click();\ncy.get('.dataTables_empty').should('be.visible').click();\ncy.get('button[class=\"btn btn-default btn-sm btn optional-query-filter-close-button\"]').eq(1).click();\ncy.get('button[class=\"btn btn-default btn-sm btn optional-query-filter-close-button\"]').eq(1).should('not.exist');\n// Escribir la fecha en el campo \"Desde y Hasta\"\ncy.get('input.text-center.form-control.text-center[placeholder=\"Desde\"]').should('be.visible').click().clear().type('04/08/2025');\ncy.get('input.text-center.form-control.text-center[placeholder=\"Hasta\"]').should('be.visible').click().clear().type('04/08/2025');\n//Desesleccionar tipo de instrumento y seleccionar Título y Caución\ncy.contains('button', 'Tipo de Instrumento').click();\ncy.get('button.bs-deselect-all').eq(1).click();\ncy.get('span.text').contains('Tï¿½tulo').click();\ncy.get('span.text').contains('Cauciï¿½n').click();\n//Click en Buscar\ncy.contains(' Buscar').click();\n//Resultado Esperado: Aprox 3100 registros\ncy.get('span.companyTag', {\n  timeout: 300000\n}).then($elements => {\n  cy.log('Cantidad de registros encontrados:', $elements.length);\n  console.log('Cantidad de registros encontrados:', $elements.length); // También log en la consola de cypress\n});",
               "err": {},
-              "uuid": "af86c722-172f-4f23-9edb-76b4006de218",
-              "parentUUID": "6de79cba-e447-44ba-9dac-cfb717b3a6ce",
+              "uuid": "cab0e964-adcb-411e-a062-f5e222e2b894",
+              "parentUUID": "97e4a48f-f6a0-4e57-9d2e-782b3518a52b",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "bd55b8f4-e71f-402c-bde5-09eac1b4d6f8",
-            "af86c722-172f-4f23-9edb-76b4006de218"
+            "9af06b00-8d04-4a8d-b3f8-5b77f100d3aa"
           ],
           "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 66646,
+          "skipped": [
+            "cab0e964-adcb-411e-a062-f5e222e2b894"
+          ],
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
