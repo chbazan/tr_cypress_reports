@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2025-11-24T13:04:34.791Z",
-    "end": "2025-11-24T13:05:08.182Z",
-    "duration": 33391,
+    "start": "2025-11-25T19:36:44.331Z",
+    "end": "2025-11-25T19:37:14.503Z",
+    "duration": 30172,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "46a11b0e-e20f-44e7-bab8-a775c56a155b",
+      "uuid": "498faf33-6d4d-47b1-aab7-ecf13642b123",
       "title": "",
       "fullFile": "cypress/e2e/smoke/02_cashflow.cy.js",
       "file": "cypress/e2e/smoke/02_cashflow.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "f1a592cd-d59b-4416-9c80-bc916d62ad8c",
+          "uuid": "5642f986-b235-4a05-aeed-064bb91b8cca",
           "title": "Cashflow",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Visualizar el cashflow Banco Central",
               "fullTitle": "Cashflow Visualizar el cashflow Banco Central",
               "timedOut": null,
-              "duration": 14038,
+              "duration": 11481,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.contains('Cashflow').click();\ncy.contains('Banco Central').click();\ncy.CheckLoad();\ncy.get('div[class=\"static-treegrid-container\"]').should('be.visible');",
               "err": {},
-              "uuid": "8aefa5d9-89ef-491c-a0bc-922488fc43c4",
-              "parentUUID": "f1a592cd-d59b-4416-9c80-bc916d62ad8c",
+              "uuid": "e207cc11-f610-4ad0-bf4a-8611106ceda0",
+              "parentUUID": "5642f986-b235-4a05-aeed-064bb91b8cca",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Visualizar el cashflow Intradiario",
               "fullTitle": "Cashflow Visualizar el cashflow Intradiario",
               "timedOut": null,
-              "duration": 16820,
+              "duration": 16044,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "cy.contains('Cashflow').click();\ncy.contains('Intradiario').click();\ncy.CheckLoad();\ncy.get('table[class=\"static-treegrid-container table tree-table table-condensed table-hover editable-daily-cashflow-balance-table\"]').should('be.visible');",
               "err": {},
-              "uuid": "3351fcfb-8ac7-48ac-b3aa-8adfe1f99a3d",
-              "parentUUID": "f1a592cd-d59b-4416-9c80-bc916d62ad8c",
+              "uuid": "dd28289b-592e-45b1-980d-588f6a902e2c",
+              "parentUUID": "5642f986-b235-4a05-aeed-064bb91b8cca",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "8aefa5d9-89ef-491c-a0bc-922488fc43c4",
-            "3351fcfb-8ac7-48ac-b3aa-8adfe1f99a3d"
+            "e207cc11-f610-4ad0-bf4a-8611106ceda0",
+            "dd28289b-592e-45b1-980d-588f6a902e2c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 30858,
+          "duration": 27525,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
