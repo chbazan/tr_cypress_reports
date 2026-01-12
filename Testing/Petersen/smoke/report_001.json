@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2026-01-09T13:04:18.532Z",
-    "end": "2026-01-09T13:04:18.598Z",
-    "duration": 66,
+    "start": "2026-01-12T13:04:25.787Z",
+    "end": "2026-01-12T13:04:25.876Z",
+    "duration": 89,
     "testsRegistered": 2,
     "passPercent": 50,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "13f8765c-df71-4b9d-8607-59b20b005ae0",
+      "uuid": "00d1a2c6-1d15-4a75-bdd0-8c3e1e7e6279",
       "title": "",
       "fullFile": "cypress/e2e/smoke/02_cashflow.cy.js",
       "file": "cypress/e2e/smoke/02_cashflow.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "89c744bc-edb2-4f60-abb6-8ae725e60459",
+          "uuid": "025c0f11-9d9e-4296-ac3e-99e45a0cd165",
           "title": "Cashflow",
           "fullFile": "",
           "file": "",
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.contains('Cashflow').click();\ncy.contains('Banco Central').click();\ncy.CheckLoad();\ncy.get('div[class=\"static-treegrid-container\"]').should('be.visible');",
               "err": {},
-              "uuid": "762d8d12-6363-46d7-97b1-3b96ef3b3885",
-              "parentUUID": "89c744bc-edb2-4f60-abb6-8ae725e60459",
+              "uuid": "951b88e5-d8c3-4017-856b-7a151ff0a81f",
+              "parentUUID": "025c0f11-9d9e-4296-ac3e-99e45a0cd165",
               "isHook": false,
               "skipped": false
             },
@@ -65,20 +65,20 @@
               "context": null,
               "code": "cy.contains('Cashflow').click();\ncy.contains('Intradiario').click();\ncy.CheckLoad();\ncy.get('table[class=\"static-treegrid-container table tree-table table-condensed table-hover editable-daily-cashflow-balance-table\"]').should('be.visible');",
               "err": {},
-              "uuid": "9cd38390-ab15-4559-ae01-d998daf0ba01",
-              "parentUUID": "89c744bc-edb2-4f60-abb6-8ae725e60459",
+              "uuid": "56aecb2d-9b34-4a27-809f-1594ce9b3aa1",
+              "parentUUID": "025c0f11-9d9e-4296-ac3e-99e45a0cd165",
               "isHook": false,
               "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "762d8d12-6363-46d7-97b1-3b96ef3b3885"
+            "951b88e5-d8c3-4017-856b-7a151ff0a81f"
           ],
           "failures": [],
           "pending": [],
           "skipped": [
-            "9cd38390-ab15-4559-ae01-d998daf0ba01"
+            "56aecb2d-9b34-4a27-809f-1594ce9b3aa1"
           ],
           "duration": 0,
           "root": false,

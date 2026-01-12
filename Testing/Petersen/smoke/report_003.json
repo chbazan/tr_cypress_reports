@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2026-01-09T13:04:25.405Z",
-    "end": "2026-01-09T13:04:25.476Z",
-    "duration": 71,
+    "start": "2026-01-12T13:04:32.681Z",
+    "end": "2026-01-12T13:04:32.751Z",
+    "duration": 70,
     "testsRegistered": 5,
     "passPercent": 20,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "cc250c2c-0565-41ca-9217-7e680a0a79ec",
+      "uuid": "1676af40-ff9b-4ad3-ad41-8a8db76e66c0",
       "title": "",
       "fullFile": "cypress/e2e/smoke/04_limites.cy.js",
       "file": "cypress/e2e/smoke/04_limites.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ee6fa1dc-903f-4243-9cdd-a97eb97323c9",
+          "uuid": "8a3c45e5-3c96-49e2-9569-54ebc9e5e2dd",
           "title": "Límites",
           "fullFile": "",
           "file": "",
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.contains('Límites').click();\ncy.contains('Administrar').click();\ncy.CheckLoad();",
               "err": {},
-              "uuid": "4f292f28-00f9-4bad-bad5-ef04baba2164",
-              "parentUUID": "ee6fa1dc-903f-4243-9cdd-a97eb97323c9",
+              "uuid": "97d39888-e51c-4429-aae4-18447273fe38",
+              "parentUUID": "8a3c45e5-3c96-49e2-9569-54ebc9e5e2dd",
               "isHook": false,
               "skipped": false
             },
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.contains('Agregar').click();\ncy.contains('.form-group.form-group-sm label', 'Nombre').parent().find('input.form-control').click().type('Limite Test Call Activo');\ncy.get('div[class=\"btn-group bootstrap-select show-tick form-control\"]').click();\ncy.get('span[class=\"text\"]').contains('Call').click();\ncy.get('button[class=\"btn btn-default companyButton\"]').contains('BSJ').click();\ncy.get('input[placeholder=\"Monto\"]').click().type('1000');\ncy.get('input[placeholder=\"Desde\"]').click();\ncy.contains('Hoy').click();\ncy.get('input[placeholder=\"Hasta\"]').click();\ncy.contains('Hoy').click();\ncy.contains('Aceptar').click();",
               "err": {},
-              "uuid": "c1bbdace-c144-4da0-8cd6-4182894c619d",
-              "parentUUID": "ee6fa1dc-903f-4243-9cdd-a97eb97323c9",
+              "uuid": "57abf287-68e4-4602-83ef-0c1d343a2ca3",
+              "parentUUID": "8a3c45e5-3c96-49e2-9569-54ebc9e5e2dd",
               "isHook": false,
               "skipped": true
             },
@@ -83,8 +83,8 @@
               "context": null,
               "code": "cy.contains('Operaciones').click();\ncy.contains('Calls').click();\ncy.CheckLoad();\ncy.get('button[class=\"btn btn btn-primary btn-sm\"]').click();\ncy.contains('Call (Activo)').click();\ncy.get('input[placeholder=\"ID/Nombre\"]').eq(1).type('BBVA');\ncy.get('ul.typeahead.dropdown-menu[role=\"listbox\"] li').first().should('be.visible').click();\ncy.contains('Seleccione el banco').click();\ncy.get('.text').contains('BSJ').click();\ncy.get('input[class=\"text-center form-control text-center\"]').click();\ncy.contains('Hoy').click();\n// Funcion y manejo de plazo para evitar caer en vencimiento con dias no hábiles\ncy.IngresarPlazoValido();\ncy.get('input[placeholder=\"Monto\"]').click().type('100000');\ncy.get('input[placeholder=\"Valor de la Tasa\"]').click().type('40{enter}');\ncy.contains('Aceptar').click({\n  force: true\n});\ncy.get('h4.modal-title').contains('Lï¿½mites de Contraparte', {\n  timeout: 120000\n});\ncy.get('.modal-header').should('be.visible');\ncy.get('.modal-footer').eq(1).first().within(() => {\n  cy.contains('Aceptar').click({\n    force: true\n  });\n});\ncy.contains('Validando', {\n  timeout: 120000\n}, {\n  matchCase: false\n}).should('not.exist');\ncy.CheckLoad();\ncy.get('div.sk-three-bounce', {\n  timeout: 120000\n}).should('not.exist');",
               "err": {},
-              "uuid": "f6c2c422-8291-4cfe-9607-e63cbb1c7eaf",
-              "parentUUID": "ee6fa1dc-903f-4243-9cdd-a97eb97323c9",
+              "uuid": "3ffc8de4-bcb7-49e1-bed6-4b8a76af7360",
+              "parentUUID": "8a3c45e5-3c96-49e2-9569-54ebc9e5e2dd",
               "isHook": false,
               "skipped": true
             },
@@ -101,8 +101,8 @@
               "context": null,
               "code": "cy.contains('Operaciones').click();\ncy.contains('Operaciones Pendientes').click();\ncy.CheckLoad();\ncy.get('input[placeholder=\"Desde\"]').click();\ncy.contains('Hoy').click();\ncy.contains(' Buscar').click();\ncy.get('td').should('contain.text', 'Call', 'Activo', 'BBVA Banco Francés');\ncy.get('td[class=\" number-cell\"]').should('contain.text', '40,00%', '103.287,6700', '30');",
               "err": {},
-              "uuid": "82f037fb-1412-4c15-aa0d-dd0d64f9d21c",
-              "parentUUID": "ee6fa1dc-903f-4243-9cdd-a97eb97323c9",
+              "uuid": "f14fa5ec-5afb-4ff9-8b57-600487e4f63f",
+              "parentUUID": "8a3c45e5-3c96-49e2-9569-54ebc9e5e2dd",
               "isHook": false,
               "skipped": true
             },
@@ -119,23 +119,23 @@
               "context": null,
               "code": "cy.contains('Límites').click();\ncy.contains('Administrar').click();\ncy.CheckLoad();\ncy.get('tbody tr').each($row => {\n  const rowText = $row.text();\n  if (rowText.includes('Call') && rowText.includes('1.000,00')) {\n    cy.wrap($row).find('[data-original-title=\"Eliminar\"]').click();\n    // Cortamos el each apenas hacemos el click para evitar múltiples clics\n    return false;\n  }\n});\ncy.contains('Aceptar').click();\ncy.contains('Validando', {\n  timeout: 120000\n}, {\n  matchCase: false\n}).should('not.exist');\ncy.CheckLoad();\n// Valida que no exista más la fila eliminada\nlet filaEncontrada = false;\ncy.get('tbody tr').each($row => {\n  const rowText = $row.text();\n  if (rowText.includes('Call') && rowText.includes('1.000,00')) {\n    filaEncontrada = true;\n  }\n}).then(() => {\n  if (filaEncontrada) {\n    throw new Error('La fila con \"Call\" y \"1.000,00 ARS\" todavía existe en la tabla');\n  }\n  cy.log('✅ El límite fue eliminado correctamente');\n});",
               "err": {},
-              "uuid": "494cf17d-e86f-4b4b-887d-cb661499d519",
-              "parentUUID": "ee6fa1dc-903f-4243-9cdd-a97eb97323c9",
+              "uuid": "35fc6c15-d9e7-4dc6-8a51-99973db1ec48",
+              "parentUUID": "8a3c45e5-3c96-49e2-9569-54ebc9e5e2dd",
               "isHook": false,
               "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "4f292f28-00f9-4bad-bad5-ef04baba2164"
+            "97d39888-e51c-4429-aae4-18447273fe38"
           ],
           "failures": [],
           "pending": [],
           "skipped": [
-            "c1bbdace-c144-4da0-8cd6-4182894c619d",
-            "f6c2c422-8291-4cfe-9607-e63cbb1c7eaf",
-            "82f037fb-1412-4c15-aa0d-dd0d64f9d21c",
-            "494cf17d-e86f-4b4b-887d-cb661499d519"
+            "57abf287-68e4-4602-83ef-0c1d343a2ca3",
+            "3ffc8de4-bcb7-49e1-bed6-4b8a76af7360",
+            "f14fa5ec-5afb-4ff9-8b57-600487e4f63f",
+            "35fc6c15-d9e7-4dc6-8a51-99973db1ec48"
           ],
           "duration": 0,
           "root": false,

@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 1,
     "failures": 1,
-    "start": "2026-01-09T13:04:14.469Z",
-    "end": "2026-01-09T13:04:15.867Z",
-    "duration": 1398,
+    "start": "2026-01-12T13:04:21.317Z",
+    "end": "2026-01-12T13:04:22.812Z",
+    "duration": 1495,
     "testsRegistered": 4,
     "passPercent": 0,
     "pendingPercent": 25,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "43bda7e1-8cf0-4d8c-b9b2-599d22244724",
+      "uuid": "22ddc782-003a-4c58-a2a7-fb3ce9c44631",
       "title": "",
       "fullFile": "cypress/e2e/smoke/01_dashboard.cy.js",
       "file": "cypress/e2e/smoke/01_dashboard.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "b07c85e9-f553-4f99-9ea3-2f1a485b1843",
+          "uuid": "aae706f8-c8f4-4414-b4ab-8397b3c4ad32",
           "title": "Dashboard",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Login y primer ingreso al Dashboard",
               "fullTitle": "Dashboard Login y primer ingreso al Dashboard",
               "timedOut": null,
-              "duration": 1183,
+              "duration": 1264,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -48,11 +48,11 @@
               "code": "cy.clearAllCookies();\ncy.clearAllLocalStorage();\ncy.clearAllSessionStorage();\ncy.sessionTR();\ncy.CheckLoad();\ncy.get('.panel-collapse').should('be.visible');",
               "err": {
                 "message": "CypressError: `cy.visit()` failed trying to load:\n\nhttp://srvtest01.mercap.net:8088/tradingroom\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 192.168.168.24:8088\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.",
-                "estack": "CypressError: `cy.visit()` failed trying to load:\n\nhttp://srvtest01.mercap.net:8088/tradingroom\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 192.168.168.24:8088\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n    at <unknown> (http://localhost:34451/__cypress/runner/cypress_runner.js:134411:74)\n    at visitFailedByErr (http://localhost:34451/__cypress/runner/cypress_runner.js:133985:12)\n    at <unknown> (http://localhost:34451/__cypress/runner/cypress_runner.js:134410:11)\n    at tryCatcher (http://localhost:34451/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:34451/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:34451/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:34451/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:34451/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:34451/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:34451/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:34451/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:34451/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Object.eval [as setup] (webpack://cypress/./cypress/support/commands.js:31:9)\n    at Context.<anonymous> (http://localhost:34451/__cypress/runner/cypress_runner.js:135920:38)\n    at getRet (http://localhost:34451/__cypress/runner/cypress_runner.js:122243:20)\n    at tryCatcher (http://localhost:34451/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:34451/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:34451/__cypress/runner/cypress_runner.js:122254:66)\n    at Context.then (http://localhost:34451/__cypress/runner/cypress_runner.js:122505:21)\n    at wrapped (http://localhost:34451/__cypress/runner/cypress_runner.js:145577:19)\n\nFrom Node.js Internals:\n  Error: connect ECONNREFUSED 192.168.168.24:8088\n      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)",
+                "estack": "CypressError: `cy.visit()` failed trying to load:\n\nhttp://srvtest01.mercap.net:8088/tradingroom\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 192.168.168.24:8088\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n    at <unknown> (http://localhost:45879/__cypress/runner/cypress_runner.js:134411:74)\n    at visitFailedByErr (http://localhost:45879/__cypress/runner/cypress_runner.js:133985:12)\n    at <unknown> (http://localhost:45879/__cypress/runner/cypress_runner.js:134410:11)\n    at tryCatcher (http://localhost:45879/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:45879/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:45879/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:45879/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:45879/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:45879/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:45879/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:45879/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:45879/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Object.eval [as setup] (webpack://cypress/./cypress/support/commands.js:31:9)\n    at Context.<anonymous> (http://localhost:45879/__cypress/runner/cypress_runner.js:135920:38)\n    at getRet (http://localhost:45879/__cypress/runner/cypress_runner.js:122243:20)\n    at tryCatcher (http://localhost:45879/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:45879/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:45879/__cypress/runner/cypress_runner.js:122254:66)\n    at Context.then (http://localhost:45879/__cypress/runner/cypress_runner.js:122505:21)\n    at wrapped (http://localhost:45879/__cypress/runner/cypress_runner.js:145577:19)\n\nFrom Node.js Internals:\n  Error: connect ECONNREFUSED 192.168.168.24:8088\n      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)",
                 "diff": null
               },
-              "uuid": "9cf4b013-9171-4068-afa5-f9ef492c2ed2",
-              "parentUUID": "b07c85e9-f553-4f99-9ea3-2f1a485b1843",
+              "uuid": "ed5a87d2-4e70-4eb6-9b57-f8c4d86915ad",
+              "parentUUID": "aae706f8-c8f4-4414-b4ab-8397b3c4ad32",
               "isHook": false,
               "skipped": false
             },
@@ -69,8 +69,8 @@
               "context": null,
               "code": "cy.get('a[data-original-title=\"Dashboard\"]').should('be.visible').click();\ncy.CheckLoad();\ncy.get('.panel-collapse').should('be.visible');",
               "err": {},
-              "uuid": "92722d4d-9381-4651-b5b3-ed88c7c43473",
-              "parentUUID": "b07c85e9-f553-4f99-9ea3-2f1a485b1843",
+              "uuid": "b5209647-4c19-4666-83ba-a8eeee08ad4a",
+              "parentUUID": "aae706f8-c8f4-4414-b4ab-8397b3c4ad32",
               "isHook": false,
               "skipped": false
             },
@@ -87,8 +87,8 @@
               "context": null,
               "code": "const normalizeText = text => text.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').trim();\ncy.get('span.filter-option.pull-left').then($span => {\n  const currentValue = normalizeText($span.text());\n  if (currentValue !== 'Default Tesoreria') {\n    cy.get('button[class=\"btn dropdown-toggle btn-default btn-sm selectpicker\"]').click();\n    cy.contains(/^Default Tesorer[íi]a|Default Tesorerï¿½a$/).click();\n    cy.log('La vista fue cambiada a Default Tesorería');\n  } else {\n    cy.log('La vista ya era Default Tesorería, no fue necesario cambiarla');\n  }\n  cy.CheckLoad();\n  cy.get('h4[class=\"panel-title\"]').should('be.visible');\n  cy.get('.panel-body').should('be.visible');\n});",
               "err": {},
-              "uuid": "fa629666-cb25-4995-b426-686a1b9cd20a",
-              "parentUUID": "b07c85e9-f553-4f99-9ea3-2f1a485b1843",
+              "uuid": "090dafab-f6e0-4066-a954-b55afffe3c97",
+              "parentUUID": "aae706f8-c8f4-4414-b4ab-8397b3c4ad32",
               "isHook": false,
               "skipped": true
             },
@@ -105,8 +105,8 @@
               "context": null,
               "code": "cy.get('button[class=\"btn dropdown-toggle btn-default btn-sm selectpicker\"]').click();\ncy.contains('Default Mesa').click();\ncy.CheckLoad();\ncy.get('h4[class=\"panel-title\"]').should('be.visible');\ncy.get('.panel-body').should('be.visible');",
               "err": {},
-              "uuid": "dc64f3ab-5ee7-44f0-8a77-81588e9e6d56",
-              "parentUUID": "b07c85e9-f553-4f99-9ea3-2f1a485b1843",
+              "uuid": "6021947a-5b45-48a0-a90b-4b6f91cfb2ea",
+              "parentUUID": "aae706f8-c8f4-4414-b4ab-8397b3c4ad32",
               "isHook": false,
               "skipped": true
             }
@@ -114,16 +114,16 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "9cf4b013-9171-4068-afa5-f9ef492c2ed2"
+            "ed5a87d2-4e70-4eb6-9b57-f8c4d86915ad"
           ],
           "pending": [
-            "92722d4d-9381-4651-b5b3-ed88c7c43473"
+            "b5209647-4c19-4666-83ba-a8eeee08ad4a"
           ],
           "skipped": [
-            "fa629666-cb25-4995-b426-686a1b9cd20a",
-            "dc64f3ab-5ee7-44f0-8a77-81588e9e6d56"
+            "090dafab-f6e0-4066-a954-b55afffe3c97",
+            "6021947a-5b45-48a0-a90b-4b6f91cfb2ea"
           ],
-          "duration": 1183,
+          "duration": 1264,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
