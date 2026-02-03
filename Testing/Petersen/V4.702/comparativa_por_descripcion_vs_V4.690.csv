@@ -1,20 +1,20 @@
 Timestamp,Cliente,Ambiente,Versión actual,Versión comparada,Sección,Descripción,P95 (ms) de la versión actual,P95 (ms) de la versión comparada,Porcentaje de mejora/empeora
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Cashflow,Visualizar el cashflow Banco Central,72294.5,64441.65,-12.19
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Cashflow,Visualizar el cashflow Intradiario,17544.55,18147.4,3.32
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Consultas,Consultar 3000 operaciones,77689.55,75763.15,-2.54
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Consultas,Ingresar en consultas de operaciones,4618.45,4437.35,-4.08
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,Cambio de vista a Default Mesa,1361.65,1387.5,1.86
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,Cambio de vista a Default Tesorería,1387.7,1447.9,4.16
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,Login y primer ingreso al Dashboard,7291.6,8809.7,17.23
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,Segundo ingreso al Dashboard,1223.85,1203.7,-1.67
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Límites,Agregar un límite para un Call,2121.25,2098.3,-1.09
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Límites,Dar de alta una operación de Call afectada por un límite,87830.6,91112.05,3.6
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Límites,Eliminar el límite creado,2281.4,2272.85,-0.38
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Límites,Ingresar en Administrar Límites,4375.05,4215.15,-3.79
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1293.6,1467.6,11.86
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Anular una operación de Repos,956.1,986.6,3.09
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Anular una operación de Títulos,904.6,882.35,-2.52
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Dar de alta una operación de Repos,10895.35,12002.9,9.23
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Dar de alta una operación de Títulos,4546.85,4685.65,2.96
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Modificar una operación de Repos,2506.0,2609.0,3.95
-2026-02-02T10:10:54-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Modificar una operación de Títulos,2444.8,2492.05,1.9
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Cashflow,Visualizar el cashflow Banco Central,71102.0,64441.65,-10.34
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Cashflow,Visualizar el cashflow Intradiario,17533.5,18147.4,3.38
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Consultas,Consultar 3000 operaciones,77504.5,75763.15,-2.3
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Consultas,Ingresar en consultas de operaciones,4581.5,4437.35,-3.25
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,Cambio de vista a Default Mesa,1361.5,1387.5,1.87
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,Cambio de vista a Default Tesorería,1388.5,1447.9,4.1
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,Login y primer ingreso al Dashboard,7276.0,8809.7,17.41
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,Segundo ingreso al Dashboard,1221.5,1203.7,-1.48
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Límites,Agregar un límite para un Call,2119.5,2098.3,-1.01
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Límites,Dar de alta una operación de Call afectada por un límite,87623.0,91112.05,3.83
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Límites,Eliminar el límite creado,2279.0,2272.85,-0.27
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Límites,Ingresar en Administrar Límites,4369.5,4215.15,-3.66
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1291.0,1467.6,12.03
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Anular una operación de Repos,956.0,986.6,3.1
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Anular una operación de Títulos,903.0,882.35,-2.34
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Dar de alta una operación de Repos,10862.5,12002.9,9.5
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Dar de alta una operación de Títulos,4545.5,4685.65,2.99
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Modificar una operación de Repos,2503.0,2609.0,4.06
+2026-02-03T10:08:22-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,Modificar una operación de Títulos,2442.0,2492.05,2.01
