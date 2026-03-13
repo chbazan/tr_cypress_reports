@@ -1,6 +1,6 @@
 Timestamp,Cliente,Ambiente,Versión actual,Versión comparada,Sección,P95 (ms) de la versión actual,P95 (ms) de la versión comparada,Porcentaje de mejora/empeora
-2026-03-12T10:09:22-03:00,Petersen,Testing,V4.702,V4.690,Cashflow,26598.25,58329.75,54.4
-2026-03-12T10:09:22-03:00,Petersen,Testing,V4.702,V4.690,Consultas,64143.75,71255.8,9.98
-2026-03-12T10:09:22-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,7260.4,5638.35,-28.77
-2026-03-12T10:09:22-03:00,Petersen,Testing,V4.702,V4.690,Límites,90213.1,85197.9,-5.89
-2026-03-12T10:09:22-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,8977.45,8791.45,-2.12
+2026-03-13T10:09:27-03:00,Petersen,Testing,V4.702,V4.690,Cashflow,26475.75,58329.75,54.61
+2026-03-13T10:09:27-03:00,Petersen,Testing,V4.702,V4.690,Consultas,64121.45,71255.8,10.01
+2026-03-13T10:09:27-03:00,Petersen,Testing,V4.702,V4.690,Dashboard,7198.0,5638.35,-27.66
+2026-03-13T10:09:27-03:00,Petersen,Testing,V4.702,V4.690,Límites,90637.6,85197.9,-6.38
+2026-03-13T10:09:27-03:00,Petersen,Testing,V4.702,V4.690,Operaciones,8925.55,8791.45,-1.53
