@@ -1,2 +1,4 @@
 ambiente,cliente,version,version_anterior
-Testing01,Petersen,V4.702,-
+Testing01,Petersen,V4.686,-
+Testing01,Petersen,V4.690,V4.686
+Testing01,Petersen,V4.702,V4.690
