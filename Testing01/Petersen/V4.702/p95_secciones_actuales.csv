@@ -1,6 +1,6 @@
 Timestamp,Cliente,Ambiente,Sección,Versión,P95 (ms) actual
-2026-04-22T10:09:47-03:00,Petersen,Testing01,Cashflow,V4.702,26073.75
-2026-04-22T10:09:47-03:00,Petersen,Testing01,Consultas,V4.702,63244.6
-2026-04-22T10:09:47-03:00,Petersen,Testing01,Dashboard,V4.702,7441.25
-2026-04-22T10:09:47-03:00,Petersen,Testing01,Límites,V4.702,91358.0
-2026-04-22T10:09:47-03:00,Petersen,Testing01,Operaciones,V4.702,9876.85
+2026-04-23T10:08:05-03:00,Petersen,Testing01,Cashflow,V4.702,26025.25
+2026-04-23T10:08:05-03:00,Petersen,Testing01,Consultas,V4.702,63147.4
+2026-04-23T10:08:05-03:00,Petersen,Testing01,Dashboard,V4.702,7436.25
+2026-04-23T10:08:05-03:00,Petersen,Testing01,Límites,V4.702,91348.0
+2026-04-23T10:08:05-03:00,Petersen,Testing01,Operaciones,V4.702,9868.75
