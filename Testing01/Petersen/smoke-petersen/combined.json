@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2026-04-23T13:04:19.539Z",
-    "end": "2026-04-23T13:07:52.764Z",
-    "duration": 213225
+    "start": "2026-04-24T13:04:49.833Z",
+    "end": "2026-04-24T13:08:40.752Z",
+    "duration": 230919
   },
   "results": [
     {
-      "uuid": "1171e85d-7581-4021-bfad-58fb3a718f81",
+      "uuid": "30d8ba86-9baa-41de-9ab8-6a789062627e",
       "title": "",
       "fullFile": "cypress/e2e/smoke/petersen/01_dashboard.cy.js",
       "file": "cypress/e2e/smoke/petersen/01_dashboard.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "46022c16-d93b-4bbf-b702-168b74c091dd",
+          "uuid": "76d9115f-afb8-44ae-aa5d-d6ec9006f73f",
           "title": "Dashboard",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Login y primer ingreso al Dashboard",
               "fullTitle": "Dashboard Login y primer ingreso al Dashboard",
               "timedOut": null,
-              "duration": 4293,
+              "duration": 3548,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.loginYPrimerIngresoAlDashboard();",
               "err": {},
-              "uuid": "12cbb1f4-1f49-419e-8678-37409ea4ccc1",
-              "parentUUID": "46022c16-d93b-4bbf-b702-168b74c091dd",
+              "uuid": "46cbbbe3-8686-4875-a1f7-44ba34180e98",
+              "parentUUID": "76d9115f-afb8-44ae-aa5d-d6ec9006f73f",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Segundo ingreso al Dashboard",
               "fullTitle": "Dashboard Segundo ingreso al Dashboard",
               "timedOut": null,
-              "duration": 1248,
+              "duration": 1179,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.segundoIngresoAlDashboard();",
               "err": {},
-              "uuid": "9375c822-ad3e-47a5-a567-5d4a2c9b9035",
-              "parentUUID": "46022c16-d93b-4bbf-b702-168b74c091dd",
+              "uuid": "636c971f-2682-4cb8-8a22-5fca25d68bed",
+              "parentUUID": "76d9115f-afb8-44ae-aa5d-d6ec9006f73f",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "Cambio de vista a Default Tesorería",
               "fullTitle": "Dashboard Cambio de vista a Default Tesorería",
               "timedOut": null,
-              "duration": 1450,
+              "duration": 1320,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,8 +83,8 @@
               "context": null,
               "code": "cy.cambioDeVista(/^Default Tesorer[íi]a|Default Tesorerï¿½a$/);",
               "err": {},
-              "uuid": "811e0756-b2a5-438f-9c49-8af34d2cde21",
-              "parentUUID": "46022c16-d93b-4bbf-b702-168b74c091dd",
+              "uuid": "9d8aaec2-80ef-442a-bdf5-0e25d2d7d64b",
+              "parentUUID": "76d9115f-afb8-44ae-aa5d-d6ec9006f73f",
               "isHook": false,
               "skipped": false
             },
@@ -92,7 +92,7 @@
               "title": "Cambio de vista a Default Mesa",
               "fullTitle": "Dashboard Cambio de vista a Default Mesa",
               "timedOut": null,
-              "duration": 1341,
+              "duration": 1293,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -101,23 +101,23 @@
               "context": null,
               "code": "cy.cambioDeVista(\"Default Mesa\");",
               "err": {},
-              "uuid": "2936c8eb-47f9-4d2a-98cc-827317dc8e08",
-              "parentUUID": "46022c16-d93b-4bbf-b702-168b74c091dd",
+              "uuid": "9adfd84a-e04c-4439-b5a4-b1c21e83cada",
+              "parentUUID": "76d9115f-afb8-44ae-aa5d-d6ec9006f73f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "12cbb1f4-1f49-419e-8678-37409ea4ccc1",
-            "9375c822-ad3e-47a5-a567-5d4a2c9b9035",
-            "811e0756-b2a5-438f-9c49-8af34d2cde21",
-            "2936c8eb-47f9-4d2a-98cc-827317dc8e08"
+            "46cbbbe3-8686-4875-a1f7-44ba34180e98",
+            "636c971f-2682-4cb8-8a22-5fca25d68bed",
+            "9d8aaec2-80ef-442a-bdf5-0e25d2d7d64b",
+            "9adfd84a-e04c-4439-b5a4-b1c21e83cada"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 8332,
+          "duration": 7340,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -133,7 +133,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "75712117-9f68-4725-bffd-6ab13184a6ec",
+      "uuid": "4297bd7e-73b0-41df-ba98-fb792ae9bcd4",
       "title": "",
       "fullFile": "cypress/e2e/smoke/petersen/02_cashflow.cy.js",
       "file": "cypress/e2e/smoke/petersen/02_cashflow.cy.js",
@@ -142,7 +142,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "eb32ffd3-d935-42cd-9265-fd52674787fa",
+          "uuid": "0b90f626-8364-46f9-b682-3deecf5651d0",
           "title": "Cashflow",
           "fullFile": "",
           "file": "",
@@ -153,7 +153,7 @@
               "title": "Visualizar el cashflow Banco Central",
               "fullTitle": "Cashflow Visualizar el cashflow Banco Central",
               "timedOut": null,
-              "duration": 11605,
+              "duration": 13652,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -162,8 +162,8 @@
               "context": null,
               "code": "cy.visualizarCashflow(\"Banco Central\");",
               "err": {},
-              "uuid": "b69ed5f6-447d-45b0-bf7f-041057573ee7",
-              "parentUUID": "eb32ffd3-d935-42cd-9265-fd52674787fa",
+              "uuid": "46b98797-03ff-46dd-9917-b3657b26eeef",
+              "parentUUID": "0b90f626-8364-46f9-b682-3deecf5651d0",
               "isHook": false,
               "skipped": false
             },
@@ -171,7 +171,7 @@
               "title": "Visualizar el cashflow Intradiario",
               "fullTitle": "Cashflow Visualizar el cashflow Intradiario",
               "timedOut": null,
-              "duration": 17592,
+              "duration": 16587,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -180,21 +180,21 @@
               "context": null,
               "code": "cy.visualizarCashflow(\"Intradiario\");",
               "err": {},
-              "uuid": "5fd8f066-1ca9-48ba-9b3c-02e1dc226b15",
-              "parentUUID": "eb32ffd3-d935-42cd-9265-fd52674787fa",
+              "uuid": "2cf30818-cbc5-44a6-8b8a-40e3a805e4a1",
+              "parentUUID": "0b90f626-8364-46f9-b682-3deecf5651d0",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "b69ed5f6-447d-45b0-bf7f-041057573ee7",
-            "5fd8f066-1ca9-48ba-9b3c-02e1dc226b15"
+            "46b98797-03ff-46dd-9917-b3657b26eeef",
+            "2cf30818-cbc5-44a6-8b8a-40e3a805e4a1"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 29197,
+          "duration": 30239,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -210,7 +210,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "77427edf-5bd0-4329-a1f2-f7c8932ae722",
+      "uuid": "a17629ba-c3bc-4f04-ac99-6382e4345664",
       "title": "",
       "fullFile": "cypress/e2e/smoke/petersen/03_operaciones.cy.js",
       "file": "cypress/e2e/smoke/petersen/03_operaciones.cy.js",
@@ -219,7 +219,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ce0b7ed0-453a-4f75-b31d-ee291c32eca1",
+          "uuid": "3bdc327c-5e30-4025-97a9-5eb003b0ce8e",
           "title": "Operaciones",
           "fullFile": "",
           "file": "",
@@ -230,7 +230,7 @@
               "title": "Dar de alta una operación de Repos",
               "fullTitle": "Operaciones Dar de alta una operación de Repos",
               "timedOut": null,
-              "duration": 8494,
+              "duration": 8304,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -239,8 +239,8 @@
               "context": null,
               "code": "cy.darDeAltaRepo();",
               "err": {},
-              "uuid": "58a407af-f9d1-44cf-a8a9-76861bc13bad",
-              "parentUUID": "ce0b7ed0-453a-4f75-b31d-ee291c32eca1",
+              "uuid": "51e53917-b54d-41bc-9512-09d824dbea99",
+              "parentUUID": "3bdc327c-5e30-4025-97a9-5eb003b0ce8e",
               "isHook": false,
               "skipped": false
             },
@@ -248,7 +248,7 @@
               "title": "Modificar una operación de Repos",
               "fullTitle": "Operaciones Modificar una operación de Repos",
               "timedOut": null,
-              "duration": 2434,
+              "duration": 2338,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -257,8 +257,8 @@
               "context": null,
               "code": "cy.modificarRepo();",
               "err": {},
-              "uuid": "e30cf014-1395-4bc7-9a26-c31812811448",
-              "parentUUID": "ce0b7ed0-453a-4f75-b31d-ee291c32eca1",
+              "uuid": "9b1d17fd-a76d-4333-86fb-2d15b89eb81e",
+              "parentUUID": "3bdc327c-5e30-4025-97a9-5eb003b0ce8e",
               "isHook": false,
               "skipped": false
             },
@@ -275,8 +275,8 @@
               "context": null,
               "code": "cy.anularRepo();",
               "err": {},
-              "uuid": "ccc6a3af-c8d5-432f-960d-17e847f99516",
-              "parentUUID": "ce0b7ed0-453a-4f75-b31d-ee291c32eca1",
+              "uuid": "46c51904-4b07-49d6-935b-8ab76bbd373c",
+              "parentUUID": "3bdc327c-5e30-4025-97a9-5eb003b0ce8e",
               "isHook": false,
               "skipped": false
             },
@@ -284,7 +284,7 @@
               "title": "Dar de alta una operación de Títulos",
               "fullTitle": "Operaciones Dar de alta una operación de Títulos",
               "timedOut": null,
-              "duration": 4088,
+              "duration": 4172,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -293,8 +293,8 @@
               "context": null,
               "code": "cy.darDeAltaTitulo();",
               "err": {},
-              "uuid": "dcb67105-3ef6-4ab0-8633-c7e24a9031d8",
-              "parentUUID": "ce0b7ed0-453a-4f75-b31d-ee291c32eca1",
+              "uuid": "ae2e75ff-b099-4dcc-aa24-8af3c246acc1",
+              "parentUUID": "3bdc327c-5e30-4025-97a9-5eb003b0ce8e",
               "isHook": false,
               "skipped": false
             },
@@ -302,7 +302,7 @@
               "title": "Modificar una operación de Títulos",
               "fullTitle": "Operaciones Modificar una operación de Títulos",
               "timedOut": null,
-              "duration": 2352,
+              "duration": 2401,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -311,8 +311,8 @@
               "context": null,
               "code": "cy.modificarTitulo();",
               "err": {},
-              "uuid": "614ed374-b4b0-4a67-8dee-5b6e78f022e4",
-              "parentUUID": "ce0b7ed0-453a-4f75-b31d-ee291c32eca1",
+              "uuid": "002465a4-3a96-4439-9006-7e2021d393bf",
+              "parentUUID": "3bdc327c-5e30-4025-97a9-5eb003b0ce8e",
               "isHook": false,
               "skipped": false
             },
@@ -320,7 +320,7 @@
               "title": "Anular una operación de Títulos",
               "fullTitle": "Operaciones Anular una operación de Títulos",
               "timedOut": null,
-              "duration": 845,
+              "duration": 783,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -329,25 +329,25 @@
               "context": null,
               "code": "cy.anularTitulo();",
               "err": {},
-              "uuid": "7ef9a279-cb39-4e78-83db-d6a4383891e9",
-              "parentUUID": "ce0b7ed0-453a-4f75-b31d-ee291c32eca1",
+              "uuid": "c5c62bc5-62f5-467e-bcf2-8c549cfb2557",
+              "parentUUID": "3bdc327c-5e30-4025-97a9-5eb003b0ce8e",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "58a407af-f9d1-44cf-a8a9-76861bc13bad",
-            "e30cf014-1395-4bc7-9a26-c31812811448",
-            "ccc6a3af-c8d5-432f-960d-17e847f99516",
-            "dcb67105-3ef6-4ab0-8633-c7e24a9031d8",
-            "614ed374-b4b0-4a67-8dee-5b6e78f022e4",
-            "7ef9a279-cb39-4e78-83db-d6a4383891e9"
+            "51e53917-b54d-41bc-9512-09d824dbea99",
+            "9b1d17fd-a76d-4333-86fb-2d15b89eb81e",
+            "46c51904-4b07-49d6-935b-8ab76bbd373c",
+            "ae2e75ff-b099-4dcc-aa24-8af3c246acc1",
+            "002465a4-3a96-4439-9006-7e2021d393bf",
+            "c5c62bc5-62f5-467e-bcf2-8c549cfb2557"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 19063,
+          "duration": 18848,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -363,7 +363,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "764db165-5bf0-461a-884e-45ca264a1ac0",
+      "uuid": "00184ccc-9866-4428-ac31-438b72e4da27",
       "title": "",
       "fullFile": "cypress/e2e/smoke/petersen/04_limites.cy.js",
       "file": "cypress/e2e/smoke/petersen/04_limites.cy.js",
@@ -372,7 +372,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "869e1347-455d-45ba-9776-4234f8d521ea",
+          "uuid": "9ec1abae-4aaf-47cd-866a-3664447546fc",
           "title": "Límites",
           "fullFile": "",
           "file": "",
@@ -383,7 +383,7 @@
               "title": "Ingresar en Administrar Límites",
               "fullTitle": "Límites Ingresar en Administrar Límites",
               "timedOut": null,
-              "duration": 3713,
+              "duration": 3423,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -392,8 +392,8 @@
               "context": null,
               "code": "cy.ingresarAdministrarLimites();",
               "err": {},
-              "uuid": "b5ded03f-2d3d-440b-a014-72d68dd23e82",
-              "parentUUID": "869e1347-455d-45ba-9776-4234f8d521ea",
+              "uuid": "7e1b25c8-7866-48c4-a556-e5b3def30e88",
+              "parentUUID": "9ec1abae-4aaf-47cd-866a-3664447546fc",
               "isHook": false,
               "skipped": false
             },
@@ -401,7 +401,7 @@
               "title": "Agregar un límite para un Call",
               "fullTitle": "Límites Agregar un límite para un Call",
               "timedOut": null,
-              "duration": 1959,
+              "duration": 2040,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -410,8 +410,8 @@
               "context": null,
               "code": "cy.agregarLimiteCall();",
               "err": {},
-              "uuid": "43a2e99d-42e9-4320-b91f-18077035fbe8",
-              "parentUUID": "869e1347-455d-45ba-9776-4234f8d521ea",
+              "uuid": "bd87b945-9b79-4f3a-b209-501ed7ae12b0",
+              "parentUUID": "9ec1abae-4aaf-47cd-866a-3664447546fc",
               "isHook": false,
               "skipped": false
             },
@@ -419,7 +419,7 @@
               "title": "Dar de alta una operación de Call afectada por un límite",
               "fullTitle": "Límites Dar de alta una operación de Call afectada por un límite",
               "timedOut": null,
-              "duration": 76111,
+              "duration": 78323,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -428,8 +428,8 @@
               "context": null,
               "code": "cy.darDeAltaCallConLimite();",
               "err": {},
-              "uuid": "db6e728f-50d7-492d-bf57-f459bb4040c3",
-              "parentUUID": "869e1347-455d-45ba-9776-4234f8d521ea",
+              "uuid": "4a538f24-9748-4b5e-9110-041825cd18ab",
+              "parentUUID": "9ec1abae-4aaf-47cd-866a-3664447546fc",
               "isHook": false,
               "skipped": false
             },
@@ -437,7 +437,7 @@
               "title": "Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización",
               "fullTitle": "Límites Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización",
               "timedOut": null,
-              "duration": 1161,
+              "duration": 1181,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -446,8 +446,8 @@
               "context": null,
               "code": "cy.verificarOperacionEnPendientes();",
               "err": {},
-              "uuid": "114213ec-10bf-42d5-b6ee-354976909fbd",
-              "parentUUID": "869e1347-455d-45ba-9776-4234f8d521ea",
+              "uuid": "b38fb174-51c9-4b62-9f07-ed52d8a9de13",
+              "parentUUID": "9ec1abae-4aaf-47cd-866a-3664447546fc",
               "isHook": false,
               "skipped": false
             },
@@ -455,7 +455,7 @@
               "title": "Eliminar el límite creado",
               "fullTitle": "Límites Eliminar el límite creado",
               "timedOut": null,
-              "duration": 2174,
+              "duration": 2084,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -464,24 +464,24 @@
               "context": null,
               "code": "cy.eliminarLimite();",
               "err": {},
-              "uuid": "f4ccdf3d-fea0-4ccb-a867-11aa57125ec6",
-              "parentUUID": "869e1347-455d-45ba-9776-4234f8d521ea",
+              "uuid": "a25d8d4c-24ab-4cd1-af97-2a6a05bd7ba1",
+              "parentUUID": "9ec1abae-4aaf-47cd-866a-3664447546fc",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "b5ded03f-2d3d-440b-a014-72d68dd23e82",
-            "43a2e99d-42e9-4320-b91f-18077035fbe8",
-            "db6e728f-50d7-492d-bf57-f459bb4040c3",
-            "114213ec-10bf-42d5-b6ee-354976909fbd",
-            "f4ccdf3d-fea0-4ccb-a867-11aa57125ec6"
+            "7e1b25c8-7866-48c4-a556-e5b3def30e88",
+            "bd87b945-9b79-4f3a-b209-501ed7ae12b0",
+            "4a538f24-9748-4b5e-9110-041825cd18ab",
+            "b38fb174-51c9-4b62-9f07-ed52d8a9de13",
+            "a25d8d4c-24ab-4cd1-af97-2a6a05bd7ba1"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 85118,
+          "duration": 87051,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -497,7 +497,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "e7a797e4-189b-4d91-aff4-29fe6f44ddbd",
+      "uuid": "11be0f4f-7ebc-4961-bfb8-a309132861a9",
       "title": "",
       "fullFile": "cypress/e2e/smoke/petersen/05_consultas.cy.js",
       "file": "cypress/e2e/smoke/petersen/05_consultas.cy.js",
@@ -506,7 +506,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ed63cf50-6a43-4664-84ea-3a226a685288",
+          "uuid": "6818039f-e351-491d-a26f-2aff1e653966",
           "title": "Consultas",
           "fullFile": "",
           "file": "",
@@ -517,7 +517,7 @@
               "title": "Ingresar en consultas de operaciones",
               "fullTitle": "Consultas Ingresar en consultas de operaciones",
               "timedOut": null,
-              "duration": 3955,
+              "duration": 3867,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -526,8 +526,8 @@
               "context": null,
               "code": "cy.ingresarConsultasOperaciones();",
               "err": {},
-              "uuid": "dfbdb712-b4e1-49a9-a31f-4383bdeaa80a",
-              "parentUUID": "ed63cf50-6a43-4664-84ea-3a226a685288",
+              "uuid": "82767cbd-b349-42f3-97e3-8f3d72f1fc42",
+              "parentUUID": "6818039f-e351-491d-a26f-2aff1e653966",
               "isHook": false,
               "skipped": false
             },
@@ -535,7 +535,7 @@
               "title": "Consultar 3000 operaciones",
               "fullTitle": "Consultas Consultar 3000 operaciones",
               "timedOut": null,
-              "duration": 43408,
+              "duration": 58728,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -544,21 +544,21 @@
               "context": null,
               "code": "cy.consultarOperaciones();",
               "err": {},
-              "uuid": "52bbca79-4c13-4b99-a8f6-9be1250cc0df",
-              "parentUUID": "ed63cf50-6a43-4664-84ea-3a226a685288",
+              "uuid": "c6b80e14-317a-49f0-8b0e-5b3e677c39b3",
+              "parentUUID": "6818039f-e351-491d-a26f-2aff1e653966",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "dfbdb712-b4e1-49a9-a31f-4383bdeaa80a",
-            "52bbca79-4c13-4b99-a8f6-9be1250cc0df"
+            "82767cbd-b349-42f3-97e3-8f3d72f1fc42",
+            "c6b80e14-317a-49f0-8b0e-5b3e677c39b3"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 47363,
+          "duration": 62595,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
