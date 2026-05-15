@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2026-05-14T13:08:10.393Z",
-    "end": "2026-05-14T13:09:16.059Z",
-    "duration": 65666,
+    "start": "2026-05-15T13:07:05.309Z",
+    "end": "2026-05-15T13:07:55.172Z",
+    "duration": 49863,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "2c3a760f-db6c-4bac-b3f9-c78572deeee4",
+      "uuid": "6aff5f79-5517-4200-b17e-92cd0b0a05a8",
       "title": "",
       "fullFile": "cypress/e2e/smoke/petersen/05_consultas.cy.js",
       "file": "cypress/e2e/smoke/petersen/05_consultas.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "7606c821-d3fe-4940-89bb-35de105d5328",
+          "uuid": "e0a38384-e353-4d1e-b04b-b45426bdefb9",
           "title": "Consultas",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Ingresar en consultas de operaciones",
               "fullTitle": "Consultas Ingresar en consultas de operaciones",
               "timedOut": null,
-              "duration": 4187,
+              "duration": 3773,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.ingresarConsultasOperaciones();",
               "err": {},
-              "uuid": "a158e036-ce81-4396-b90f-066d4afbc57e",
-              "parentUUID": "7606c821-d3fe-4940-89bb-35de105d5328",
+              "uuid": "9dd093dd-bf6f-426c-a070-935247efcc17",
+              "parentUUID": "e0a38384-e353-4d1e-b04b-b45426bdefb9",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Consultar 3000 operaciones",
               "fullTitle": "Consultas Consultar 3000 operaciones",
               "timedOut": null,
-              "duration": 58957,
+              "duration": 43421,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "cy.consultarOperaciones();",
               "err": {},
-              "uuid": "9427cfff-a272-498e-b895-0f71899b6860",
-              "parentUUID": "7606c821-d3fe-4940-89bb-35de105d5328",
+              "uuid": "db5ce4f4-8c45-465b-8376-ad988206ba89",
+              "parentUUID": "e0a38384-e353-4d1e-b04b-b45426bdefb9",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a158e036-ce81-4396-b90f-066d4afbc57e",
-            "9427cfff-a272-498e-b895-0f71899b6860"
+            "9dd093dd-bf6f-426c-a070-935247efcc17",
+            "db5ce4f4-8c45-465b-8376-ad988206ba89"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 63144,
+          "duration": 47194,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

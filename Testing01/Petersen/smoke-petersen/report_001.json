@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2026-05-14T13:05:22.827Z",
-    "end": "2026-05-14T13:06:03.282Z",
-    "duration": 40455,
+    "start": "2026-05-15T13:04:31.253Z",
+    "end": "2026-05-15T13:05:08.276Z",
+    "duration": 37023,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "ce9fba1a-db58-41c5-906e-ae60ae555c68",
+      "uuid": "c9d3b06a-95fe-4a29-935f-a26ba5714e52",
       "title": "",
       "fullFile": "cypress/e2e/smoke/petersen/02_cashflow.cy.js",
       "file": "cypress/e2e/smoke/petersen/02_cashflow.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d8b9a229-d0e0-44b2-9b13-6909239affa6",
+          "uuid": "0ec496bd-28d7-46eb-be3a-bc8bb9a49287",
           "title": "Cashflow",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Visualizar el cashflow Banco Central",
               "fullTitle": "Cashflow Visualizar el cashflow Banco Central",
               "timedOut": null,
-              "duration": 20662,
+              "duration": 17426,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.visualizarCashflow(\"Banco Central\");",
               "err": {},
-              "uuid": "531030aa-3b11-4c91-865d-4dda6e29ab02",
-              "parentUUID": "d8b9a229-d0e0-44b2-9b13-6909239affa6",
+              "uuid": "ad54fcb6-dc4a-4dce-9017-335998c9a0e5",
+              "parentUUID": "0ec496bd-28d7-46eb-be3a-bc8bb9a49287",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Visualizar el cashflow Intradiario",
               "fullTitle": "Cashflow Visualizar el cashflow Intradiario",
               "timedOut": null,
-              "duration": 17372,
+              "duration": 17074,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "cy.visualizarCashflow(\"Intradiario\");",
               "err": {},
-              "uuid": "c1ac9cc1-42d2-4941-886e-6f96b18413f8",
-              "parentUUID": "d8b9a229-d0e0-44b2-9b13-6909239affa6",
+              "uuid": "ae61a519-7dd6-464d-bfd3-62ac46459a04",
+              "parentUUID": "0ec496bd-28d7-46eb-be3a-bc8bb9a49287",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "531030aa-3b11-4c91-865d-4dda6e29ab02",
-            "c1ac9cc1-42d2-4941-886e-6f96b18413f8"
+            "ad54fcb6-dc4a-4dce-9017-335998c9a0e5",
+            "ae61a519-7dd6-464d-bfd3-62ac46459a04"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 38034,
+          "duration": 34500,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
