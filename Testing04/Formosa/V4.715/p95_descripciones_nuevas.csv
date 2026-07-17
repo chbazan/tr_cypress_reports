@@ -1,0 +1,16 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Anular una operación de Adelanto,V4.715,652.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Anular una operación de Calls,V4.715,915.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Anular una operación de Cambios,V4.715,680.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Anular una operación de Cuenta Remunerada,V4.715,661.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Anular una operación de Futuros,V4.715,629.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Adelantos,V4.715,3411.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Calls,V4.715,2860.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Cambios,V4.715,3169.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Cuenta Remunerada,V4.715,2028.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Futuros,V4.715,2840.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Adelanto,V4.715,1753.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Calls,V4.715,1868.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Cambios,V4.715,1979.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Cuenta Remunerada,V4.715,1628.0,1
+2026-07-17T15:29:49-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Futuros,V4.715,1712.0,1
