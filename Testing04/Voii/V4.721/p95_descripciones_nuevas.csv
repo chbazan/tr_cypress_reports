@@ -1,0 +1,16 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Anular una operación de Adelanto,V4.721,655.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Anular una operación de Calls,V4.721,734.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Anular una operación de Cambios,V4.721,702.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Anular una operación de Caucion,V4.721,729.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Anular una operación de Futuros,V4.721,632.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Adelantos,V4.721,3506.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Calls,V4.721,3082.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Cambios,V4.721,14333.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Caucion,V4.721,3539.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Futuros,V4.721,3045.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Modificar una operación de Adelanto,V4.721,1778.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Modificar una operación de Calls,V4.721,1922.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Modificar una operación de Cambios,V4.721,2079.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Modificar una operación de Caucion,V4.721,1995.0,1
+2026-07-22T14:41:37-03:00,Voii,Testing04,Operaciones,Modificar una operación de Futuros,V4.721,1900.0,1
