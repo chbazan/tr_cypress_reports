@@ -1,0 +1,226 @@
+{
+  "input": {
+    "meta": {
+      "ambiente": "Testing04",
+      "cliente": "Voii",
+      "version": "V4.721",
+      "version_anterior": "N/A",
+      "timestamp_informe": "2026-07-23T10:24:04-03:00",
+      "muestras": 2
+    },
+    "resumen": {
+      "total_secciones": 1,
+      "total_acciones": 21,
+      "secciones_con_mejora": 0,
+      "secciones_con_degradacion": 0,
+      "secciones_con_alerta_15pct": 0,
+      "ux_health_score": 100,
+      "secciones_en_sla_critico": 0,
+      "secciones_sobre_umbral": 0
+    },
+    "secciones": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 7.1,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0,
+        "estado": "estable",
+        "p50_s": 2.05,
+        "ratio_p95_p50": 3.46,
+        "sla": {
+          "color": "#27ae60",
+          "bg": "#eafaf1",
+          "label": "Dentro de SLA",
+          "icon": "🟢"
+        }
+      }
+    ],
+    "alertas": [],
+    "top_acciones_lentas": [
+      {
+        "descripcion": "Dar de alta una operación de Cambios",
+        "seccion": "Operaciones",
+        "p95_actual_s": 13.81,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      },
+      {
+        "descripcion": "Dar de alta una operación de Repos",
+        "seccion": "Operaciones",
+        "p95_actual_s": 7.44,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      },
+      {
+        "descripcion": "Dar de alta una operación de Títulos",
+        "seccion": "Operaciones",
+        "p95_actual_s": 4.02,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      },
+      {
+        "descripcion": "Dar de alta una operación de Caucion",
+        "seccion": "Operaciones",
+        "p95_actual_s": 3.84,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      },
+      {
+        "descripcion": "Dar de alta una operación de Adelantos",
+        "seccion": "Operaciones",
+        "p95_actual_s": 3.73,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      }
+    ],
+    "top_acciones_rapidas": [
+      {
+        "descripcion": "Anular una operación de Futuros",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.74,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      },
+      {
+        "descripcion": "Anular una operación de Adelanto",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.77,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      },
+      {
+        "descripcion": "Anular una operación de Calls",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.81,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      },
+      {
+        "descripcion": "Anular una operación de Repos",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.9,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      },
+      {
+        "descripcion": "Anular una operación de Caucion",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.96,
+        "p95_historico_s": 0.0,
+        "pct_mejora": 0.0
+      }
+    ],
+    "top_acciones_mejoradas": [],
+    "top_acciones_degradadas": [],
+    "comparativa_version_anterior": [],
+    "impacto_cache": [],
+    "tendencia_versiones": [
+      {
+        "version": "V4.721",
+        "p95_global_s": 7.1
+      }
+    ],
+    "nuevas_acciones": [
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Anular una operación de Adelanto",
+        "p95_s": 0.77
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Anular una operación de Calls",
+        "p95_s": 0.81
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Anular una operación de Cambios",
+        "p95_s": 1.03
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Anular una operación de Caucion",
+        "p95_s": 0.96
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Anular una operación de Futuros",
+        "p95_s": 0.74
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Anular una operación de Repos",
+        "p95_s": 0.9
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Anular una operación de Títulos",
+        "p95_s": 1.03
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Dar de alta una operación de Adelantos",
+        "p95_s": 3.73
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Dar de alta una operación de Calls",
+        "p95_s": 3.16
+      },
+      {
+        "seccion": "Operaciones",
+        "descripcion": "Dar de alta una operación de Cambios",
+        "p95_s": 13.81
+      }
+    ],
+    "impact_ranking": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 7.1,
+        "n_acciones": 21,
+        "impact_score": 149.1,
+        "estado": "estable"
+      }
+    ],
+    "tendencias_sostenidas": [],
+    "saltos_abruptos": [],
+    "saltos_abruptos_acciones": [],
+    "tendencias_acciones_por_seccion": {},
+    "acciones_discontinuadas_con_tendencia": [],
+    "secc_dropout_bias": [],
+    "acciones_persistentemente_lentas": [],
+    "acciones_comportamiento_cronico": []
+  },
+  "conclusions": {
+    "estado_general": "bueno",
+    "resumen_ejecutivo": "Análisis de Voii / V4.721 (Testing04) con 2 muestras. 0 de 1 secciones muestran mejoras, 0 degradaciones. Sin alertas de degradación crítica.",
+    "escalar": {
+      "titulo": "No hay alertas críticas en esta versión",
+      "detalle": "Ninguna sección superó el umbral de degradación del 15% respecto al histórico acumulado."
+    },
+    "investigar": {
+      "titulo": "Acción más lenta: Dar de alta una operación de Cambios",
+      "detalle": "P95 de 13.81s en la sección Operaciones. Evaluar si el tiempo es aceptable para el usuario."
+    },
+    "optimizar": {
+      "titulo": "Optimizar tiempos de carga en Operaciones",
+      "detalle": "P95 de 13.81s es el mayor del sistema. Revisar volumen de datos cargados."
+    },
+    "hallazgos": [],
+    "causa_raiz": [],
+    "recomendaciones": [
+      {
+        "prioridad": "P2",
+        "seccion": "Operaciones",
+        "accion": "Revisar rendimiento en Operaciones",
+        "evidencia": "P95 de 13.81s — punto de mayor latencia del sistema"
+      },
+      {
+        "prioridad": "P3",
+        "seccion": "General",
+        "accion": "Acumular más muestras para consolidar baseline de esta versión",
+        "evidencia": "Con 2 muestras, ≥5 dan P95 más estable y confiable"
+      }
+    ]
+  },
+  "ai_model": null
+}
