@@ -1,0 +1,22 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Anular una operación de Adelanto,V4.715,682.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Anular una operación de Calls,V4.715,687.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Anular una operación de Cambios,V4.715,890.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Anular una operación de Cuenta Remunerada,V4.715,645.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Anular una operación de Futuros,V4.715,627.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Anular una operación de Repos,V4.715,935.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Anular una operación de Títulos,V4.715,742.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Dar de alta una operación de Adelantos,V4.715,3426.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Dar de alta una operación de Calls,V4.715,3030.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Dar de alta una operación de Cambios,V4.715,3027.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Dar de alta una operación de Cuenta Remunerada,V4.715,2281.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Dar de alta una operación de Futuros,V4.715,2808.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Dar de alta una operación de Repos,V4.715,6991.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Dar de alta una operación de Títulos,V4.715,3635.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Modificar una operación de Adelanto,V4.715,2004.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Modificar una operación de Calls,V4.715,1744.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Modificar una operación de Cambios,V4.715,1813.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Modificar una operación de Cuenta Remunerada,V4.715,1733.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Modificar una operación de Futuros,V4.715,1587.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Modificar una operación de Repos,V4.715,1955.0,1
+2026-09-08T17:23:08-03:00,Bancor,Testing04,Operaciones,Modificar una operación de Títulos,V4.715,2069.0,1
