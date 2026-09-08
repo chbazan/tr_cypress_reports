@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informe de Performance — Voii V4.728</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+var trendLabels     = ["V4.721", "V4.728"];
+var trendValues     = [7.1, 4.86];
+var sparkData       = {"Operaciones": [{"v": "V4.721", "p95": 7.26, "p50": 2.05}, {"v": "V4.728", "p95": 4.86, "p50": 2.39}]};
+var seccionesInfo   = {"Operaciones": {"actual": 4.86, "historico": 7.1, "p50": 2.39, "ratio": 2.03, "pct": 31.6, "sla_label": "Dentro de SLA", "sla_icon": "🟢", "sla_color": "#27ae60"}};
+var multiClientData = {"Bancor": [{"v": "V4.715", "p95": 3.63}], "Voii": [{"v": "V4.721", "p95": 7.1}, {"v": "V4.728", "p95": 4.86}]};
+var technicoInit = false, historialInit = false, escenariosInit = false;
+
+document.addEventListener("DOMContentLoaded", function() {
+  makeSortable(document.getElementById("accionesTable"));
+  function posG(tip, el) {
+    var r = el.getBoundingClientRect(), w = 290, h = tip.offsetHeight || 80;
+    var top = r.top - h - 10, left = r.left + r.width/2 - w/2;
+    if (top < 8) top = r.bottom + 8;
+    if (left < 8) left = 8;
+    if (left + w > window.innerWidth - 8) left = window.innerWidth - w - 8;
+    tip.style.top = top + "px"; tip.style.left = left + "px";
+  }
+  document.querySelectorAll(".kpi-tip").forEach(function(el) {
+    el.addEventListener("mouseenter", function() {
+      var tip = document.getElementById("g-tip"); if (!tip || !el.dataset.tip) return;
+      tip.textContent = el.dataset.tip; tip.style.display = "block"; posG(tip, el);
+    });
+    el.addEventListener("mouseleave", function() {
+      var tip = document.getElementById("g-tip");
+      if (!el.classList.contains("active") && tip) tip.style.display = "none";
+    });
+    el.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var tip = document.getElementById("g-tip"); if (!tip || !el.dataset.tip) return;
+      var was = el.classList.contains("active");
+      document.querySelectorAll(".kpi-tip.active").forEach(function(x){ x.classList.remove("active"); });
+      if (tip) tip.style.display = "none";
+      if (!was) { el.classList.add("active"); tip.textContent = el.dataset.tip; tip.style.display = "block"; posG(tip, el); }
+    });
+  });
+  document.addEventListener("click", function() {
+    document.querySelectorAll(".kpi-tip.active").forEach(function(el){ el.classList.remove("active"); });
+    var tip = document.getElementById("g-tip"); if (tip) tip.style.display = "none";
+  });
+});
+
+function switchTab(name) {
+  document.querySelectorAll(".tab-panel").forEach(function(el){el.style.display="none";});
+  document.querySelectorAll(".tab-btn").forEach(function(el){el.classList.remove("active");});
+  document.getElementById("tab-" + name).style.display = "block";
+  var btn = document.querySelector(".tab-btn[data-tab='" + name + "']");
+  if (btn) btn.classList.add("active");
+  if (name === "tecnico" && !technicoInit) { technicoInit = true; setTimeout(function(){ initSecPanel(); }, 80); }
+  if (name === "historial" && !historialInit) { historialInit = true; setTimeout(function(){ initGlobalChart(); initMultiClientChart(); initCombinedExplorer(); }, 80); }
+  if (name === "escenarios" && !escenariosInit) { escenariosInit = true; setTimeout(initEscenarios, 80); }
+}
+
+function filterAccionesTable(seccion) {
+  document.querySelectorAll("#accionesTable tbody tr").forEach(function(tr) {
+    tr.style.display = (seccion === "__all__" || tr.dataset.seccion === seccion) ? "" : "none";
+  });
+}
+
+function _sortCellValue(text) {
+  var t = text.trim();
+  if (t === "" || t === "—") return null;
+  var m = t.match(/^[+-]?\d+(?:[.,]\d+)?/);
+  if (!m) return null;
+  var rest = t.slice(m[0].length).trim();
+  if (rest && !/^[a-z%×\s.]*$/i.test(rest)) return null;
+  return parseFloat(m[0].replace(",", "."));
+}
+function makeSortable(table) {
+  if (!table || table._sortableBound) return;
+  table._sortableBound = true;
+  var thead = table.querySelector("thead");
+  if (!thead) return;
+  var ths = thead.querySelectorAll("th");
+  ths.forEach(function(th, colIdx) {
+    th.style.cursor = "pointer";
+    th.style.userSelect = "none";
+    if (!th.querySelector(".sort-ind")) th.insertAdjacentHTML("beforeend", " <span class=\"sort-ind\" style=\"opacity:.35;font-size:10px\">⇕</span>");
+    th.addEventListener("click", function() {
+      var tbody = table.querySelector("tbody");
+      if (!tbody) return;
+      var rows = Array.prototype.slice.call(tbody.querySelectorAll("tr"));
+      var dir = th.getAttribute("data-sort-dir") === "asc" ? "desc" : "asc";
+      ths.forEach(function(t2) {
+        t2.removeAttribute("data-sort-dir");
+        var i2 = t2.querySelector(".sort-ind");
+        if (i2) { i2.textContent = "⇕"; i2.style.opacity = ".35"; }
+      });
+      th.setAttribute("data-sort-dir", dir);
+      var ind = th.querySelector(".sort-ind");
+      if (ind) { ind.textContent = dir === "asc" ? "▲" : "▼"; ind.style.opacity = "1"; }
+      var allNumeric = rows.every(function(r) {
+        var c = r.children[colIdx];
+        if (!c) return true;
+        var txt = c.textContent.trim();
+        return txt === "" || txt === "—" || _sortCellValue(txt) !== null;
+      });
+      rows.sort(function(a, b) {
+        var ca = a.children[colIdx], cb = b.children[colIdx];
+        var ta = ca ? ca.textContent.trim() : "", tb = cb ? cb.textContent.trim() : "";
+        var res;
+        if (allNumeric) {
+          var va = _sortCellValue(ta), vb = _sortCellValue(tb);
+          if (va === null) va = -Infinity;
+          if (vb === null) vb = -Infinity;
+          res = va - vb;
+        } else {
+          res = ta.localeCompare(tb, "es", { sensitivity: "base" });
+        }
+        return dir === "asc" ? res : -res;
+      });
+      rows.forEach(function(r) { tbody.appendChild(r); });
+    });
+  });
+}
+
+function initGlobalChart() {
+  var el = document.getElementById("globalTrendChart");
+  if (!el || trendLabels.length < 2) return;
+  if (typeof Chart === "undefined") return;
+  var fb = document.getElementById("fb-globalTrend");
+  if (fb) fb.style.display = "none";
+  new Chart(el, {
+    type: "line",
+    data: {
+      labels: trendLabels,
+      datasets: [{ label: "P95 Global (s)", data: trendValues,
+        borderColor: "#2980b9", backgroundColor: "transparent",
+        fill: false, tension: 0.3, pointRadius: 5, pointHoverRadius: 8,
+        pointBackgroundColor: "#2980b9" }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: {
+          label: function(ctx) {
+            var val = ctx.raw; var idx = ctx.dataIndex;
+            var line = "P95: " + val + "s";
+            if (idx > 0) {
+              var prev = trendValues[idx - 1]; var prevLabel = trendLabels[idx - 1];
+              if (prev > 0) {
+                var pct = (val - prev) / prev * 100;
+                var abs = Math.abs(pct).toFixed(1);
+                if (pct < -0.5) line += "  \u2014  Mejora: " + abs + "% vs " + prevLabel;
+                else if (pct > 0.5) line += "  \u2014  Desmejora: " + abs + "% vs " + prevLabel;
+              }
+            }
+            return line;
+          }
+        }}
+      },
+      scales: {
+        y: { title: { display: true, text: "P95 (s)" }, beginAtZero: false },
+        x: { ticks: { maxRotation: 45 } }
+      }
+    }
+  });
+}
+
+var _secPanelSelected    = {};
+var _secPanelChart       = null;
+var _secPanelCompareMode = false;
+function _secPanelPills() { return sectionOrder.filter(function(s){ return seccionesInfo[s]; }); }
+function initSecPanel() {
+  var pills = _secPanelPills();
+  var def = pills.indexOf("Dashboard") >= 0 ? "Dashboard" : pills[0];
+  if (def) _secPanelSelected[def] = true;
+  _renderSecPanelPills();
+  _renderSecPanelChart();
+  _renderSecPanelBadges();
+}
+function _renderSecPanelPills() {
+  var wrap = document.getElementById("secPanelPills"); if (!wrap) return;
+  var pills = _secPanelPills();
+  wrap.innerHTML = pills.map(function(s, i) {
+    var a = !!_secPanelSelected[s], col = COLORS_8[i % COLORS_8.length];
+    return '<button class="sec-pill" data-sec="'+s+'" onclick="toggleSecPanel(this.dataset.sec)" '
+      +'style="background:'+(a?col:"#f0f4f8")+';color:'+(a?"#fff":"#555")+';border-color:'+(a?col:"#ddd")+'">'+s+'</button>';
+  }).join("");
+}
+function toggleSecPanelCompareMode(checked) {
+  _secPanelCompareMode = checked;
+  if (!checked) {
+    var pills = _secPanelPills();
+    var keep = pills.filter(function(s){ return _secPanelSelected[s]; })[0] || pills[0];
+    _secPanelSelected = {};
+    if (keep) _secPanelSelected[keep] = true;
+    _renderSecPanelPills();
+    _renderSecPanelChart();
+    _renderSecPanelBadges();
+  }
+}
+function toggleSecPanel(sec) {
+  if (_secPanelCompareMode) {
+    _secPanelSelected[sec] = !_secPanelSelected[sec];
+  } else {
+    _secPanelSelected = {}; _secPanelSelected[sec] = true;
+  }
+  _renderSecPanelPills();
+  _renderSecPanelChart();
+  _renderSecPanelBadges();
+}
+function _renderSecPanelChart() {
+  var el = document.getElementById("secPanelChart"); if (!el) return;
+  var ph = document.getElementById("secPanelPlaceholder");
+  var pills = _secPanelPills();
+  var selected = pills.filter(function(s){ return _secPanelSelected[s]; });
+  if (_secPanelChart) { _secPanelChart.destroy(); _secPanelChart = null; }
+  if (!selected.length || typeof Chart === "undefined") {
+    if (ph) { ph.style.display = "flex"; ph.textContent = "Seleccioná al menos una sección"; }
+    return;
+  }
+  var labelSet = {}, labels = [];
+  selected.forEach(function(s) {
+    (sparkData[s]||[]).forEach(function(p) { if (!labelSet[p.v]) { labelSet[p.v] = true; labels.push(p.v); } });
+  });
+  if (!labels.length) {
+    if (ph) { ph.style.display = "flex"; ph.textContent = "Sin historial de versiones suficiente para graficar."; }
+    return;
+  }
+  if (ph) ph.style.display = "none";
+  var datasets = [];
+  selected.forEach(function(s) {
+    var col = COLORS_8[pills.indexOf(s) % COLORS_8.length];
+    var pts = sparkData[s] || [];
+    var byV = {}; pts.forEach(function(p) { byV[p.v] = p; });
+    var info = seccionesInfo[s] || {};
+    datasets.push({ label: s + " — P95", data: labels.map(function(v){ return byV[v] ? byV[v].p95 : null; }),
+      borderColor: col, backgroundColor: col + "22", borderWidth: 2.5, pointRadius: 4, tension: 0.3, spanGaps: true });
+    datasets.push({ label: s + " — P50", data: labels.map(function(v){ return (byV[v] && byV[v].p50 != null) ? byV[v].p50 : null; }),
+      borderColor: col, backgroundColor: "transparent", borderWidth: 1.5, borderDash: [4,3], pointRadius: 2, tension: 0.3, spanGaps: true });
+    datasets.push({ label: s + " — Histórico", data: labels.map(function(){ return info.historico != null ? info.historico : null; }),
+      borderColor: col, backgroundColor: "transparent", borderWidth: 1.5, borderDash: [7,5], pointRadius: 0, tension: 0 });
+  });
+  _secPanelChart = new Chart(el, {
+    type: "line",
+    data: { labels: labels, datasets: datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "bottom", labels: { font: { size: 11 }, boxWidth: 12, padding: 8 } },
+        tooltip: { callbacks: { label: function(c) {
+          var val = c.raw; if (val === null || val === undefined) return null;
+          return c.dataset.label + ": " + val + "s";
+        } } }
+      },
+      scales: {
+        y: { title: { display: true, text: "Tiempo (s)" }, beginAtZero: false },
+        x: { title: { display: true, text: "Versión" }, ticks: { maxRotation: 35, font: { size: 11 } } }
+      }
+    }
+  });
+}
+function _renderSecPanelBadges() {
+  var wrap = document.getElementById("secPanelBadges"); if (!wrap) return;
+  var pills = _secPanelPills();
+  var selected = pills.filter(function(s){ return _secPanelSelected[s]; });
+  if (!selected.length) { wrap.innerHTML = ""; return; }
+  wrap.innerHTML = selected.map(function(s) {
+    var info = seccionesInfo[s] || {};
+    var col = COLORS_8[pills.indexOf(s) % COLORS_8.length];
+    var pctColor = (info.pct >= 0) ? "var(--green)" : "var(--red)";
+    var pctSign  = (info.pct >= 0) ? "+" : "";
+    var ratioColor = info.ratio >= 3 ? "var(--red)" : info.ratio >= 2 ? "var(--orange)" : "var(--green)";
+    var ratioHtml = (info.ratio != null) ? '<span>P95/P50: <b style="color:'+ratioColor+'">'+info.ratio+'×</b></span>' : "";
+    return '<div style="background:var(--card);border:1px solid var(--border);border-left:4px solid '+col+';border-radius:10px;padding:10px 14px;font-size:12px;color:var(--muted);min-width:220px;box-shadow:var(--shadow);">'
+      +'<div style="font-weight:700;color:var(--text);margin-bottom:4px;">'+s+' <span class="pill" style="font-size:10px;background:'+info.sla_color+'22;color:'+info.sla_color+';border:1px solid '+info.sla_color+'55;">'+info.sla_icon+' '+info.sla_label+'</span></div>'
+      +'<div style="display:flex;gap:12px;flex-wrap:wrap;">'
+      +'<span>Actual: <b>'+info.actual+'s</b></span>'
+      +'<span>Histórico: <b>'+info.historico+'s</b></span>'
+      +ratioHtml
+      +'<span style="color:'+pctColor+';font-weight:600;">'+pctSign+info.pct+'% vs histórico</span>'
+      +'</div></div>';
+  }).join("");
+}
+
+function initMultiClientChart() {
+  var el = document.getElementById("multiClientChart");
+  if (!el) return;
+  var clients = Object.keys(multiClientData);
+  if (clients.length < 2) return;
+  var verSet = {};
+  clients.forEach(function(c) { multiClientData[c].forEach(function(p) { verSet[p.v] = 1; }); });
+  var vers = Object.keys(verSet).sort(function(a, b) {
+    var pa = a.replace(/[^0-9.]/g,"").split(".").map(Number);
+    var pb = b.replace(/[^0-9.]/g,"").split(".").map(Number);
+    for (var i = 0; i < Math.max(pa.length, pb.length); i++) {
+      if ((pa[i]||0) !== (pb[i]||0)) return (pa[i]||0) - (pb[i]||0);
+    } return 0;
+  });
+  var PALETTE = ["#2980b9","#e74c3c","#27ae60","#f39c12","#9b59b6","#1abc9c","#e67e22","#34495e"];
+  var datasets = clients.map(function(c, i) {
+    var pts = {};
+    multiClientData[c].forEach(function(p) { pts[p.v] = p.p95; });
+    return {
+      label: c,
+      data: vers.map(function(v) { return pts[v] !== undefined ? pts[v] : null; }),
+      borderColor: PALETTE[i % PALETTE.length],
+      backgroundColor: PALETTE[i % PALETTE.length] + "22",
+      borderWidth: 2.5, pointRadius: 5, pointHoverRadius: 8,
+      tension: 0.3, spanGaps: true
+    };
+  });
+  new Chart(el, {
+    type: "line",
+    data: { labels: vers, datasets: datasets },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "bottom", labels: { font: { size: 12 }, boxWidth: 14, padding: 12 } },
+        tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ": " + ctx.raw + "s"; } } }
+      },
+      scales: {
+        y: { title: { display: true, text: "P95 global (s)" }, beginAtZero: false },
+        x: { ticks: { maxRotation: 45, font: { size: 11 } } }
+      }
+    }
+  });
+}
+</script>
+
+  <script>
+var actionTrendData    = {"Operaciones": {"Dar de alta una operación de Repos": [{"v": "V4.721", "p95": 7.45}, {"v": "V4.728", "p95": 9.84}], "Modificar una operación de Repos": [{"v": "V4.721", "p95": 2.49}, {"v": "V4.728", "p95": 2.39}], "Anular una operación de Repos": [{"v": "V4.721", "p95": 0.9}, {"v": "V4.728", "p95": 0.82}], "Dar de alta una operación de Títulos": [{"v": "V4.721", "p95": 4.04}, {"v": "V4.728", "p95": 4.22}], "Modificar una operación de Títulos": [{"v": "V4.721", "p95": 2.22}, {"v": "V4.728", "p95": 2.3}], "Anular una operación de Títulos": [{"v": "V4.721", "p95": 1.05}, {"v": "V4.728", "p95": 1.66}], "Dar de alta una operación de Calls": [{"v": "V4.721", "p95": 3.17}, {"v": "V4.728", "p95": 3.66}], "Modificar una operación de Calls": [{"v": "V4.721", "p95": 2.19}, {"v": "V4.728", "p95": 2.02}], "Anular una operación de Calls": [{"v": "V4.721", "p95": 0.81}, {"v": "V4.728", "p95": 0.72}], "Dar de alta una operación de Cambios": [{"v": "V4.721", "p95": 14.33}, {"v": "V4.728", "p95": 3.89}], "Modificar una operación de Cambios": [{"v": "V4.721", "p95": 2.12}, {"v": "V4.728", "p95": 3.36}], "Anular una operación de Cambios": [{"v": "V4.721", "p95": 1.04}, {"v": "V4.728", "p95": 1.07}], "Dar de alta una operación de Adelantos": [{"v": "V4.721", "p95": 3.74}, {"v": "V4.728", "p95": 4.72}], "Modificar una operación de Adelanto": [{"v": "V4.721", "p95": 1.9}, {"v": "V4.728", "p95": 2.57}], "Anular una operación de Adelanto": [{"v": "V4.721", "p95": 0.77}, {"v": "V4.728", "p95": 1.08}], "Dar de alta una operación de Futuros": [{"v": "V4.721", "p95": 3.14}, {"v": "V4.728", "p95": 4.86}], "Modificar una operación de Futuros": [{"v": "V4.721", "p95": 1.91}, {"v": "V4.728", "p95": 2.4}], "Anular una operación de Futuros": [{"v": "V4.721", "p95": 0.74}, {"v": "V4.728", "p95": 1.37}], "Dar de alta una operación de Caucion": [{"v": "V4.721", "p95": 3.85}, {"v": "V4.728", "p95": 4.37}], "Modificar una operación de Caucion": [{"v": "V4.721", "p95": 2.03}, {"v": "V4.728", "p95": 2.28}], "Anular una operación de Caucion": [{"v": "V4.721", "p95": 0.97}, {"v": "V4.728", "p95": 1.01}]}};
+var actionSampleByVer  = {"V4.721": {"Operaciones": {"Dar de alta una operación de Repos": [{"m": 1, "ts": "22/07 14:41", "val": 7.26}, {"m": 2, "ts": "23/07 10:24", "val": 7.45}], "Modificar una operación de Repos": [{"m": 1, "ts": "22/07 14:41", "val": 2.25}, {"m": 2, "ts": "23/07 10:24", "val": 2.49}], "Anular una operación de Repos": [{"m": 1, "ts": "22/07 14:41", "val": 0.9}, {"m": 2, "ts": "23/07 10:24", "val": 0.85}], "Dar de alta una operación de Títulos": [{"m": 1, "ts": "22/07 14:41", "val": 3.51}, {"m": 2, "ts": "23/07 10:24", "val": 4.04}], "Modificar una operación de Títulos": [{"m": 1, "ts": "22/07 14:41", "val": 2.05}, {"m": 2, "ts": "23/07 10:24", "val": 2.22}], "Anular una operación de Títulos": [{"m": 1, "ts": "22/07 14:41", "val": 0.76}, {"m": 2, "ts": "23/07 10:24", "val": 1.05}], "Dar de alta una operación de Calls": [{"m": 1, "ts": "22/07 14:41", "val": 3.08}, {"m": 2, "ts": "23/07 10:24", "val": 3.17}], "Modificar una operación de Calls": [{"m": 1, "ts": "22/07 14:41", "val": 1.92}, {"m": 2, "ts": "23/07 10:24", "val": 2.19}], "Anular una operación de Calls": [{"m": 1, "ts": "22/07 14:41", "val": 0.73}, {"m": 2, "ts": "23/07 10:24", "val": 0.81}], "Dar de alta una operación de Cambios": [{"m": 1, "ts": "22/07 14:41", "val": 14.33}, {"m": 2, "ts": "23/07 10:24", "val": 3.92}], "Modificar una operación de Cambios": [{"m": 1, "ts": "22/07 14:41", "val": 2.08}, {"m": 2, "ts": "23/07 10:24", "val": 2.12}], "Anular una operación de Cambios": [{"m": 1, "ts": "22/07 14:41", "val": 0.7}, {"m": 2, "ts": "23/07 10:24", "val": 1.04}], "Dar de alta una operación de Adelantos": [{"m": 1, "ts": "22/07 14:41", "val": 3.51}, {"m": 2, "ts": "23/07 10:24", "val": 3.74}], "Modificar una operación de Adelanto": [{"m": 1, "ts": "22/07 14:41", "val": 1.78}, {"m": 2, "ts": "23/07 10:24", "val": 1.9}], "Anular una operación de Adelanto": [{"m": 1, "ts": "22/07 14:41", "val": 0.66}, {"m": 2, "ts": "23/07 10:24", "val": 0.77}], "Dar de alta una operación de Futuros": [{"m": 1, "ts": "22/07 14:41", "val": 3.04}, {"m": 2, "ts": "23/07 10:24", "val": 3.14}], "Modificar una operación de Futuros": [{"m": 1, "ts": "22/07 14:41", "val": 1.9}, {"m": 2, "ts": "23/07 10:24", "val": 1.91}], "Anular una operación de Futuros": [{"m": 1, "ts": "22/07 14:41", "val": 0.63}, {"m": 2, "ts": "23/07 10:24", "val": 0.74}], "Dar de alta una operación de Caucion": [{"m": 1, "ts": "22/07 14:41", "val": 3.54}, {"m": 2, "ts": "23/07 10:24", "val": 3.85}], "Modificar una operación de Caucion": [{"m": 1, "ts": "22/07 14:41", "val": 2.0}, {"m": 2, "ts": "23/07 10:24", "val": 2.03}], "Anular una operación de Caucion": [{"m": 1, "ts": "22/07 14:41", "val": 0.73}, {"m": 2, "ts": "23/07 10:24", "val": 0.97}]}}, "V4.728": {"Operaciones": {"Dar de alta una operación de Repos": [{"m": 1, "ts": "08/09 18:15", "val": 9.84}], "Modificar una operación de Repos": [{"m": 1, "ts": "08/09 18:15", "val": 2.39}], "Anular una operación de Repos": [{"m": 1, "ts": "08/09 18:15", "val": 0.82}], "Dar de alta una operación de Títulos": [{"m": 1, "ts": "08/09 18:15", "val": 4.22}], "Modificar una operación de Títulos": [{"m": 1, "ts": "08/09 18:15", "val": 2.3}], "Anular una operación de Títulos": [{"m": 1, "ts": "08/09 18:15", "val": 1.66}], "Dar de alta una operación de Calls": [{"m": 1, "ts": "08/09 18:15", "val": 3.66}], "Modificar una operación de Calls": [{"m": 1, "ts": "08/09 18:15", "val": 2.02}], "Anular una operación de Calls": [{"m": 1, "ts": "08/09 18:15", "val": 0.72}], "Dar de alta una operación de Cambios": [{"m": 1, "ts": "08/09 18:15", "val": 3.89}], "Modificar una operación de Cambios": [{"m": 1, "ts": "08/09 18:15", "val": 3.36}], "Anular una operación de Cambios": [{"m": 1, "ts": "08/09 18:15", "val": 1.07}], "Dar de alta una operación de Adelantos": [{"m": 1, "ts": "08/09 18:15", "val": 4.72}], "Modificar una operación de Adelanto": [{"m": 1, "ts": "08/09 18:15", "val": 2.57}], "Anular una operación de Adelanto": [{"m": 1, "ts": "08/09 18:15", "val": 1.08}], "Dar de alta una operación de Futuros": [{"m": 1, "ts": "08/09 18:15", "val": 4.86}], "Modificar una operación de Futuros": [{"m": 1, "ts": "08/09 18:15", "val": 2.4}], "Anular una operación de Futuros": [{"m": 1, "ts": "08/09 18:15", "val": 1.37}], "Dar de alta una operación de Caucion": [{"m": 1, "ts": "08/09 18:15", "val": 4.37}], "Modificar una operación de Caucion": [{"m": 1, "ts": "08/09 18:15", "val": 2.28}], "Anular una operación de Caucion": [{"m": 1, "ts": "08/09 18:15", "val": 1.01}]}}};
+var sampleVersionsList = ["V4.728", "V4.721"];
+var sectionOrder       = ["Operaciones"];
+var currentReportVersion = "V4.728";
+var sectionHeatmapHtml = "<div style=\"overflow-x:auto\"><table style=\"border-collapse:collapse;width:100%\"><tr><th style=\"padding:8px 10px;text-align:left;font-size:11px;font-weight:600;color:#555;border-bottom:2px solid #eee;background:#f8f9fa;white-space:nowrap\">Sección</th><th style=\"padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:#555;border-bottom:2px solid #eee;background:#f8f9fa;white-space:nowrap\">V4.721</th><th style=\"padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:#555;border-bottom:2px solid #eee;background:#f8f9fa;white-space:nowrap\">V4.728</th></tr><tr><td style=\"padding:6px 10px;font-size:12px;font-weight:600;color:#2c3e50;white-space:nowrap\">Operaciones</td><td style=\"padding:6px 10px;text-align:center;font-size:11px;background:#d5f5e3;color:#1e8449;font-weight:600\">7.26s</td><td style=\"padding:6px 10px;text-align:center;font-size:11px;background:#d5f5e3;color:#1e8449;font-weight:600\">4.86s</td></tr></table></div>";
+var SLA_WARN_MS = 60000;
+var SLA_CRIT_MS = 120000;
+var COLORS_8 = ["#e74c3c","#3498db","#2ecc71","#f39c12","#9b59b6","#1abc9c","#e67e22","#34495e"];
+var _chartC       = null;
+var _expMode       = "muestra";
+var _expVersion    = "";
+var _expSec        = "";
+var _expSelected   = {};
+var _expAllDescs   = [];
+var _expSampleM    = [];
+var _expSampleLbls = [];
+function _sortVers(arr){
+  return arr.slice().sort(function(a,b){
+    var pa=a.replace(/[^0-9.]/g,"").split(".").map(Number);
+    var pb=b.replace(/[^0-9.]/g,"").split(".").map(Number);
+    for(var i=0;i<Math.max(pa.length,pb.length);i++){if((pa[i]||0)!=(pb[i]||0))return(pa[i]||0)-(pb[i]||0);}
+    return 0;
+  });
+}
+function _trunc(s,n){return s.length>n?s.slice(0,n)+"…":s;}
+function _getVersions(sec){
+  var data=actionTrendData[sec];if(!data)return[];
+  var vs={};
+  Object.values(data).forEach(function(pts){pts.forEach(function(p){vs[p.v]=1;});});
+  return _sortVers(Object.keys(vs));
+}
+function _hmCell(p95s){
+  var ms=p95s*1000;
+  if(ms>SLA_CRIT_MS)return"background:#fadbd8;color:#922b21";
+  if(ms>SLA_WARN_MS)return"background:#fdebd0;color:#a04000";
+  if(ms>SLA_WARN_MS*0.5)return"background:#fef9e7;color:#7d6608";
+  return"background:#d5f5e3;color:#1e8449";
+}
+// En modo "version" muestra el mapa de calor Acción×Versión de la sección elegida.
+// En modo "muestra" muestra el mapa de calor Secciones×Versiones (global, no depende
+// de la sección/versión elegidas en los controles de arriba).
+function _updateHeatmapPane(){
+  var titleEl=document.getElementById("explorerHeatmapTitle");
+  var hmC=document.getElementById("explorerHeatmap");
+  if(!hmC)return;
+  if(_expMode==="version"){
+    if(titleEl)titleEl.textContent="Mapa de calor — Acción × Versión";
+    hmC.innerHTML=_expSec?_buildExplorerHeatmap(_expSec):"<p style='color:#999;font-style:italic'>Sin datos suficientes.</p>";
+  }else{
+    if(titleEl)titleEl.textContent="Mapa de calor — Secciones × Versiones";
+    hmC.innerHTML=sectionHeatmapHtml;
+  }
+}
+// Fuente de datos activa segun el modo: "version" -> historial completo por versión;
+// "muestra" -> muestras de la versión elegida en el selector.
+function _expDataSource(){
+  return _expMode==="version" ? actionTrendData : (actionSampleByVer[_expVersion]||{});
+}
+function setExplorerMode(mode){
+  if(mode===_expMode)return;
+  _expMode=mode;
+  var bM=document.getElementById("modeBtnMuestra"),bV=document.getElementById("modeBtnVersion");
+  if(bM){bM.style.background=mode==="muestra"?"#2980b9":"#f0f4f8";bM.style.color=mode==="muestra"?"#fff":"#555";}
+  if(bV){bV.style.background=mode==="version"?"#2980b9":"#f0f4f8";bV.style.color=mode==="version"?"#fff":"#555";}
+  var vw=document.getElementById("versionSelectWrap");if(vw)vw.style.display=mode==="muestra"?"flex":"none";
+  _buildExplorerSecPills();
+}
+function onVersionSelectChange(v){
+  _expVersion=v;
+  _buildExplorerSecPills();
+}
+function _buildExplorerSecPills(){
+  var data=_expDataSource();
+  var avail=sectionOrder.filter(function(s){return data[s];});
+  Object.keys(data).forEach(function(s){if(avail.indexOf(s)<0)avail.push(s);});
+  var wrap=document.getElementById("explorerSecPills");if(!wrap)return;
+  if(!avail.length){
+    wrap.innerHTML="";
+    var ctrl=document.getElementById("explorerControls");if(ctrl)ctrl.style.display="none";
+    var ph=document.getElementById("explorerPlaceholder");if(ph)ph.style.display="flex";
+    if(_chartC){_chartC.destroy();_chartC=null;}
+    _expSec="";
+    _updateHeatmapPane();
+    return;
+  }
+  if(avail.indexOf(_expSec)<0)_expSec=avail.indexOf("Dashboard")>=0?"Dashboard":avail[0];
+  wrap.innerHTML=avail.map(function(sec){
+    var a=sec===_expSec;
+    return '<button class="exp-sec-pill" data-sec="'+sec+'" onclick="selectExplorerSection(this.dataset.sec)" '
+      +'style="background:'+(a?"#2980b9":"#f0f4f8")+';color:'+(a?"#fff":"#555")+';border:1px solid '+(a?"#2980b9":"#ddd")+';'
+      +'padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">'+sec+'</button>';
+  }).join("");
+  _initExplorerPanel(_expSec);
+}
+function selectExplorerSection(sec){
+  document.querySelectorAll(".exp-sec-pill").forEach(function(b){
+    var a=b.dataset.sec===sec;
+    b.style.background=a?"#2980b9":"#f0f4f8";
+    b.style.color=a?"#fff":"#555";
+    b.style.borderColor=a?"#2980b9":"#ddd";
+  });
+  _initExplorerPanel(sec);
+}
+function _initExplorerPanel(sec){
+  _expSec=sec; _expSelected={};
+  var data=_expDataSource()[sec]; if(!data)return;
+  if(_expMode==="version"){
+    _expAllDescs=Object.keys(data).sort(function(a,b){
+      var pa=data[a],pb=data[b];return pb[pb.length-1].p95-pa[pa.length-1].p95;
+    });
+  }else{
+    var sampleSet={};
+    Object.keys(data).forEach(function(d){data[d].forEach(function(p){sampleSet[p.m]=p.ts;});});
+    _expSampleM=Object.keys(sampleSet).map(Number).sort(function(a,b){return a-b;});
+    _expSampleLbls=_expSampleM.map(function(m){return sampleSet[m];});
+    _expAllDescs=Object.keys(data).sort(function(a,b){
+      var maxA=Math.max.apply(null,data[a].map(function(p){return p.val;}));
+      var maxB=Math.max.apply(null,data[b].map(function(p){return p.val;}));
+      return maxB-maxA;
+    });
+  }
+  _expAllDescs.slice(0,5).forEach(function(d){_expSelected[d]=true;});
+  var ph=document.getElementById("explorerPlaceholder");if(ph)ph.style.display="none";
+  var ctrl=document.getElementById("explorerControls");if(ctrl)ctrl.style.display="block";
+  var si=document.getElementById("explorerSearch");if(si)si.value="";
+  _renderExplorerList("");
+  _renderExplorerChart();
+  _updateHeatmapPane();
+}
+function _renderExplorerList(filter){
+  var el=document.getElementById("explorerList");if(!el)return;
+  var f=(filter||"").toLowerCase(),html="";
+  _expAllDescs.forEach(function(d,i){
+    if(f&&d.toLowerCase().indexOf(f)===-1)return;
+    var chk=_expSelected[d]?"checked":"",col=COLORS_8[i%8];
+    var dot='<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:'+col+';margin-right:5px;flex-shrink:0"></span>';
+    var esc=d.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+    html+='<label style="display:flex;align-items:center;padding:5px 12px;cursor:pointer;gap:4px;'
+         +'font-size:12px;color:#2c3e50;border-bottom:1px solid #f5f5f5;"'
+         +' onmouseover="this.style.background=\'#f0f4f8\'" onmouseout="this.style.background=\'transparent\'">'
+         +'<input type="checkbox" '+chk+' data-desc="'+esc+'"'
+         +' onchange="toggleExplorerDesc(this.dataset.desc,this.checked)" style="margin:0;cursor:pointer;"/>'
+         +dot+'<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+esc+'">'+d+'</span></label>';
+  });
+  if(!html)html='<p style="padding:10px;color:#bbb;font-size:12px;text-align:center;margin:0">Sin resultados</p>';
+  el.innerHTML=html;
+}
+function toggleExplorerDesc(desc,checked){
+  if(checked){_expSelected[desc]=true;}else{delete _expSelected[desc];}
+  _renderExplorerChart();
+  if(_expMode==="version")_updateHeatmapPane();
+}
+function toggleExplorerDescFromHeatmap(desc){
+  if(_expSelected[desc]){delete _expSelected[desc];}else{_expSelected[desc]=true;}
+  var si=document.getElementById("explorerSearch");
+  _renderExplorerList(si?si.value:"");
+  _renderExplorerChart();
+  _updateHeatmapPane();
+}
+function selectAllExplorerActions(){
+  var si=document.getElementById("explorerSearch"),f=si?si.value.toLowerCase():"";
+  _expAllDescs.forEach(function(d){if(!f||d.toLowerCase().indexOf(f)!==-1)_expSelected[d]=true;});
+  _renderExplorerList(f);
+  _renderExplorerChart();
+  if(_expMode==="version")_updateHeatmapPane();
+}
+function clearExplorerActions(){
+  _expSelected={};
+  var si=document.getElementById("explorerSearch");
+  _renderExplorerList(si?si.value:"");
+  _renderExplorerChart();
+  if(_expMode==="version")_updateHeatmapPane();
+}
+function _renderExplorerChart(){
+  var el=document.getElementById("explorerChart");if(!el)return;
+  var placeholder=document.getElementById("explorerChartPlaceholder");
+  var data=_expDataSource()[_expSec];
+  var selected=_expAllDescs.filter(function(d){return _expSelected[d];});
+  if(_chartC){_chartC.destroy();_chartC=null;}
+  if(!selected.length||!data||typeof Chart==="undefined"){
+    if(placeholder)placeholder.style.display="flex";
+    return;
+  }
+  if(placeholder)placeholder.style.display="none";
+  var isVersionMode=_expMode==="version";
+  var labels=isVersionMode?_getVersions(_expSec):_expSampleLbls;
+  var datasets=selected.map(function(d){
+    var ci=_expAllDescs.indexOf(d)%8;
+    if(isVersionMode){
+      var pts={};(data[d]||[]).forEach(function(p){pts[p.v]=p.p95;});
+      return{label:_trunc(d,45),
+        data:labels.map(function(v){return pts[v]!==undefined?pts[v]:null;}),
+        borderColor:COLORS_8[ci],backgroundColor:COLORS_8[ci]+"22",
+        borderWidth:2,pointRadius:4,tension:0.3,spanGaps:true};
+    }
+    var byM={};(data[d]||[]).forEach(function(p){byM[p.m]=p.val;});
+    return{label:_trunc(d,45),
+      data:_expSampleM.map(function(m){return byM[m]!==undefined?byM[m]:null;}),
+      borderColor:COLORS_8[ci],backgroundColor:COLORS_8[ci]+"22",
+      borderWidth:2,pointRadius:4,tension:0.3,spanGaps:true};
+  });
+  _chartC=new Chart(el,{type:"line",data:{labels:labels,datasets:datasets},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:"bottom",labels:{font:{size:11},boxWidth:12,padding:6}},
+        tooltip:{callbacks:{
+          title:function(items){
+            if(isVersionMode)return items[0].label;
+            var idx=items[0].dataIndex;
+            return _expSampleLbls[idx]+"  (Muestra #"+_expSampleM[idx]+")";
+          },
+          label:function(c){
+          var val=c.raw;if(val===null||val===undefined)return null;
+          var line=c.dataset.label+": "+val+"s",idx=c.dataIndex;
+          if(idx>0){var prev=c.dataset.data[idx-1];
+            if(prev!==null&&prev!==undefined&&prev>0){
+              var pct=(val-prev)/prev*100,abs=Math.abs(pct).toFixed(1);
+              var suf=isVersionMode?"% vs v. anterior":"%";
+              if(pct<-0.5)line+="  \u2014  \u2193 "+abs+suf;
+              else if(pct>0.5)line+="  \u2014  \u2191 "+abs+suf;
+          }}return line;
+        }}}},
+      scales:{y:{title:{display:true,text:"Tiempo (s)"},beginAtZero:false},
+        x:{title:{display:true,text:isVersionMode?"Versión":"Muestra"},ticks:{maxRotation:35,font:{size:11}}}}}});
+}
+function _buildExplorerHeatmap(sec){
+  var data=actionTrendData[sec];if(!data)return"<p style='color:#999;font-style:italic'>Sin datos suficientes.</p>";
+  var acts=Object.keys(data);
+  acts.sort(function(a,b){var pa=data[a],pb=data[b];return pb[pb.length-1].p95-pa[pa.length-1].p95;});
+  var vers=_getVersions(sec).slice(-8);
+  var thSt="padding:6px 8px;text-align:center;font-size:11px;font-weight:600;color:#555;border-bottom:2px solid #eee;background:#f8f9fa;white-space:nowrap";
+  var hdr="<tr><th style='padding:6px 10px;text-align:left;font-size:11px;font-weight:600;color:#555;border-bottom:2px solid #eee;background:#f8f9fa;min-width:200px'>Acción <span style='font-weight:400;color:#aaa'>(clic para agregar al gráfico)</span></th>"
+    +vers.map(function(v){return"<th style='"+thSt+"'>" +v+"</th>";}).join("")+"</tr>";
+  var rows=acts.map(function(a,i){
+    var isSel=!!_expSelected[a];
+    var bg=isSel?"#eaf4fb":(i%2===0?"#fff":"#f8f9fa");
+    var lbdr=isSel?"border-left:3px solid #2980b9;":"";
+    var pts={};(data[a]||[]).forEach(function(p){pts[p.v]=p.p95;});
+    var cells=vers.map(function(v){
+      if(pts[v]===undefined)return"<td style='padding:5px 8px;text-align:center;font-size:11px;color:#ccc'>—</td>";
+      return"<td style='padding:5px 8px;text-align:center;font-size:11px;font-weight:600;"+_hmCell(pts[v])+"'>" +pts[v]+"s</td>";
+    }).join("");
+    var esc=a.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+    var hoverBg=isSel?"#d6eaf8":"#eaf4fb";
+    return"<tr style='background:"+bg+";"+lbdr+"cursor:pointer;' data-desc=\""+esc+"\""
+         +" onclick=\"toggleExplorerDescFromHeatmap(this.dataset.desc)\""
+         +" onmouseover=\"this.style.background='"+hoverBg+"'\""
+         +" onmouseout=\"this.style.background='"+bg+"'\">"
+         +"<td style='padding:5px 10px;font-size:11px;color:#2c3e50'>"+(isSel?"<strong>":"")+_trunc(a,60)+(isSel?"</strong>":"")+"</td>"+cells+"</tr>";
+  }).join("");
+  return"<div style='overflow-x:auto'><table style='border-collapse:collapse;width:100%'>"+hdr+rows+"</table></div>";
+}
+function initCombinedExplorer(){
+  var sel=document.getElementById("versionSelect");
+  if(sel&&!sel.options.length){
+    sel.innerHTML=sampleVersionsList.map(function(v){
+      return '<option value="'+v+'"'+(v===currentReportVersion?" selected":"")+'>'+v+(v===currentReportVersion?" (actual)":"")+'</option>';
+    }).join("");
+  }
+  _expMode="muestra"; _expVersion=currentReportVersion;
+  _buildExplorerSecPills();
+}
+</script>
+
+  <script>
+var escenariosData  = {};
+var _curEscKey      = null;
+function _deltaStyle(d){
+  if(d===null||d===undefined)return"";
+  return d>=0?"color:#27ae60;font-weight:700":"color:#e74c3c;font-weight:700";
+}
+function _deltaLabel(d){
+  if(d===null||d===undefined)return"—";
+  return(d>=0?"+":"")+d.toFixed(1)+"%";
+}
+function _p95c(v){return v!==null&&v!==undefined?v+"s":"—";}
+function _norm(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();}
+function _buildEscSecTable(key){
+  var data=escenariosData[key];if(!data||!data.secciones.length)return"<p style='color:#999;font-style:italic'>Sin datos de secciones.</p>";
+  var thL="padding:10px 12px;text-align:left;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee";
+  var thR="padding:10px 12px;text-align:right;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee";
+  var hdr="<tr><th style='"+thL+"'>Sección</th><th style='"+thR+"'>P95 escenario</th><th style='"+thR+"'>P95 versión normal</th><th style='"+thR+"'>P95 histórico</th><th style='"+thR+"'>&Delta; vs normal</th><th style='"+thR+"'>&Delta; vs histórico</th></tr>";
+  var rows=data.secciones.map(function(s,i){
+    var bg=i%2===0?"#fff":"#f8f9fa";
+    var td="padding:10px 12px;font-size:12px;text-align:right";
+    return"<tr style='background:"+bg+"'><td style='padding:10px 12px;font-size:13px;font-weight:600;color:#2c3e50'>"+s.seccion+"</td>"
+      +"<td style='"+td+";font-weight:700'>"+_p95c(s.p95_esc_s)+"</td>"
+      +"<td style='"+td+"'>"+_p95c(s.p95_actual_s)+"</td>"
+      +"<td style='"+td+"'>"+_p95c(s.p95_hist_s)+"</td>"
+      +"<td style='"+td+";"+_deltaStyle(s.delta_actual)+"'>"+_deltaLabel(s.delta_actual)+"</td>"
+      +"<td style='"+td+";"+_deltaStyle(s.delta_hist)+"'>"+_deltaLabel(s.delta_hist)+"</td></tr>";
+  }).join("");
+  return"<div style='overflow-x:auto'><table id='escSecTableEl' style='width:100%;border-collapse:collapse'>"+hdr+rows+"</table></div>";
+}
+function _populateSecFilter(key){
+  var sel=document.getElementById("escAccSecSel");if(!sel)return;
+  var data=escenariosData[key];if(!data)return;
+  var secs=[""];
+  data.acciones.forEach(function(a){if(secs.indexOf(a.seccion)<0)secs.push(a.seccion);});
+  secs.sort(function(a,b){return a?a.localeCompare(b):-1;});
+  sel.innerHTML=secs.map(function(s){
+    return"<option value='"+s+"'>"+( s||"Todas las secciones")+"</option>";
+  }).join("");
+}
+function renderEscAccTable(){
+  if(!_curEscKey)return;
+  var data=escenariosData[_curEscKey];
+  if(!data||!data.acciones.length){
+    var el=document.getElementById("escAccTable");if(el)el.innerHTML="<p style='color:#999;font-style:italic'>Sin datos de acciones.</p>";return;
+  }
+  var secF=(document.getElementById("escAccSecSel")||{}).value||"";
+  var txt=_norm((document.getElementById("escAccSearch")||{}).value||"");
+  var filtered=data.acciones.filter(function(a){
+    var secOk=!secF||a.seccion===secF;
+    var txtOk=!txt||_norm(a.descripcion).indexOf(txt)>=0||_norm(a.seccion).indexOf(txt)>=0;
+    return secOk&&txtOk;
+  });
+  var cnt=document.getElementById("escAccCount");
+  if(cnt)cnt.textContent=filtered.length+" de "+data.acciones.length+" acciones";
+  if(!filtered.length){
+    var el=document.getElementById("escAccTable");if(el)el.innerHTML="<p style='color:#999;font-style:italic;padding:12px'>Sin resultados para el filtro actual.</p>";return;
+  }
+  var thL="padding:10px 12px;text-align:left;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee";
+  var thR="padding:10px 12px;text-align:right;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee";
+  var hdr="<tr><th style='"+thL+"'>Acción</th><th style='"+thL+"'>Sección</th><th style='"+thR+"'>P95 escenario</th><th style='"+thR+"'>P95 normal</th><th style='"+thR+"'>&Delta; vs normal</th></tr>";
+  var rows=filtered.map(function(a,i){
+    var bg=i%2===0?"#fff":"#f8f9fa";
+    var td="padding:9px 12px;font-size:12px;text-align:right";
+    var desc=a.descripcion.length>70?a.descripcion.slice(0,70)+"…":a.descripcion;
+    return"<tr style='background:"+bg+"'><td style='padding:9px 12px;font-size:12px;color:#2c3e50' title='"+a.descripcion+"'>"+desc+"</td>"
+      +"<td style='padding:9px 12px;font-size:12px;color:#555'>"+a.seccion+"</td>"
+      +"<td style='"+td+";font-weight:700'>"+_p95c(a.p95_esc_s)+"</td>"
+      +"<td style='"+td+"'>"+_p95c(a.p95_base_s)+"</td>"
+      +"<td style='"+td+";"+_deltaStyle(a.delta)+"'>"+_deltaLabel(a.delta)+"</td></tr>";
+  }).join("");
+  var el=document.getElementById("escAccTable");
+  if(el)el.innerHTML="<div style='overflow-x:auto'><table id='escAccTableEl' style='width:100%;border-collapse:collapse'>"+hdr+rows+"</table></div>";
+  makeSortable(document.getElementById("escAccTableEl"));
+}
+function selectEscenario(key){
+  _curEscKey=key;
+  document.querySelectorAll(".esc-pill").forEach(function(b){
+    var a=b.dataset.key===key;
+    b.style.background=a?"#8e44ad":"#f8f4fb";
+    b.style.color=a?"#fff":"#555";
+    b.style.borderColor=a?"#8e44ad":"#ddd";
+  });
+  var e2=document.getElementById("escSecTable");if(e2)e2.innerHTML=_buildEscSecTable(key);
+  makeSortable(document.getElementById("escSecTableEl"));
+  var data=escenariosData[key];
+  var flt=document.getElementById("escAccFilter");
+  if(flt)flt.style.display=data&&data.acciones.length?"block":"none";
+  _populateSecFilter(key);
+  var si=document.getElementById("escAccSearch");if(si)si.value="";
+  renderEscAccTable();
+}
+function initEscenarios(){
+  var keys=Object.keys(escenariosData);
+  if(!keys.length)return;
+  selectEscenario(keys[0]);
+}
+</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red:#e53e3e; --red-bg:#fff5f5; --red-bd:#feb2b2;
+      --yellow:#d69e2e; --yel-bg:#fffff0; --yel-bd:#faf089;
+      --green:#38a169; --grn-bg:#f0fff4; --grn-bd:#9ae6b4;
+      --blue:#3182ce; --blu-bg:#ebf8ff; --blu-bd:#90cdf4;
+      --orange:#e67e22; --org-bg:#fef5e7; --org-bd:#f6cba8;
+      --header:#1a252f; --surface:#f7fafc; --card:#ffffff;
+      --border:#e2e8f0; --text:#2d3748; --muted:#718096;
+      --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+      --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);
+    }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--surface); color:var(--text); font-size:14px; line-height:1.6; }
+    .header { background:var(--header); color:#fff; padding:24px 32px; }
+    .header-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+    .header h1 { font-size:22px; font-weight:700; letter-spacing:-.3px; display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+    .header h1 .badge { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; padding:3px 10px; border-radius:20px; background:#e67e2222; border:1px solid #e67e2266; color:#e67e22; }
+    .meta-grid { display:flex; flex-wrap:wrap; gap:20px; margin-top:10px; }
+    .meta-item { font-size:12px; color:#a0aec0; }
+    .meta-item strong { color:#e2e8f0; font-weight:500; }
+    .header-right { text-align:right; flex-shrink:0; }
+    .ai-badge { display:inline-flex; align-items:center; gap:6px; font-size:11px; color:#a0aec0; border:1px solid #4a5568; border-radius:6px; padding:4px 10px; margin-bottom:6px; }
+    .container { max-width:1200px; margin:0 auto; padding:24px 32px; }
+    section { margin-bottom:28px; }
+    h2 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:14px; display:flex; align-items:center; gap:8px; padding-bottom:8px; border-bottom:2px solid var(--border); flex-wrap:wrap; }
+    h2 .count { font-size:11px; font-weight:600; padding:2px 8px; border-radius:12px; background:var(--border); color:var(--muted); }
+    .group-title { font-size:20px; font-weight:800; color:var(--text); margin:40px 0 20px; padding-bottom:12px; border-bottom:3px solid var(--blue); display:flex; align-items:center; gap:10px; }
+    .group-title:first-of-type { margin-top:0; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:24px; }
+    .card { background:var(--card); border-radius:10px; padding:18px 20px; box-shadow:var(--shadow); border:1px solid var(--border); position:relative; }
+    .card-label { font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; margin-bottom:6px; }
+    .card-value { font-size:26px; font-weight:700; color:var(--text); line-height:1.1; }
+    .card-sub { font-size:11px; color:var(--muted); margin-top:4px; }
+    .kpi-btn { position:absolute; top:8px; right:8px; width:18px; height:18px; border-radius:50%; background:#e2e8f0; color:#718096; border:none; cursor:pointer; font-size:11px; font-weight:700; line-height:18px; padding:0; text-align:center; transition:background .15s,color .15s; }
+    .kpi-btn:hover { background:var(--blue); color:white; }
+    #kpi-popover { display:none; position:fixed; background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px 16px 12px; box-shadow:0 8px 28px rgba(0,0,0,.18); max-width:280px; z-index:9999; font-size:13px; }
+    .pop-title { font-weight:700; font-size:13px; margin-bottom:6px; color:#2d3748; padding-right:22px; }
+    .pop-body { font-size:12px; line-height:1.6; color:#4a5568; margin-bottom:8px; }
+    .pop-close { position:absolute; top:8px; right:10px; background:none; border:none; cursor:pointer; font-size:16px; color:#a0aec0; line-height:1; padding:0; }
+    .pop-close:hover { color:#4a5568; }
+    .tabs-nav { display:flex; border-bottom:2px solid var(--border); margin-bottom:24px; background:var(--card); border-radius:10px 10px 0 0; padding:0 8px; box-shadow:var(--shadow); }
+    .tab-btn { padding:12px 20px; border:none; background:transparent; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; transition:color .15s,border-color .15s; display:inline-flex; align-items:center; gap:6px; }
+    .tab-btn:hover { color:var(--text); }
+    .tab-btn.active { color:var(--blue); border-bottom-color:var(--blue); }
+    .tab-badge { display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 5px; border-radius:9px; background:var(--red); color:white; font-size:10px; font-weight:700; }
+    .table-wrap { overflow-x:auto; border-radius:8px; border:1px solid var(--border); box-shadow:var(--shadow); }
+    #accionesTableWrap thead th { position:sticky; top:0; z-index:2; }
+    table { width:100%; border-collapse:collapse; background:var(--card); font-size:13px; }
+    thead th { background:#f8fafc; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); padding:10px 14px; text-align:left; border-bottom:1px solid var(--border); white-space:nowrap; }
+    tbody td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:middle; }
+    tbody tr:last-child td { border-bottom:none; }
+    tbody tr:hover { background:#f8fafc; }
+    .mono { font-family:'SF Mono','Fira Code',monospace; font-size:12px; }
+    .rank { font-size:12px; font-weight:700; color:var(--muted); }
+    .pill { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; padding:2px 8px; border-radius:12px; }
+    .pill.red    { background:var(--red-bg);  color:var(--red);    border:1px solid var(--red-bd); }
+    .pill.yellow { background:var(--yel-bg);  color:var(--yellow); border:1px solid var(--yel-bd); }
+    .pill.green  { background:var(--grn-bg);  color:var(--green);  border:1px solid var(--grn-bd); }
+    .pill.blue   { background:var(--blu-bg);  color:var(--blue);   border:1px solid var(--blu-bd); }
+    .pill.orange { background:var(--org-bg);  color:var(--orange); border:1px solid var(--org-bd); }
+    .pill.gray   { background:#f2f3f4; color:#7f8c8d; border:1px solid #bdc3c7; }
+    .delta-pos { color:var(--red);   font-weight:600; }
+    .delta-neg { color:var(--green); font-weight:600; }
+    .conclusions { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin-bottom:20px; }
+    .conclusion-card { border-radius:10px; padding:20px; border-left:5px solid; box-shadow:var(--shadow); }
+    .conclusion-card.escalar    { background:var(--red-bg);  border-color:var(--red); }
+    .conclusion-card.investigar { background:var(--yel-bg);  border-color:var(--yellow); }
+    .conclusion-card.optimizar  { background:var(--blu-bg);  border-color:var(--blue); }
+    .conclusion-icon  { font-size:20px; margin-bottom:8px; }
+    .conclusion-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; margin-bottom:6px; }
+    .conclusion-card.escalar    .conclusion-label { color:var(--red); }
+    .conclusion-card.investigar .conclusion-label { color:var(--yellow); }
+    .conclusion-card.optimizar  .conclusion-label { color:var(--blue); }
+    .conclusion-titulo  { font-size:14px; font-weight:700; color:var(--text); margin-bottom:8px; line-height:1.3; }
+    .conclusion-detalle { font-size:13px; color:var(--text); line-height:1.6; }
+    .watchlist-item { border-radius:8px; padding:12px 16px; margin-bottom:10px; }
+    .watchlist-item ul { margin:0; padding-left:18px; font-size:12px; line-height:1.9; }
+    .bottleneck-card { border-radius:10px; padding:20px 24px; border:1px solid; border-left:5px solid; box-shadow:var(--shadow-md); }
+    .bottleneck-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:14px; }
+    .bottleneck-badge { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; padding:5px 14px; border-radius:20px; border:1.5px solid; }
+    .bottleneck-narrative { font-size:14px; color:var(--text); line-height:1.7; margin-bottom:8px; }
+    .bottleneck-reasoning { font-size:12px; color:var(--muted); font-style:italic; }
+    .hypothesis-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+    .hypothesis-card { background:var(--card); border-radius:10px; padding:18px 20px; box-shadow:var(--shadow); border:1px solid var(--border); }
+    .hypothesis-priority { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; padding:3px 10px; border-radius:12px; border:1px solid; margin-bottom:10px; }
+    .hypothesis-text { font-size:14px; font-weight:700; color:var(--text); margin-bottom:8px; line-height:1.4; }
+    .hypothesis-evidence { font-size:12px; color:var(--muted); line-height:1.5; }
+    .hallazgo-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border-radius:8px; border:1px solid; margin-bottom:8px; }
+    .hallazgo-item.alerta { background:var(--red-bg); border-color:var(--red-bd); }
+    .hallazgo-item.degradacion { background:var(--org-bg); border-color:var(--org-bd); }
+    .hallazgo-item.mejora { background:var(--grn-bg); border-color:var(--grn-bd); }
+    .sec-pill { border:1px solid; padding:6px 16px; border-radius:20px; font-size:13px; font-weight:600; cursor:pointer; transition:all .2s; background:#f0f4f8; color:#555; border-color:#ddd; }
+    .sec-pill.active, .sec-pill:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .kpi-tip { display:inline-flex; align-items:center; justify-content:center; width:15px; height:15px; background:#ddd; border-radius:50%; font-size:10px; color:#666; cursor:help; position:relative; vertical-align:middle; margin-left:3px; font-weight:700; }
+    .kpi-tip.active { background:#2c3e50; color:#fff; }
+    #g-tip { display:none; position:fixed; background:#2c3e50; color:#fff; padding:9px 13px; border-radius:8px; font-size:12px; line-height:1.6; width:290px; max-width:min(290px,90vw); z-index:99999; box-shadow:0 6px 20px rgba(0,0,0,.28); pointer-events:none; }
+    .grid-2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+    .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+    .empty { text-align:center; padding:32px; color:var(--muted); font-size:13px; background:var(--card); border-radius:8px; border:1px dashed var(--border); }
+    .empty span { display:block; font-size:28px; margin-bottom:8px; }
+    footer { text-align:center; padding:24px; font-size:11px; color:var(--muted); border-top:1px solid var(--border); margin-top:8px; }
+    footer a { color:var(--blue); text-decoration:none; }
+    details summary { cursor:pointer; font-size:13px; color:var(--muted); padding:6px 0; user-select:none; }
+    @media (max-width:640px) {
+      .container { padding:16px; } .header { padding:16px; }
+      .cards { grid-template-columns:repeat(2,1fr); }
+      .conclusions { grid-template-columns:1fr; }
+      .hypothesis-list { grid-template-columns:1fr; }
+      .tabs-nav { flex-wrap:wrap; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="header">
+    <div class="header-inner">
+      <div>
+        <h1>🤖 Informe de Performance IA
+          <span class="badge">👍 BUENO</span>
+        </h1>
+        <div style="font-size:14px;color:#bbb;margin-top:2px">Trading Room — Voii · Testing04 · V4.728 · comparado con V4.721</div>
+        <div class="meta-grid">
+          <div class="meta-item"><strong>Cliente</strong> Voii</div>
+          <div class="meta-item"><strong>Ambiente</strong> Testing04</div>
+          <div class="meta-item"><strong>Versión</strong> V4.728</div>
+          <div class="meta-item"><strong>Generado</strong> 08/09/2026 18:15</div>
+          <div class="meta-item"><a href="https://monitoring.mercap.com.ar/d/ef1ne6xbyt8u8t/trading-room-cypress-performance-metrics?var-ambiente=Testing04&var-cliente=Voii&var-version=V4.728" target="_blank" rel="noopener" style="color:#90cdf4;text-decoration:none;">📊 Ver Grafana</a></div>
+        </div>
+      </div>
+      <div class="header-right">
+        <span style="background:#7f8c8d;color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600">⚙️ Análisis algorítmico (Gemini no disponible)</span>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+
+  <!-- KPI Cards -->
+  <div class="cards">
+    <div class="card">
+      <div class="card-label">Estado general <span class="kpi-tip" data-tip="Estado global de la versión basado en cuántas secciones mejoran o degradan vs el historial acumulado. &#10;&#10;✅ Excelente: mejoras en múltiples secciones, sin degradaciones relevantes. 👍 Bueno: sin degradaciones significativas (&gt;5%). ⚠️ Atención: al menos una sección degradó más del 15% vs el histórico. 🚨 Crítico: varias secciones con degradación &gt;15%, o alguna &gt;30%.">?</span></div>
+      <div class="card-value" style="font-size:18px;font-weight:800;color:var(--blue)">👍 Bueno</div>
+      <div class="card-sub">Sin degradaciones críticas</div>
+    </div>
+    <div class="card">
+      <div class="card-label">UX Health Score <span class="kpi-tip" data-tip="Puntaje 0–100 basado en umbrales reales. ≥90 Excelente · 75–89 Bueno · 50–74 Atención · &lt;50 Crítico.&#10;Base: 100 − 20 por SLA crítico − 10 por sobre umbral − 8 por degradación &gt;15% − 5 por sesgo de dropout.&#10;Las mejoras no suman al score — se reflejan en hallazgos y veredictos de cada sección.&#10;Esta versión: Sin penalizaciones.&#10;Resultado: 100 = Excelente.">?</span></div>
+      <div class="card-value" style="color:var(--green)">100</div>
+      <div class="card-sub">Excelente</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Muestras <span class="kpi-tip" data-tip="Corridas completas del suite. ≥5 muestras: P95 estable (verde) · 2–4: confianza parcial (naranja) · 1: alta variabilidad (rojo).">?</span></div>
+      <div class="card-value" style="color:var(--red)">1</div>
+      <div class="card-sub">Alta variabilidad</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Acciones medidas <span class="kpi-tip" data-tip="Total de flujos de navegación con datos comparativos históricos.">?</span></div>
+      <div class="card-value">21</div>
+      <div class="card-sub">con historial</div>
+    </div>
+  </div>
+  <!-- Tabs nav -->
+  <div class="tabs-nav">
+    <button class="tab-btn active" data-tab="ejecutivo" onclick="switchTab('ejecutivo')">📋 Ejecutivo</button>
+    <button class="tab-btn" data-tab="tecnico" onclick="switchTab('tecnico')">🔧 Técnico</button>
+    <button class="tab-btn" data-tab="historial" onclick="switchTab('historial')">📈 Historial</button>
+    
+  </div>
+
+  <!-- ══════════════════ TAB EJECUTIVO ══════════════════ -->
+  <div id="tab-ejecutivo" class="tab-panel">
+
+    
+
+    
+
+    <!-- 1. Resumen ejecutivo -->
+    <section>
+      <div style="background:var(--card);border-radius:10px;border:1px solid var(--border);border-left:4px solid var(--blue);box-shadow:var(--shadow-md);overflow:hidden;">
+        <div style="background:var(--blu-bg);border-bottom:1px solid var(--blu-bd);padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--blue);">Resumen ejecutivo</span>
+          <span style="background:#2980b915;color:var(--blue);border:1px solid var(--blu-bd);border-radius:20px;padding:2px 10px;font-size:11px;font-weight:600;">V4.721 → V4.728</span>
+        </div>
+        <div style="padding:16px 20px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;">
+          <div style="flex:1;min-width:220px;">
+            <div style="font-size:13px;color:var(--text);line-height:1.9;">P95 global: <strong style="font-size:16px;">4.86s</strong> <span style="color:var(--muted);font-size:13px;">versión anterior: 7.1s</span> — <strong style="color:var(--green);font-size:15px;">-31.5%</strong></div>
+            <div style="font-size:13px;color:var(--text);margin-top:2px;">Estado: 👍 <strong style="color:var(--blue);">Bueno</strong></div>
+          </div>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <div style="text-align:center;">
+              <div style="font-size:28px;font-weight:800;color:var(--green);">1</div>
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;">Recuperaciones</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:28px;font-weight:800;color:var(--red);">0</div>
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;">Alertas activas</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:28px;font-weight:800;color:var(--green);">Positiva</div>
+              <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;">Veredicto</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:12px 20px 16px;border-top:1px solid var(--border);font-size:13px;line-height:1.7;color:var(--text);display:flex;gap:8px;align-items:flex-start;"><span style="flex-shrink:0;" title="Generado algorítmicamente">⚙️</span><span>Análisis de Voii / V4.728 (Testing04) con 1 muestras. 1 de 1 secciones muestran mejoras, 0 degradaciones. Sin alertas de degradación crítica.</span></div>
+      </div>
+    </section>
+
+    <!-- 2. Scorecard de versión -->
+    <section><h2>📊 Scorecard de Versión — V4.721 → V4.728</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:16px;"><div class="card" style="border-left:4px solid var(--green);"><div class="card-label">Veredicto <span class="kpi-tip" data-tip="Veredicto Positiva: 1 sección(es) mejoran vs V4.721, 0 alerta(s) activa(s).">?</span></div><div style="font-size:22px;font-weight:800;color:var(--green);margin:6px 0;">Positiva</div><div class="card-sub">1 mejoras · 0 alerta(s)</div></div><div class="card" style="border-left:4px solid var(--red);"><div class="card-label">Alertas &gt;15% vs histórico</div><div style="font-size:36px;font-weight:800;color:var(--red);line-height:1;">0</div><div class="card-sub">Sin alertas</div></div><div class="card" style="border-left:4px solid var(--red);"><div class="card-label">Degradaciones vs V4.721</div><div style="font-size:36px;font-weight:800;color:var(--red);line-height:1;">0</div><div class="card-sub">Sin degradaciones</div></div><div class="card" style="border-left:4px solid var(--green);"><div class="card-label">Recuperaciones vs V4.721</div><div style="font-size:36px;font-weight:800;color:var(--green);line-height:1;">1</div><div class="card-sub">Operaciones</div></div><div class="card" style="border-left:4px solid var(--muted);"><div class="card-label">SLA crítico (&gt;120s)</div><div style="font-size:36px;font-weight:800;color:var(--muted);line-height:1;">0</div><div class="card-sub">Sin secciones sobre umbral crítico</div></div></div></section>
+
+    <!-- 3. Watchlist -->
+    
+
+    <!-- 4. Hallazgos clave -->
+    <section>
+      <h2>🔎 Hallazgos clave</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Señales más relevantes de la versión. Vista técnica completa en el tab <strong>Técnico</strong>.</p>
+      <div class="hallazgo-item mejora"><span class="pill green" style="flex-shrink:0;margin-top:1px;">Mejora</span><div><div style="font-weight:700;font-size:13px;color:var(--text);margin-bottom:2px;">Operaciones — Recuperación notable vs V4.721</div><div style="font-size:12px;color:var(--muted);">7.1s → 4.86s (+31.6%) — acción destacada: "Dar de alta una operación de Cambios": 13.81s → 3.89s (-71.85%)</div></div></div>
+    </section>
+
+    <!-- 5. Conclusiones y Accionables -->
+    <section>
+      <h2>💡 Conclusiones y Accionables</h2>
+      <div class="conclusions">
+        <div class="conclusion-card escalar">
+          <div class="conclusion-icon">🚨</div>
+          <div class="conclusion-label">Escalar de forma prioritaria</div>
+          <div class="conclusion-titulo">No hay alertas críticas en esta versión</div>
+          <div class="conclusion-detalle">Ninguna sección superó el umbral de degradación del 15% respecto al histórico acumulado.</div>
+        </div>
+        <div class="conclusion-card investigar">
+          <div class="conclusion-icon">🔍</div>
+          <div class="conclusion-label">Investigar</div>
+          <div class="conclusion-titulo">Acción más lenta: Dar de alta una operación de Repos</div>
+          <div class="conclusion-detalle">P95 de 9.84s en la sección Operaciones. Evaluar si el tiempo es aceptable para el usuario.</div>
+        </div>
+        <div class="conclusion-card optimizar">
+          <div class="conclusion-icon">⚡</div>
+          <div class="conclusion-label">Optimizar</div>
+          <div class="conclusion-titulo">Mayor degradación: Anular una operación de Futuros</div>
+          <div class="conclusion-detalle">Empeoró 85.9% (de 0.74s a 1.37s) en Operaciones.</div>
+        </div>
+      </div>
+      <h2 style="font-size:13px;border-bottom:1px solid var(--border);padding-bottom:6px;margin-top:4px;">📋 Recomendaciones prioritarias</h2>
+      <div class="table-wrap">
+        <table><thead><tr><th style="padding:10px 12px;text-align:left;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">Prioridad</th><th style="padding:10px 12px;text-align:left;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">Acción</th><th style="padding:10px 12px;text-align:right;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">Sección</th><th style="padding:10px 12px;text-align:right;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">Evidencia</th></tr></thead><tbody><tr style="background:#fff"><td style="padding:10px 12px;text-align:center"><span style="background:#e67e22;color:#fff;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700">P2</span></td><td style="padding:10px 12px;font-size:13px;color:#2c3e50">Revisar rendimiento en Operaciones</td><td style="padding:10px 12px;font-size:12px;color:#555;text-align:center">Operaciones</td><td style="padding:10px 12px;font-size:12px;color:#666;font-style:italic">P95 de 9.84s — punto de mayor latencia del sistema</td></tr>
+<tr style="background:#f8f9fa"><td style="padding:10px 12px;text-align:center"><span style="background:#2980b9;color:#fff;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700">P3</span></td><td style="padding:10px 12px;font-size:13px;color:#2c3e50">Acumular más muestras para consolidar baseline de esta versión</td><td style="padding:10px 12px;font-size:12px;color:#555;text-align:center">General</td><td style="padding:10px 12px;font-size:12px;color:#666;font-style:italic">Con 1 muestras, ≥5 dan P95 más estable y confiable</td></tr></tbody></table>
+      </div>
+    </section>
+
+    </div><!-- /tab-ejecutivo -->
+
+  <!-- ══════════════════ TAB TÉCNICO ══════════════════ -->
+  <div id="tab-tecnico" class="tab-panel" style="display:none">
+
+    <!-- 1. Clasificación del cuello de botella (diagnóstico general, fuera de los grupos) -->
+    <section><h2>🩺 Clasificación del cuello de botella</h2><div class="bottleneck-card" style="background:var(--grn-bg);border-color:var(--grn-bd);border-left-color:var(--green);"><div class="bottleneck-header"><div><span class="bottleneck-badge" style="color:var(--green);background:var(--grn-bg);border-color:var(--grn-bd);">HEALTHY</span></div><div style="display:flex;gap:16px;flex-wrap:wrap;"></div></div><p class="bottleneck-narrative">Sin patrones de degradación detectados. Las métricas están dentro de rangos normales.</p></div><details style="margin-top:14px;"><summary>📖 ¿Qué significa cada categoría de cuello de botella?</summary><div style="margin-top:10px;" class="table-wrap"><table><thead><tr><th>Clasificación</th><th>Qué significa</th><th>Urgencia</th></tr></thead><tbody><tr><td><strong style="color:var(--green);">✅ HEALTHY</strong><br><span style="font-size:11px;color:var(--muted);">Sistema saludable</span></td><td style="font-size:12px;">Sin degradaciones detectadas. Todas las secciones dentro de umbrales normales.</td><td><span class="pill green">Sin acción</span></td></tr><tr><td><strong style="color:var(--orange);">⚡ OUTLIER-PATTERN</strong><br><span style="font-size:11px;color:var(--muted);">Picos aislados</span></td><td style="font-size:12px;">Picos aislados en una muestra. Puede ser ruido o un run atípico.</td><td><span class="pill yellow">Monitorear</span></td></tr><tr><td><strong style="color:var(--red);">🔺 REGRESSION-SPIKE</strong><br><span style="font-size:11px;color:var(--muted);">Salto abrupto</span></td><td style="font-size:12px;">Salto abrupto entre versiones en un deploy puntual.</td><td><span class="pill red">Investigar</span></td></tr><tr><td><strong style="color:#a04000;">📉 LATENCY-DEGRADED</strong><br><span style="font-size:11px;color:var(--muted);">Degradación progresiva</span></td><td style="font-size:12px;">Degradación gradual y sostenida a lo largo de múltiples versiones. Es estructural.</td><td><span class="pill red">Acción urgente</span></td></tr></tbody></table></div></details></section>
+
+    <!-- ═══ GRUPO: SECCIONES ═══ -->
+    <h1 class="group-title">📂 Secciones</h1>
+
+    <!-- Estado general (tabla resumen + panel combinado por sección) -->
+    <section>
+      <h2>📊 Estado general — V4.728<span style="background:#fff3cd;color:#856404;border:1px solid #ffc107;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-left:8px">⚠ Solo 1 muestra — P95 poco estable</span></h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:6px;"><strong>P50</strong>: mediana · <strong>ratio</strong>: P95/P50 (variabilidad) · Semáforo SLA: 🟢 &lt;60s | 🟡 60–120s | 🔴 &gt;120s</p>
+      <p style="font-size:11px;color:#aaa;margin-bottom:14px;font-style:italic;">% positivo = el sistema mejoró (P95 bajó). % negativo = degradación (P95 subió).</p>
+      <div class="table-wrap" style="margin-bottom:20px;"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="padding:10px 14px;text-align:left;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">Sección</th><th style="padding:10px 12px;text-align:right;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">P95 actual <span class="kpi-tip" data-tip="Percentil 95 de los tiempos de carga medidos en esta versión. El 95% de los usuarios cargó en este tiempo o menos.">?</span></th><th style="padding:10px 12px;text-align:right;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">P50 / ratio <span class="kpi-tip" data-tip="P50 = mediana de carga. Ratio = P95÷P50: mide la cola de distribución. Ratio &gt;2 indica alta variabilidad — algunos usuarios esperan mucho más que la mayoría.">?</span></th><th style="padding:10px 12px;text-align:center;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">vs Muestra ant. <span class="kpi-tip" data-tip="Comparación entre la última y la penúltima muestra de esta misma versión. Detecta cambios recientes dentro del ciclo actual.">?</span></th><th style="padding:10px 12px;text-align:center;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">vs V4.721 <span class="kpi-tip" data-tip="Comparación del P95 actual vs la versión anterior del sistema. % positivo = mejoró (bajó el tiempo). % negativo = se degradó.">?</span></th><th style="padding:10px 12px;text-align:center;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">vs Histórico <span class="kpi-tip" data-tip="Comparación del P95 actual vs el acumulado de las últimas 5 versiones. Filtra fluctuaciones puntuales y muestra la tendencia estructural.">?</span></th><th style="padding:10px 12px;text-align:center;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">Acciones ↑↓ <span class="kpi-tip" data-tip="Cantidad de acciones que mejoraron (↑) o empeoraron (↓) más del 20% respecto a la versión anterior.">?</span></th><th style="padding:10px 12px;text-align:center;font-size:12px;font-weight:600;color:#555;border-bottom:2px solid #eee">Veredicto <span class="kpi-tip" data-tip="Estado combinado de SLA y tendencia histórica. 🟢 Dentro del umbral y estable. 🟡 Acercándose al límite o degradación leve. 🔴 Sobre el umbral de alerta.">?</span></th></tr></thead><tbody><tr style="background:#fff"><td style="padding:8px 14px;font-size:13px;font-weight:600;color:#2c3e50"><div>Operaciones</div><span style="background:#eafaf1;color:#27ae60;display:inline-block;margin-top:3px;padding:1px 6px;border-radius:10px;font-size:10px;font-weight:600">🟢</span></td><td style="padding:8px 12px;text-align:right;font-size:13px;color:#555;font-weight:600">4.86s</td><td style="padding:8px 12px;text-align:right;font-size:12px;color:#777" title="P50 = 2.39s — tiempo que experimenta la mitad de las ejecuciones.&#10;Ratio P95/P50 = 2.0× — cuánto más lento es el peor caso vs el típico.&#10;Variable: Hay diferencias notables entre ejecuciones (ratio 2–3×).">2.39s <span style="font-size:10px;color:#e67e22;font-weight:700">2.0×</span></td><td style="padding:8px 12px;text-align:center;color:#bbb;font-size:12px">—</td><td style="padding:8px 12px;text-align:center;font-weight:700;font-size:13px;color:#27ae60">+31.6%</td><td style="padding:8px 12px;text-align:center;font-weight:700;font-size:13px;color:#27ae60">+31.6%</td><td style="padding:8px 12px;text-align:center;font-size:13px"><span style="color:#27ae60;font-weight:700">↑1</span><span style="color:#aaa;font-size:11px"> · </span><span style="color:#c0392b;font-weight:700">↓9</span><span style="color:#aaa;font-size:11px"> /21</span></td><td style="padding:8px 12px;text-align:center;min-width:120px"><span title="Recuperando: mejoró ≥20% vs la versión anterior, señal de que se revirtió una regresión previa.&#10;Operaciones: +31.6% vs V4.721, +31.6% vs histórico" style="background:#eafaf1;color:#27ae60;border:1px solid #27ae6044;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700;cursor:help;white-space:nowrap">↑↑ Recuperando</span></td></tr></tbody></table></div>
+
+      <!-- Panel combinado: elegí una sección para ver su tendencia de P95/P50 y su comparativa vs histórico en un solo gráfico -->
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Elegí una sección para ver su tendencia de P95/P50 y su comparativa vs histórico en un solo gráfico. Activá "Comparar varias" si querés sumar más de una al mismo gráfico.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px;">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;" id="secPanelPills"></div>
+        <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-weight:600;cursor:pointer;user-select:none;">
+          <input type="checkbox" id="secPanelCompareToggle" onchange="toggleSecPanelCompareMode(this.checked)" style="cursor:pointer;" />
+          Comparar varias secciones
+        </label>
+      </div>
+      <div style="height:340px;position:relative;margin-bottom:16px;">
+        <canvas id="secPanelChart"></canvas>
+        <div id="secPanelPlaceholder"
+             style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+                    color:#bbb;font-size:14px;pointer-events:none;">
+          Seleccioná al menos una sección
+        </div>
+      </div>
+      <div id="secPanelBadges" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;"></div>
+    </section>
+
+    <!-- Consistencia de la experiencia del usuario (CV) -->
+    <section><h2>🔀 Consistencia de la experiencia del usuario</h2><p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Clasificación basada en el Coeficiente de Variación (CV = desvío / P50). <strong>CONSISTENTE</strong>: CV &lt;0.5 · <strong>VARIABLE</strong>: 0.5–1 · <strong>EPISÓDICO</strong>: &gt;1</p><div class="table-wrap"><table><thead><tr><th>Sección</th><th style="text-align:center">P50</th><th style="text-align:center" title="Desviación estándar de las muestras individuales de la versión actual — no es P95−P50.">Desvío</th><th style="text-align:center">CV</th><th style="text-align:center">Clasificación</th><th>Interpretación</th></tr></thead><tbody><tr><td style="font-weight:600;">Operaciones</td><td style="text-align:center;font-size:12px;">2.39s</td><td style="text-align:center;font-size:12px;">2.03s</td><td style="text-align:center;font-weight:600;">0.85</td><td style="text-align:center;"><span class="pill yellow">VARIABLE</span></td><td style="font-size:12px;color:var(--muted);">Variabilidad moderada — algunos usuarios pueden experimentar tiempos mayores</td></tr></tbody></table></div></section>
+
+    <!-- Estabilidad general -->
+    <section><h2>📈 Estabilidad general <span style="font-size:11px;font-weight:500;color:var(--muted)">vs V4.721</span></h2><p style="font-size:12px;color:var(--muted);margin-bottom:14px;">⚠️ Degradaron: variación ≥50% peor · Degradaron en rango aceptable: empeoró (&gt;5%) pero menos de 50% · Mejoraron o estables: variación dentro de ±5% o mejora.</p><p style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">✅ Mejoraron o estables (1)</p><div class="table-wrap" style="margin-bottom:16px;"><table style="width:100%;table-layout:fixed"><colgroup><col style="width:32%"><col style="width:24%"><col style="width:24%"><col style="width:20%"></colgroup><thead><tr><th>Sección</th><th>P95 V4.721</th><th style="text-align:right">P95 V4.728</th><th style="text-align:right">Variación</th></tr></thead><tbody><tr><td style="font-weight:600;">Operaciones</td><td style="font-size:12px;color:var(--muted);">7.1s</td><td style="text-align:right;font-weight:600;">4.86s</td><td style="text-align:right;"><span class="delta-neg">+31.6%</span></td></tr></tbody></table></div></section>
+
+    <!-- Ranking de impacto -->
+    <section>
+      <h2>⚡ Ranking de impacto</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;"><code>impact_score = P95 × cantidad de acciones</code> — Estima el tiempo total acumulado que una sección consume en una sesión típica. Útil para priorizar qué optimizar primero por volumen de uso, no por velocidad individual. <strong>Limitaciones:</strong> secciones con pocas acciones medidas (ej. Consultas = 2) pueden quedar subestimadas aunque sean lentas; el impacto de la primera impresión al ingresar a un menú no queda aislado — una sección con entrada lenta y muchas acciones rápidas puede aparecer baja en el ranking aunque genere mala experiencia inicial.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Sección</th><th style="text-align:right">P95 actual</th><th style="text-align:center">N° acciones</th><th style="text-align:right">Impact score</th><th style="text-align:center">Tendencia</th></tr></thead>
+          <tbody><tr><td class="rank">🥇</td><td style="font-weight:600;">Operaciones</td><td style="text-align:right;font-size:12px;">4.86s</td><td style="text-align:center;font-size:12px;">21</td><td style="text-align:right;font-weight:700;"><span class="pill red">102.1</span></td><td style="text-align:center;color:var(--green);font-weight:600;">▲</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══ GRUPO: HIPÓTESIS DE CAUSA RAÍZ ═══ -->
+    
+
+    <!-- ═══ GRUPO: ACCIONES ═══ -->
+    <h1 class="group-title">🎯 Acciones</h1>
+
+    <!-- Tabla filtrable de acciones por sección -->
+    <section><h2>📋 Acciones por sección <span class="count">21 acciones</span></h2><p style="font-size:13px;color:var(--muted);margin-bottom:12px;">Detalle de cada acción medida, con sus deltas vs muestra anterior, vs V4.721 y vs histórico. Filtrá por sección para enfocar el análisis.</p><div style="margin-bottom:12px;"><label style="font-size:12px;color:var(--muted);font-weight:600;margin-right:8px;">Sección:</label><select id="accionesSeccionFilter" onchange="filterAccionesTable(this.value)" style="padding:6px 10px;border:1px solid #ddd;border-radius:8px;font-size:12px;color:#2c3e50;"><option value="__all__">Todas las secciones</option><option value="Operaciones">Operaciones</option></select></div><div class="table-wrap" id="accionesTableWrap" style="max-height:520px;overflow-y:auto;"><table id="accionesTable" style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left">Acción</th><th style="text-align:left">Sección</th><th style="text-align:right">P95 actual</th><th style="text-align:center">vs Muestra ant.</th><th style="text-align:center">vs V4.721</th><th style="text-align:center">vs Histórico</th><th style="text-align:center">Veredicto</th></tr></thead><tbody><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Dar de alta una operación de Repos</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">9.84s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-32.3%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-32.3%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Dar de alta una operación de Futuros</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">4.86s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-54.8%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-54.8%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Dar de alta una operación de Adelantos</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">4.72s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-26.4%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-26.4%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Dar de alta una operación de Caucion</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">4.37s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-13.9%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-13.9%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Dar de alta una operación de Títulos</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">4.22s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-5.2%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-5.2%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Dar de alta una operación de Cambios</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">3.89s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#27ae60">+71.8%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#27ae60">+71.8%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#eafaf1;color:#27ae60;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↑↑ Recuperando</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Dar de alta una operación de Calls</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">3.66s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-15.8%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-15.8%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Modificar una operación de Cambios</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">3.36s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-58.2%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-58.2%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Modificar una operación de Adelanto</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">2.57s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-35.6%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-35.6%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Modificar una operación de Futuros</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">2.4s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-25.6%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-25.6%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Modificar una operación de Repos</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">2.39s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#7f8c8d">+3.5%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#7f8c8d">+3.5%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Modificar una operación de Títulos</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">2.3s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#7f8c8d">-4.0%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#7f8c8d">-4.0%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Modificar una operación de Caucion</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">2.28s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-12.5%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-12.5%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Modificar una operación de Calls</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">2.02s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#27ae60">+7.2%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#27ae60">+7.2%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Anular una operación de Títulos</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">1.66s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-60.3%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-60.3%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Anular una operación de Futuros</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">1.37s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-85.9%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-85.9%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Anular una operación de Adelanto</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">1.08s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-41.8%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-41.8%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#fdedec;color:#c0392b;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↓ Degradando</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Anular una operación de Cambios</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">1.07s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#7f8c8d">-4.8%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#7f8c8d">-4.8%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Anular una operación de Caucion</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">1.01s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-5.4%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#c0392b">-5.4%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#f8fafc" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Anular una operación de Repos</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">0.82s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#27ae60">+8.6%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#27ae60">+8.6%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#f2f3f4;color:#7f8c8d;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">— Estable</span></td></tr><tr style="background:#fff" data-seccion="Operaciones"><td style="padding:6px 12px;font-size:12px;color:#2c3e50">Anular una operación de Calls</td><td style="padding:6px 12px;font-size:12px;color:#555">Operaciones</td><td style="padding:6px 12px;text-align:right;font-size:12px;font-weight:600">0.72s</td><td style="padding:6px 12px;text-align:center;color:#bbb;font-size:11px">—</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#27ae60">+11.2%</td><td style="padding:6px 12px;text-align:center;font-weight:600;font-size:11px;color:#27ae60">+11.2%</td><td style="padding:6px 12px;text-align:center;font-size:11px"><span style="background:#eafaf1;color:#27ae60;padding:2px 8px;border-radius:10px;font-weight:700;white-space:nowrap">↑ Mejorando</span></td></tr></tbody></table></div></section>
+
+    <!-- Mayor mejora / mayor degradación vs histórico (Top 5, uno al lado del otro) -->
+    <section><div class="grid-2"><div class="card"><h2 style="font-size:13px;border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:12px;">📈 Mayor mejora vs histórico (Top 5)</h2><div class="table-wrap"><table><thead><tr><th>Acción</th><th>Sección</th><th style="text-align:right">Actual</th><th style="text-align:right">Hist.</th><th style="text-align:right">Mejora</th></tr></thead><tbody><tr><td style="font-size:11px;">Dar de alta una operación de Cambios</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">3.89s</td><td style="text-align:right;font-size:11px;color:var(--muted);">13.81s</td><td style="text-align:right;"><span class="delta-neg" style="font-size:11px;">+71.8%</span></td></tr>
+<tr style="background:#f8fafc;"><td style="font-size:11px;">Anular una operación de Calls</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">0.72s</td><td style="text-align:right;font-size:11px;color:var(--muted);">0.81s</td><td style="text-align:right;"><span class="delta-neg" style="font-size:11px;">+11.2%</span></td></tr>
+<tr><td style="font-size:11px;">Anular una operación de Repos</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">0.82s</td><td style="text-align:right;font-size:11px;color:var(--muted);">0.9s</td><td style="text-align:right;"><span class="delta-neg" style="font-size:11px;">+8.6%</span></td></tr>
+<tr style="background:#f8fafc;"><td style="font-size:11px;">Modificar una operación de Calls</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">2.02s</td><td style="text-align:right;font-size:11px;color:var(--muted);">2.18s</td><td style="text-align:right;"><span class="delta-neg" style="font-size:11px;">+7.2%</span></td></tr>
+<tr><td style="font-size:11px;">Modificar una operación de Repos</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">2.39s</td><td style="text-align:right;font-size:11px;color:var(--muted);">2.48s</td><td style="text-align:right;"><span class="delta-neg" style="font-size:11px;">+3.5%</span></td></tr></tbody></table></div></div><div class="card"><h2 style="font-size:13px;border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:12px;">📉 Mayor degradación vs histórico (Top 5)</h2><div class="table-wrap"><table><thead><tr><th>Acción</th><th>Sección</th><th style="text-align:right">Actual</th><th style="text-align:right">Hist.</th><th style="text-align:right">Variación</th></tr></thead><tbody><tr><td style="font-size:11px;">Anular una operación de Futuros</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">1.37s</td><td style="text-align:right;font-size:11px;color:var(--muted);">0.74s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-85.9%</span></td></tr>
+<tr style="background:#f8fafc;"><td style="font-size:11px;">Anular una operación de Títulos</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">1.66s</td><td style="text-align:right;font-size:11px;color:var(--muted);">1.03s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-60.3%</span></td></tr>
+<tr><td style="font-size:11px;">Modificar una operación de Cambios</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">3.36s</td><td style="text-align:right;font-size:11px;color:var(--muted);">2.12s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-58.2%</span></td></tr>
+<tr style="background:#f8fafc;"><td style="font-size:11px;">Dar de alta una operación de Futuros</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">4.86s</td><td style="text-align:right;font-size:11px;color:var(--muted);">3.14s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-54.8%</span></td></tr>
+<tr><td style="font-size:11px;">Anular una operación de Adelanto</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">1.08s</td><td style="text-align:right;font-size:11px;color:var(--muted);">0.77s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-41.8%</span></td></tr></tbody></table></div></div></div></section>
+
+    <!-- Acciones más lentas -->
+    <section>
+      <h2>🐢 Acciones más lentas — Top 5 por P95 actual</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Descripción</th><th>Sección</th><th style="text-align:right">P95 actual</th><th style="text-align:right">P95 histórico</th><th style="text-align:right">Variación</th></tr></thead>
+          <tbody><tr><td class="rank">1</td><td style="font-size:11px;">Dar de alta una operación de Repos</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">9.84s</td><td style="text-align:right;font-size:11px;color:var(--muted);">7.44s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-32.3%</span></td></tr>
+<tr style="background:#f8fafc;"><td class="rank">2</td><td style="font-size:11px;">Dar de alta una operación de Futuros</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">4.86s</td><td style="text-align:right;font-size:11px;color:var(--muted);">3.14s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-54.8%</span></td></tr>
+<tr><td class="rank">3</td><td style="font-size:11px;">Dar de alta una operación de Adelantos</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">4.72s</td><td style="text-align:right;font-size:11px;color:var(--muted);">3.73s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-26.4%</span></td></tr>
+<tr style="background:#f8fafc;"><td class="rank">4</td><td style="font-size:11px;">Dar de alta una operación de Caucion</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">4.37s</td><td style="text-align:right;font-size:11px;color:var(--muted);">3.84s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-13.9%</span></td></tr>
+<tr><td class="rank">5</td><td style="font-size:11px;">Dar de alta una operación de Títulos</td><td style="font-size:11px;color:var(--muted);">Operaciones</td><td style="text-align:right;font-size:11px;font-weight:600;">4.22s</td><td style="text-align:right;font-size:11px;color:var(--muted);">4.02s</td><td style="text-align:right;"><span class="delta-pos" style="font-size:11px;">-5.2%</span></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══ GRUPO: DEGRADACIÓN PERSISTENTE Y SOSTENIDA ═══ -->
+    
+
+    <!-- ═══ GRUPO: OTRAS MÉTRICAS ═══ -->
+    <h1 class="group-title">📎 Otras métricas</h1>
+
+    <!-- Caché -->
+    
+
+    <!-- Acciones nuevas -->
+    
+
+    <!-- Nuevas vs históricas -->
+    
+
+  </div><!-- /tab-tecnico -->
+
+  <!-- ══════════════════ TAB HISTORIAL ══════════════════ -->
+  <div id="tab-historial" class="tab-panel" style="display:none">
+
+    <!-- Tendencia global -->
+    <section>
+      <h2>📈 Tendencia histórica P95 global</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">P95 de todas las acciones medidas, por versión.</p>
+      <div style="position:relative;">
+        <div id="fb-globalTrend" style="padding:4px 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><div style="width:55px;font-size:11px;color:#555;text-align:right;flex-shrink:0">V4.721</div><div style="flex:1;background:#f0f0f0;border-radius:3px;height:18px"><div style="width:100.0%;background:#2980b9;height:100%;border-radius:3px"></div></div><div style="width:45px;font-size:11px;color:#555;font-weight:600">7.1s</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><div style="width:55px;font-size:11px;color:#555;text-align:right;flex-shrink:0">V4.728</div><div style="flex:1;background:#f0f0f0;border-radius:3px;height:18px"><div style="width:68.5%;background:#2980b9;height:100%;border-radius:3px"></div></div><div style="width:45px;font-size:11px;color:#555;font-weight:600">4.86s</div></div></div>
+        <canvas id="globalTrendChart" style="max-height:280px;"></canvas>
+        
+      </div>
+    </section>
+
+    <!-- Explorador combinado: por muestra (una versión) / por versión (historial) -->
+    <section>
+      <h2>🔬🔍 Explorador de rendimiento por acción</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:4px;">
+        Duración de cada acción, con dos formas de mirarla: <strong>por muestra</strong> — evolución dentro de una
+        versión puntual, útil para detectar picos por día/ejecución o cambios de caché, configuración e infraestructura
+        dentro de la misma versión — o <strong>por versión</strong> — evolución a lo largo del historial completo,
+        con mapa de calor incluido, útil para tendencias estructurales.
+      </p>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Seleccioná el modo, una sección y filtrá las acciones que querés seguir.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px;">
+        <div style="display:inline-flex;border-radius:20px;overflow:hidden;">
+          <button id="modeBtnMuestra" onclick="setExplorerMode('muestra')"
+                  style="padding:7px 16px;border:1px solid #2980b9;border-right:none;border-radius:20px 0 0 20px;background:#2980b9;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">
+            📊 Por muestra
+          </button>
+          <button id="modeBtnVersion" onclick="setExplorerMode('version')"
+                  style="padding:7px 16px;border:1px solid #ddd;border-radius:0 20px 20px 0;background:#f0f4f8;color:#555;font-size:12px;font-weight:600;cursor:pointer;">
+            📈 Por versión
+          </button>
+        </div>
+        <div id="versionSelectWrap" style="display:flex;align-items:center;gap:6px;">
+          <label style="font-size:12px;color:var(--muted);font-weight:600;">Versión:</label>
+          <select id="versionSelect" onchange="onVersionSelectChange(this.value)"
+                  style="padding:6px 10px;border:1px solid #ddd;border-radius:8px;font-size:12px;color:#2c3e50;">
+          </select>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;" id="explorerSecPills"></div>
+      <div id="explorerControls" style="display:none;margin-bottom:16px;">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+          <input id="explorerSearch" type="text" placeholder="Buscar acción..."
+                 oninput="_renderExplorerList(this.value)"
+                 style="flex:1;padding:7px 12px;border:1px solid #ddd;border-radius:8px;font-size:13px;color:#2c3e50;outline:none;" />
+          <button onclick="selectAllExplorerActions()"
+                  style="padding:7px 14px;border:1px solid #2980b9;border-radius:8px;background:#2980b9;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">
+            Todas
+          </button>
+          <button onclick="clearExplorerActions()"
+                  style="padding:7px 14px;border:1px solid #ddd;border-radius:8px;background:#f0f4f8;color:#555;font-size:12px;font-weight:600;cursor:pointer;">
+            Limpiar
+          </button>
+        </div>
+        <div id="explorerList"
+             style="max-height:180px;overflow-y:auto;border:1px solid #eee;border-radius:8px;padding:4px 0;">
+        </div>
+      </div>
+      <div style="height:320px;position:relative;margin-bottom:16px;">
+        <canvas id="explorerChart"></canvas>
+        <div id="explorerChartPlaceholder"
+             style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+                    color:#bbb;font-size:14px;pointer-events:none;">
+          Seleccioná una sección y elegí acciones de la lista
+        </div>
+      </div>
+      <div id="explorerPlaceholder" style="display:none;color:#999;font-style:italic;font-size:13px;padding:12px 0;">
+        Sin datos suficientes para este modo/versión.
+      </div>
+      <div id="explorerHeatmapWrap">
+        <h3 id="explorerHeatmapTitle" style="font-size:14px;margin:8px 0 4px;color:#2c3e50;">Mapa de calor — Secciones × Versiones</h3>
+        <p style="font-size:12px;color:#aaa;margin-bottom:8px;">
+          P95 por versión. Color: 🟢 &lt;60s | 🟡 60–120s | 🔴 &gt;120s
+        </p>
+        <div id="explorerHeatmap"></div>
+      </div>
+    </section>
+
+    <!-- Comportamiento crónico (B1) -->
+    
+
+    <!-- Comparativa multi-cliente -->
+    <section><h2>🌐 Comparativa de clientes en Testing04</h2><p style="font-size:13px;color:var(--muted);margin-bottom:4px;">P95 global por versión para cada cliente (Bancor, Voii). Permite detectar si una degradación es sistémica o puntual a un cliente.</p><p style="font-size:12px;color:#aaa;margin-bottom:16px;">Los cortes en las líneas indican versiones donde ese cliente no tiene datos.</p><div style="position:relative;"><canvas id="multiClientChart" style="max-height:300px;"></canvas></div></section>
+
+  </div><!-- /tab-historial -->
+  
+
+</div><!-- /container -->
+
+<!-- KPI popover -->
+<div id="kpi-popover" role="tooltip">
+  <button class="pop-close" onclick="document.getElementById('kpi-popover').style.display='none'" aria-label="Cerrar">×</button>
+  <div class="pop-title"></div>
+  <div class="pop-body"></div>
+</div>
+
+<footer>
+  Generado el 08/09/2026 a las 18:15 para Voii / Testing04 / V4.728 ·
+  <a href="https://github.com/chbazan/tr_cypress_reports" target="_blank">cypress_tr</a> informe_ia.py ·
+  <span style="background:#7f8c8d;color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600">⚙️ Análisis algorítmico (Gemini no disponible)</span>
+</footer>
+
+<div id="g-tip" role="tooltip"></div>
+
+</body>
+</html>
