@@ -1,0 +1,178 @@
+{
+  "input": {
+    "meta": {
+      "ambiente": "Testing04",
+      "cliente": "Bancor",
+      "version": "V4.723",
+      "version_anterior": "V4.715",
+      "timestamp_informe": "2026-09-14T17:52:19-03:00",
+      "muestras": 1
+    },
+    "resumen": {
+      "total_secciones": 1,
+      "total_acciones": 0,
+      "secciones_con_mejora": 0,
+      "secciones_con_degradacion": 1,
+      "secciones_con_alerta_15pct": 1,
+      "ux_health_score": 92,
+      "secciones_en_sla_critico": 0,
+      "secciones_sobre_umbral": 0
+    },
+    "secciones": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 6.62,
+        "p95_historico_s": 3.63,
+        "pct_mejora": -82.2,
+        "estado": "degradacion",
+        "p50_s": 1.82,
+        "ratio_p95_p50": 3.64,
+        "sla": {
+          "color": "#27ae60",
+          "bg": "#eafaf1",
+          "label": "Dentro de SLA",
+          "icon": "🟢"
+        }
+      }
+    ],
+    "alertas": [
+      {
+        "seccion": "Operaciones",
+        "pct_degradacion": -82.2,
+        "p95_actual_s": 6.62
+      }
+    ],
+    "top_acciones_lentas": [],
+    "top_acciones_rapidas": [],
+    "top_acciones_mejoradas": [],
+    "top_acciones_degradadas": [],
+    "comparativa_version_anterior": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 6.62,
+        "p95_anterior_s": 3.63,
+        "pct_mejora": -82.2
+      }
+    ],
+    "impacto_cache": [],
+    "tendencia_versiones": [
+      {
+        "version": "V4.715",
+        "p95_global_s": 3.63
+      },
+      {
+        "version": "V4.723",
+        "p95_global_s": 6.62
+      }
+    ],
+    "nuevas_acciones": [],
+    "impact_ranking": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 6.62,
+        "n_acciones": 1,
+        "impact_score": 6.6,
+        "estado": "degradacion"
+      }
+    ],
+    "tendencias_sostenidas": [],
+    "saltos_abruptos": [
+      {
+        "seccion": "Operaciones",
+        "de_version": "V4.715",
+        "a_version": "V4.723",
+        "de_p95_s": 3.63,
+        "a_p95_s": 6.62,
+        "pct_salto": 82.4
+      }
+    ],
+    "saltos_abruptos_acciones": [
+      {
+        "seccion": "Operaciones",
+        "accion": "Dar de alta una operación de Cambios",
+        "de_version": "V4.715",
+        "a_version": "V4.723",
+        "de_p95_s": 3.03,
+        "a_p95_s": 7.22,
+        "pct_salto": 138.3
+      }
+    ],
+    "tendencias_acciones_por_seccion": {
+      "Operaciones": {
+        "n_improved": 2,
+        "n_degraded": 2,
+        "total_with_history": 21,
+        "pct_improved": 9.5,
+        "pct_degraded": 9.5,
+        "best_improvement": {
+          "accion": "Anular una operación de Repos",
+          "pct": -23.53,
+          "de_p95_s": 0.94,
+          "a_p95_s": 0.71,
+          "de_version": "V4.715",
+          "a_version": "V4.723"
+        },
+        "worst_degradation": {
+          "accion": "Dar de alta una operación de Cambios",
+          "pct": 138.49,
+          "de_p95_s": 3.03,
+          "a_p95_s": 7.22,
+          "de_version": "V4.715",
+          "a_version": "V4.723"
+        }
+      }
+    },
+    "acciones_discontinuadas_con_tendencia": [],
+    "secc_dropout_bias": [],
+    "acciones_persistentemente_lentas": [],
+    "acciones_comportamiento_cronico": []
+  },
+  "conclusions": {
+    "estado_general": "critico",
+    "resumen_ejecutivo": "Análisis de Bancor / V4.723 (Testing04) con 1 muestras. 0 de 1 secciones muestran mejoras, 1 degradaciones. ⚠️ 1 sección(es) con alerta >15% vs histórico — la más crítica es Operaciones (-82.2%).",
+    "escalar": {
+      "titulo": "Degradación crítica en Operaciones: -82.2%",
+      "detalle": "La sección Operaciones empeoró 82.2% respecto al histórico. Requiere investigación inmediata."
+    },
+    "investigar": {
+      "titulo": "Sin datos de acciones lentas",
+      "detalle": "No hay datos comparativos suficientes aún."
+    },
+    "optimizar": {
+      "titulo": "Acumular muestras para detectar tendencias",
+      "detalle": "Con 1 muestras el P95 se estabiliza. Ejecutar más corridas para mayor confianza."
+    },
+    "hallazgos": [
+      {
+        "tipo": "alerta",
+        "seccion": "Operaciones",
+        "descripcion": "Salto abrupto en \"Dar de alta una operación de Cambios\" entre V4.715 y V4.723",
+        "evidencia": "3.03s → 7.22s (+138.3%)"
+      }
+    ],
+    "causa_raiz": [
+      {
+        "seccion": "Operaciones",
+        "hipotesis": [
+          "La acción con mayor impacto dentro de la sección es \"Dar de alta una operación de Cambios\": 3.03s → 7.22s (+138.3%) entre V4.715 y V4.723 (salto abrupto entre versiones).",
+          "Revisar qué cambió puntualmente en esa acción entre esas versiones (código, datos de prueba, dependencias o infraestructura) — no hay información de deploys/commits disponible en este análisis para confirmar la causa, sólo el patrón de tiempos."
+        ]
+      }
+    ],
+    "recomendaciones": [
+      {
+        "prioridad": "P1",
+        "seccion": "Operaciones",
+        "accion": "Investigar degradación crítica en Operaciones — foco en \"Dar de alta una operación de Cambios\", la acción con mayor variación dentro de la sección",
+        "evidencia": "Degradación del 82.2% respecto al histórico"
+      },
+      {
+        "prioridad": "P3",
+        "seccion": "General",
+        "accion": "Acumular más muestras para consolidar baseline de esta versión",
+        "evidencia": "Con 1 muestras, ≥5 dan P95 más estable y confiable"
+      }
+    ]
+  },
+  "ai_model": null
+}
