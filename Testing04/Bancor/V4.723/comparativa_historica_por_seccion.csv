@@ -1,0 +1,2 @@
+Timestamp,Cliente,Ambiente,Sección,Versión,P95 (ms) actual,P50 (ms) actual,Stdev (ms) actual,N muestras,P95 (ms) histórico,Porcentaje de mejora/empeora
+2026-09-14T17:52:18-03:00,Bancor,Testing04,Operaciones,V4.723,6624.0,1817.0,1772.9,1,3635.0,-82.23
