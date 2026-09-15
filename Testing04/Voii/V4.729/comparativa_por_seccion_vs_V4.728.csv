@@ -1,0 +1,2 @@
+Timestamp,Cliente,Ambiente,Versión actual,Versión comparada,Sección,P95 (ms) de la versión actual,P95 (ms) de la versión comparada,Porcentaje de mejora/empeora
+2026-09-15T16:16:08-03:00,Voii,Testing04,V4.729,V4.728,Operaciones,4266.0,4857.0,12.17

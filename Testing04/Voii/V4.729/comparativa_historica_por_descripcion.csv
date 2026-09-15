@@ -1,0 +1,22 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,P95 (ms) histórico,Porcentaje de mejora/empeora
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Anular una operación de Adelanto,V4.729,650.0,1053.6,38.31
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Anular una operación de Calls,V4.729,749.0,803.3,6.76
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Anular una operación de Cambios,V4.729,965.0,1071.8,9.96
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Anular una operación de Caucion,V4.729,728.0,1009.0,27.85
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Anular una operación de Futuros,V4.729,678.0,1306.3,48.1
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Anular una operación de Repos,V4.729,964.0,895.9,-7.6
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Anular una operación de Títulos,V4.729,966.0,1596.1,39.48
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Adelantos,V4.729,3406.0,4618.6,26.25
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Calls,V4.729,3750.0,3612.4,-3.81
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Cambios,V4.729,3720.0,13291.4,72.01
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Caucion,V4.729,3257.0,4318.3,24.58
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Futuros,V4.729,3442.0,4685.5,26.54
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Repos,V4.729,8013.0,9601.5,16.54
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Dar de alta una operación de Títulos,V4.729,4266.0,4206.8,-1.41
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Modificar una operación de Adelanto,V4.729,1743.0,2507.0,30.47
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Modificar una operación de Calls,V4.729,2197.0,2175.9,-0.97
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Modificar una operación de Cambios,V4.729,1986.0,3233.7,38.58
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Modificar una operación de Caucion,V4.729,2062.0,2254.8,8.55
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Modificar una operación de Futuros,V4.729,2128.0,2352.1,9.53
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Modificar una operación de Repos,V4.729,2132.0,2480.2,14.04
+2026-09-15T16:16:08-03:00,Voii,Testing04,Operaciones,Modificar una operación de Títulos,V4.729,2412.0,2288.0,-5.42
