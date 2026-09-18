@@ -1,0 +1,19 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Anular una operación de Adelanto,V4.723,619.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Anular una operación de Calls,V4.723,637.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Anular una operación de Cambios,V4.723,661.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Anular una operación de Futuros,V4.723,607.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Anular una operación de Repos,V4.723,946.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Anular una operación de Títulos,V4.723,692.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Adelantos,V4.723,3342.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Calls,V4.723,2899.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Cambios,V4.723,7366.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Futuros,V4.723,3086.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Repos,V4.723,6768.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Títulos,V4.723,3549.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Adelanto,V4.723,1598.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Calls,V4.723,1790.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Cambios,V4.723,1983.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Futuros,V4.723,1555.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Repos,V4.723,1824.0,1
+2026-09-18T10:20:34-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Títulos,V4.723,2012.0,1
