@@ -1,0 +1,139 @@
+{
+  "input": {
+    "meta": {
+      "ambiente": "Testing04",
+      "cliente": "Naranja",
+      "version": "V4.729",
+      "version_anterior": "V4.723",
+      "timestamp_informe": "2026-10-21T16:00:38-03:00",
+      "muestras": 1
+    },
+    "resumen": {
+      "total_secciones": 1,
+      "total_acciones": 0,
+      "secciones_con_mejora": 0,
+      "secciones_con_degradacion": 1,
+      "secciones_con_alerta_15pct": 0,
+      "ux_health_score": 92,
+      "secciones_en_sla_critico": 0,
+      "secciones_sobre_umbral": 0
+    },
+    "secciones": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 7.65,
+        "p95_historico_s": 6.86,
+        "pct_mejora": -11.6,
+        "estado": "degradacion",
+        "p50_s": 1.85,
+        "ratio_p95_p50": 4.14,
+        "sla": {
+          "color": "#27ae60",
+          "bg": "#eafaf1",
+          "label": "Dentro de SLA",
+          "icon": "🟢"
+        }
+      }
+    ],
+    "alertas": [],
+    "top_acciones_lentas": [],
+    "top_acciones_rapidas": [],
+    "top_acciones_mejoradas": [],
+    "top_acciones_degradadas": [],
+    "comparativa_version_anterior": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 7.65,
+        "p95_anterior_s": 6.86,
+        "pct_mejora": -11.6
+      }
+    ],
+    "impacto_cache": [],
+    "tendencia_versiones": [
+      {
+        "version": "V4.723",
+        "p95_global_s": 6.86
+      },
+      {
+        "version": "V4.729",
+        "p95_global_s": 7.65
+      }
+    ],
+    "nuevas_acciones": [],
+    "impact_ranking": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 7.65,
+        "n_acciones": 1,
+        "impact_score": 7.7,
+        "estado": "degradacion"
+      }
+    ],
+    "tendencias_sostenidas": [],
+    "saltos_abruptos": [],
+    "saltos_abruptos_acciones": [],
+    "tendencias_acciones_por_seccion": {
+      "Operaciones": {
+        "n_improved": 1,
+        "n_degraded": 2,
+        "total_with_history": 18,
+        "pct_improved": 5.6,
+        "pct_degraded": 11.1,
+        "best_improvement": {
+          "accion": "Anular una operación de Repos",
+          "pct": -20.93,
+          "de_p95_s": 0.95,
+          "a_p95_s": 0.75,
+          "de_version": "V4.723",
+          "a_version": "V4.729"
+        },
+        "worst_degradation": {
+          "accion": "Dar de alta una operación de Cambios",
+          "pct": 42.56,
+          "de_p95_s": 7.37,
+          "a_p95_s": 10.5,
+          "de_version": "V4.723",
+          "a_version": "V4.729"
+        }
+      }
+    },
+    "acciones_discontinuadas_con_tendencia": [],
+    "secc_dropout_bias": [],
+    "acciones_persistentemente_lentas": [],
+    "acciones_comportamiento_cronico": []
+  },
+  "conclusions": {
+    "estado_general": "bueno",
+    "resumen_ejecutivo": "Análisis de Naranja / V4.729 (Testing04) con 1 muestras. 0 de 1 secciones muestran mejoras, 1 degradaciones. Sin alertas de degradación crítica.",
+    "escalar": {
+      "titulo": "No hay alertas críticas en esta versión",
+      "detalle": "Ninguna sección superó el umbral de degradación del 15% respecto al histórico acumulado."
+    },
+    "investigar": {
+      "titulo": "Sin datos de acciones lentas",
+      "detalle": "No hay datos comparativos suficientes aún."
+    },
+    "optimizar": {
+      "titulo": "Acumular muestras para detectar tendencias",
+      "detalle": "Con 1 muestras el P95 se estabiliza. Ejecutar más corridas para mayor confianza."
+    },
+    "hallazgos": [
+      {
+        "tipo": "degradacion",
+        "seccion": "Operaciones",
+        "descripcion": "P95 empeoró respecto al histórico",
+        "evidencia": "Histórico: 6.86s → Actual: 7.65s (-11.6%)"
+      }
+    ],
+    "causa_raiz": [],
+    "recomendaciones": [
+      {
+        "prioridad": "P3",
+        "seccion": "General",
+        "accion": "Acumular más muestras para consolidar baseline de esta versión",
+        "evidencia": "Con 1 muestras, ≥5 dan P95 más estable y confiable"
+      }
+    ]
+  },
+  "ai_model": null
+}
