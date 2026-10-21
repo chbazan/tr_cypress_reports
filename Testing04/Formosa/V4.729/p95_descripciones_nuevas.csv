@@ -1,0 +1,22 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Anular una operación de Adelanto,V4.729,660.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Anular una operación de Calls,V4.729,685.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Anular una operación de Cambios,V4.729,773.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Anular una operación de Cuenta Remunerada,V4.729,658.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Anular una operación de Futuros,V4.729,588.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Anular una operación de Repos,V4.729,723.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Anular una operación de Títulos,V4.729,1117.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Adelantos,V4.729,3450.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Calls,V4.729,3240.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Cambios,V4.729,11538.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Cuenta Remunerada,V4.729,2277.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Futuros,V4.729,3116.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Repos,V4.729,7269.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Dar de alta una operación de Títulos,V4.729,4715.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Adelanto,V4.729,1830.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Calls,V4.729,2056.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Cambios,V4.729,2103.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Cuenta Remunerada,V4.729,1493.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Futuros,V4.729,1721.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Repos,V4.729,2129.0,1
+2026-10-21T16:20:39-03:00,Formosa,Testing04,Operaciones,Modificar una operación de Títulos,V4.729,2518.0,1
