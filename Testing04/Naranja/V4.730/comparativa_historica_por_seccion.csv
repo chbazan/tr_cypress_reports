@@ -1,0 +1,2 @@
+Timestamp,Cliente,Ambiente,Sección,Versión,P95 (ms) actual,P50 (ms) actual,Stdev (ms) actual,N muestras,P95 (ms) histórico,Porcentaje de mejora/empeora
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,V4.730,6659.25,1796.0,1805.13,1,7202.5,7.54

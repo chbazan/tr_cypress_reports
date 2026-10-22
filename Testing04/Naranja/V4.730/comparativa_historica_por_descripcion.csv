@@ -1,0 +1,19 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,P95 (ms) histórico,Porcentaje de mejora/empeora
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Anular una operación de Adelanto,V4.730,650.0,664.6,2.2
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Anular una operación de Calls,V4.730,684.0,680.7,-0.48
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Anular una operación de Cambios,V4.730,683.0,713.25,4.24
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Anular una operación de Futuros,V4.730,668.0,687.75,2.87
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Anular una operación de Repos,V4.730,766.0,936.1,18.17
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Anular una operación de Títulos,V4.730,704.0,706.25,0.32
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Adelantos,V4.730,3340.0,3396.15,1.65
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Calls,V4.730,2832.0,2896.55,2.23
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Cambios,V4.730,6648.0,10344.25,35.73
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Futuros,V4.730,2924.0,3230.4,9.48
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Repos,V4.730,6723.0,7129.0,5.7
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Dar de alta una operación de Títulos,V4.730,3396.0,3545.0,4.2
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Adelanto,V4.730,1662.0,1597.05,-4.07
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Calls,V4.730,1777.0,1823.25,2.54
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Cambios,V4.730,1815.0,1976.3,8.16
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Futuros,V4.730,1637.0,2137.35,23.41
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Repos,V4.730,1900.0,1904.75,0.25
+2026-10-22T15:33:09-03:00,Naranja,Testing04,Operaciones,Modificar una operación de Títulos,V4.730,1815.0,2003.1,9.39

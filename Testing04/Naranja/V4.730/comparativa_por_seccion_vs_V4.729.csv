@@ -1,0 +1,2 @@
+Timestamp,Cliente,Ambiente,Versión actual,Versión comparada,Sección,P95 (ms) de la versión actual,P95 (ms) de la versión comparada,Porcentaje de mejora/empeora
+2026-10-22T15:33:09-03:00,Naranja,Testing04,V4.730,V4.729,Operaciones,6659.25,7650.95,12.96
