@@ -1,0 +1,25 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Anular una operación de Adelanto,V4.729,775.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Anular una operación de Calls,V4.729,744.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Anular una operación de Cambios,V4.729,700.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Anular una operación de Caucion,V4.729,1186.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Anular una operación de Cuenta Remunerada,V4.729,736.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Anular una operación de Futuros,V4.729,845.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Anular una operación de Repos,V4.729,784.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Anular una operación de Títulos,V4.729,787.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Dar de alta una operación de Adelantos,V4.729,3509.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Dar de alta una operación de Calls,V4.729,3011.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Dar de alta una operación de Cambios,V4.729,7584.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Dar de alta una operación de Caucion,V4.729,5663.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Dar de alta una operación de Cuenta Remunerada,V4.729,2283.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Dar de alta una operación de Futuros,V4.729,3056.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Dar de alta una operación de Repos,V4.729,7019.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Dar de alta una operación de Títulos,V4.729,3748.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Modificar una operación de Adelanto,V4.729,1783.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Modificar una operación de Calls,V4.729,1914.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Modificar una operación de Cambios,V4.729,2019.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Modificar una operación de Caucion,V4.729,2960.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Modificar una operación de Cuenta Remunerada,V4.729,1576.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Modificar una operación de Futuros,V4.729,1755.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Modificar una operación de Repos,V4.729,1934.0,1
+2026-10-22T15:30:32-03:00,Macro,Testing04,Operaciones,Modificar una operación de Títulos,V4.729,2041.0,1
