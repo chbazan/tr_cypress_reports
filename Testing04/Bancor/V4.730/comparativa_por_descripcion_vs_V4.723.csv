@@ -1,0 +1,22 @@
+Timestamp,Cliente,Ambiente,Versión actual,Versión comparada,Sección,Descripción,P95 (ms) de la versión actual,P95 (ms) de la versión comparada,Porcentaje de mejora/empeora
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Anular una operación de Adelanto,729.0,659.0,-10.62
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Anular una operación de Calls,786.0,707.0,-11.17
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Anular una operación de Cambios,702.0,686.0,-2.33
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Anular una operación de Cuenta Remunerada,691.0,662.0,-4.38
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Anular una operación de Futuros,703.0,606.0,-16.01
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Anular una operación de Repos,749.0,715.0,-4.76
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Anular una operación de Títulos,766.0,728.0,-5.22
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Dar de alta una operación de Adelantos,3474.0,3373.0,-2.99
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Dar de alta una operación de Calls,2896.0,2844.0,-1.83
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Dar de alta una operación de Cambios,6971.0,7219.0,3.44
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Dar de alta una operación de Cuenta Remunerada,2161.0,2073.0,-4.25
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Dar de alta una operación de Futuros,3046.0,3035.0,-0.36
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Dar de alta una operación de Repos,6711.0,6624.0,-1.31
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Dar de alta una operación de Títulos,3444.0,3384.0,-1.77
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Modificar una operación de Adelanto,1730.0,1684.0,-2.73
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Modificar una operación de Calls,1897.0,1766.0,-7.42
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Modificar una operación de Cambios,1890.0,1950.0,3.08
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Modificar una operación de Cuenta Remunerada,1542.0,1559.0,1.09
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Modificar una operación de Futuros,1686.0,2067.0,18.43
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Modificar una operación de Repos,2000.0,1930.0,-3.63
+2026-10-22T14:48:39-03:00,Bancor,Testing04,V4.730,V4.723,Operaciones,Modificar una operación de Títulos,2000.0,1817.0,-10.07
