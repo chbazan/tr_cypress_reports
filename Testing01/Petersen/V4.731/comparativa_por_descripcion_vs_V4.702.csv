@@ -1,0 +1,14 @@
+Timestamp,Cliente,Ambiente,Versión actual,Versión comparada,Sección,Descripción,P95 (ms) de la versión actual,P95 (ms) de la versión comparada,Porcentaje de mejora/empeora
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Cashflow,Visualizar el cashflow Banco Central,30058.0,59051.1,49.1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Cashflow,Visualizar el cashflow Intradiario,14549.0,18452.5,21.15
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Consultas,Consultar 3000 operaciones,43861.0,64299.85,31.79
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Consultas,Ingresar en consultas de operaciones,4417.0,4301.4,-2.69
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Dashboard,Cambio de vista a Default Mesa,1288.0,1424.45,9.58
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Dashboard,Cambio de vista a Default Tesorería,1297.0,1515.0,14.39
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Dashboard,Login y primer ingreso al Dashboard,4206.0,8046.2,47.73
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Dashboard,Segundo ingreso al Dashboard,1100.0,1316.65,16.45
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Límites,Agregar un límite para un Call,1993.0,2051.5,2.85
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Límites,Dar de alta una operación de Call afectada por un límite,99499.0,93874.15,-5.99
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Límites,Eliminar el límite creado,3206.0,2423.35,-32.3
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Límites,Ingresar en Administrar Límites,4620.0,4199.15,-10.02
+2026-10-22T15:03:15-03:00,Petersen,Testing01,V4.731,V4.702,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1396.0,1316.65,-6.03

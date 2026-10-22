@@ -1,0 +1,38 @@
+Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Cashflow,Visualizar el cashflow Banco Central,V4.731,30058.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Cashflow,Visualizar el cashflow Intradiario,V4.731,14549.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Consultas,Consultar 3000 operaciones,V4.731,43861.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Consultas,Ingresar en consultas de operaciones,V4.731,4417.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Dashboard,Cambio de vista a Default Mesa,V4.731,1288.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Dashboard,Cambio de vista a Default Tesorería,V4.731,1297.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Dashboard,Login y primer ingreso al Dashboard,V4.731,4206.0,117
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Dashboard,Segundo ingreso al Dashboard,V4.731,1100.0,117
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Límites,Agregar un límite para un Call,V4.731,1993.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Límites,Dar de alta una operación de Call afectada por un límite,V4.731,99499.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Límites,Eliminar el límite creado,V4.731,3206.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Límites,Ingresar en Administrar Límites,V4.731,4620.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,V4.731,1396.0,133
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Anular una operación de Adelanto Petersen,V4.731,1926.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Anular una operación de Calls Petersen,V4.731,911.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Anular una operación de Cambios Petersen,V4.731,898.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Anular una operación de Caucion Petersen,V4.731,840.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Anular una operación de Cuenta Remunerada Petersen,V4.731,788.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Anular una operación de Futuros Petersen,V4.731,706.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Anular una operación de Repos Petersen,V4.731,1175.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Anular una operación de Títulos Petersen,V4.731,831.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Dar de alta una operación de Adelantos Petersen,V4.731,3859.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Dar de alta una operación de Calls Petersen,V4.731,3587.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Dar de alta una operación de Cambios Petersen,V4.731,13031.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Dar de alta una operación de Caucion Petersen,V4.731,3361.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Dar de alta una operación de Cuenta Remunerada Petersen,V4.731,3260.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Dar de alta una operación de Futuros Petersen,V4.731,3631.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Dar de alta una operación de Repos Petersen,V4.731,8833.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Dar de alta una operación de Títulos Petersen,V4.731,3822.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Modificar una operación de Adelanto Petersen,V4.731,1979.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Modificar una operación de Calls Petersen,V4.731,1978.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Modificar una operación de Cambios Petersen,V4.731,2060.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Modificar una operación de Caucion Petersen,V4.731,1823.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Modificar una operación de Cuenta Remunerada Petersen,V4.731,1683.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Modificar una operación de Futuros Petersen,V4.731,1802.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Modificar una operación de Repos Petersen,V4.731,2133.0,1
+2026-10-22T15:03:15-03:00,Petersen,Testing01,Operaciones,Modificar una operación de Títulos Petersen,V4.731,2035.0,1
