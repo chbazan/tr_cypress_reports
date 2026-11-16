@@ -1,0 +1,314 @@
+{
+  "input": {
+    "meta": {
+      "ambiente": "Testing04",
+      "cliente": "Voii",
+      "version": "V4.738",
+      "version_anterior": "V4.736",
+      "timestamp_informe": "2026-11-16T16:04:34-03:00",
+      "muestras": 1
+    },
+    "resumen": {
+      "total_secciones": 1,
+      "total_acciones": 21,
+      "secciones_con_mejora": 0,
+      "secciones_con_degradacion": 1,
+      "secciones_con_alerta_15pct": 1,
+      "ux_health_score": 92,
+      "secciones_en_sla_critico": 0,
+      "secciones_sobre_umbral": 0
+    },
+    "secciones": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 8.3,
+        "p95_historico_s": 7.06,
+        "pct_mejora": -17.7,
+        "estado": "degradacion",
+        "p50_s": 1.99,
+        "ratio_p95_p50": 4.17,
+        "sla": {
+          "color": "#27ae60",
+          "bg": "#eafaf1",
+          "label": "Dentro de SLA",
+          "icon": "🟢"
+        }
+      }
+    ],
+    "alertas": [
+      {
+        "seccion": "Operaciones",
+        "pct_degradacion": -17.7,
+        "p95_actual_s": 8.3
+      }
+    ],
+    "top_acciones_lentas": [
+      {
+        "descripcion": "Dar de alta una operación de Cambios",
+        "seccion": "Operaciones",
+        "p95_actual_s": 15.01,
+        "p95_historico_s": 8.08,
+        "pct_mejora": -85.8
+      },
+      {
+        "descripcion": "Dar de alta una operación de Repos",
+        "seccion": "Operaciones",
+        "p95_actual_s": 8.3,
+        "p95_historico_s": 9.57,
+        "pct_mejora": 13.2
+      },
+      {
+        "descripcion": "Dar de alta una operación de Títulos",
+        "seccion": "Operaciones",
+        "p95_actual_s": 4.19,
+        "p95_historico_s": 4.26,
+        "pct_mejora": 1.6
+      },
+      {
+        "descripcion": "Dar de alta una operación de Adelantos",
+        "seccion": "Operaciones",
+        "p95_actual_s": 3.68,
+        "p95_historico_s": 4.53,
+        "pct_mejora": 18.7
+      },
+      {
+        "descripcion": "Dar de alta una operación de Futuros",
+        "seccion": "Operaciones",
+        "p95_actual_s": 3.5,
+        "p95_historico_s": 4.68,
+        "pct_mejora": 25.2
+      }
+    ],
+    "top_acciones_rapidas": [
+      {
+        "descripcion": "Anular una operación de Futuros",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.66,
+        "p95_historico_s": 1.27,
+        "pct_mejora": 48.3
+      },
+      {
+        "descripcion": "Anular una operación de Adelanto",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.68,
+        "p95_historico_s": 1.03,
+        "pct_mejora": 34.1
+      },
+      {
+        "descripcion": "Anular una operación de Calls",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.71,
+        "p95_historico_s": 0.74,
+        "pct_mejora": 4.3
+      },
+      {
+        "descripcion": "Anular una operación de Cambios",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.74,
+        "p95_historico_s": 1.06,
+        "pct_mejora": 30.0
+      },
+      {
+        "descripcion": "Anular una operación de Caucion",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.74,
+        "p95_historico_s": 0.97,
+        "pct_mejora": 23.8
+      }
+    ],
+    "top_acciones_mejoradas": [
+      {
+        "descripcion": "Anular una operación de Futuros",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.66,
+        "p95_historico_s": 1.27,
+        "pct_mejora": 48.3
+      },
+      {
+        "descripcion": "Anular una operación de Títulos",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.84,
+        "p95_historico_s": 1.55,
+        "pct_mejora": 45.7
+      },
+      {
+        "descripcion": "Modificar una operación de Cambios",
+        "seccion": "Operaciones",
+        "p95_actual_s": 2.05,
+        "p95_historico_s": 3.16,
+        "pct_mejora": 35.1
+      },
+      {
+        "descripcion": "Anular una operación de Adelanto",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.68,
+        "p95_historico_s": 1.03,
+        "pct_mejora": 34.1
+      },
+      {
+        "descripcion": "Anular una operación de Cambios",
+        "seccion": "Operaciones",
+        "p95_actual_s": 0.74,
+        "p95_historico_s": 1.06,
+        "pct_mejora": 30.0
+      }
+    ],
+    "top_acciones_degradadas": [
+      {
+        "descripcion": "Dar de alta una operación de Cambios",
+        "seccion": "Operaciones",
+        "p95_actual_s": 15.01,
+        "p95_historico_s": 8.08,
+        "pct_mejora": -85.8
+      }
+    ],
+    "comparativa_version_anterior": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 8.3,
+        "p95_anterior_s": 7.71,
+        "pct_mejora": -7.7
+      }
+    ],
+    "impacto_cache": [],
+    "tendencia_versiones": [
+      {
+        "version": "V4.721",
+        "p95_global_s": 7.1
+      },
+      {
+        "version": "V4.728",
+        "p95_global_s": 4.86
+      },
+      {
+        "version": "V4.729",
+        "p95_global_s": 4.25
+      },
+      {
+        "version": "V4.736",
+        "p95_global_s": 7.71
+      },
+      {
+        "version": "V4.738",
+        "p95_global_s": 8.3
+      }
+    ],
+    "nuevas_acciones": [],
+    "impact_ranking": [
+      {
+        "seccion": "Operaciones",
+        "p95_actual_s": 8.3,
+        "n_acciones": 21,
+        "impact_score": 174.3,
+        "estado": "degradacion"
+      }
+    ],
+    "tendencias_sostenidas": [
+      {
+        "seccion": "Operaciones",
+        "n_versiones": 3,
+        "p95_inicio_s": 4.27,
+        "p95_actual_s": 8.3,
+        "version_inicio": "V4.729"
+      }
+    ],
+    "saltos_abruptos": [
+      {
+        "seccion": "Operaciones",
+        "de_version": "V4.729",
+        "a_version": "V4.736",
+        "de_p95_s": 4.27,
+        "a_p95_s": 7.71,
+        "pct_salto": 80.6
+      }
+    ],
+    "saltos_abruptos_acciones": [
+      {
+        "seccion": "Operaciones",
+        "accion": "Dar de alta una operación de Cambios",
+        "de_version": "V4.729",
+        "a_version": "V4.736",
+        "de_p95_s": 3.72,
+        "a_p95_s": 8.82,
+        "pct_salto": 137.1
+      }
+    ],
+    "tendencias_acciones_por_seccion": {
+      "Operaciones": {
+        "n_improved": 0,
+        "n_degraded": 1,
+        "total_with_history": 21,
+        "pct_improved": 0.0,
+        "pct_degraded": 4.8,
+        "best_improvement": {
+          "accion": "Modificar una operación de Adelanto",
+          "pct": -8.43,
+          "de_p95_s": 1.93,
+          "a_p95_s": 1.77,
+          "de_version": "V4.736",
+          "a_version": "V4.738"
+        },
+        "worst_degradation": {
+          "accion": "Dar de alta una operación de Cambios",
+          "pct": 70.23,
+          "de_p95_s": 8.82,
+          "a_p95_s": 15.01,
+          "de_version": "V4.736",
+          "a_version": "V4.738"
+        }
+      }
+    },
+    "acciones_discontinuadas_con_tendencia": [],
+    "secc_dropout_bias": [],
+    "acciones_persistentemente_lentas": [],
+    "acciones_comportamiento_cronico": []
+  },
+  "conclusions": {
+    "estado_general": "atencion",
+    "resumen_ejecutivo": "Análisis de Voii / V4.738 (Testing04) con 1 muestras. 0 de 1 secciones muestran mejoras, 1 degradaciones. ⚠️ 1 sección(es) con alerta >15% vs histórico — la más crítica es Operaciones (-17.7%).",
+    "escalar": {
+      "titulo": "Degradación crítica en Operaciones: -17.7%",
+      "detalle": "La sección Operaciones empeoró 17.7% respecto al histórico. Requiere investigación inmediata."
+    },
+    "investigar": {
+      "titulo": "Acción más lenta: Dar de alta una operación de Cambios",
+      "detalle": "P95 de 15.01s en la sección Operaciones. Evaluar si el tiempo es aceptable para el usuario."
+    },
+    "optimizar": {
+      "titulo": "Mayor degradación: Dar de alta una operación de Cambios",
+      "detalle": "Empeoró 85.8% (de 8.08s a 15.01s) en Operaciones."
+    },
+    "hallazgos": [
+      {
+        "tipo": "alerta",
+        "seccion": "Operaciones",
+        "descripcion": "Salto abrupto en \"Dar de alta una operación de Cambios\" entre V4.729 y V4.736 · P95 en aumento durante 3 versiones consecutivas",
+        "evidencia": "3.72s → 8.82s (+137.1%) · Desde V4.729 (4.27s) hasta actual (8.3s)"
+      }
+    ],
+    "causa_raiz": [
+      {
+        "seccion": "Operaciones",
+        "hipotesis": [
+          "La acción con mayor impacto dentro de la sección es \"Dar de alta una operación de Cambios\": 3.72s → 8.82s (+137.1%) entre V4.729 y V4.736 (salto abrupto entre versiones).",
+          "Revisar qué cambió puntualmente en esa acción entre esas versiones (código, datos de prueba, dependencias o infraestructura) — no hay información de deploys/commits disponible en este análisis para confirmar la causa, sólo el patrón de tiempos."
+        ]
+      }
+    ],
+    "recomendaciones": [
+      {
+        "prioridad": "P1",
+        "seccion": "Operaciones",
+        "accion": "Investigar degradación crítica en Operaciones — foco en \"Dar de alta una operación de Cambios\", la acción con mayor variación dentro de la sección",
+        "evidencia": "Degradación del 17.7% respecto al histórico"
+      },
+      {
+        "prioridad": "P3",
+        "seccion": "General",
+        "accion": "Acumular más muestras para consolidar baseline de esta versión",
+        "evidencia": "Con 1 muestras, ≥5 dan P95 más estable y confiable"
+      }
+    ]
+  },
+  "ai_model": null
+}
