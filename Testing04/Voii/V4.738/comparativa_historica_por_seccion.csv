@@ -1,0 +1,2 @@
+Timestamp,Cliente,Ambiente,Sección,Versión,P95 (ms) actual,P50 (ms) actual,Stdev (ms) actual,N muestras,P95 (ms) histórico,Porcentaje de mejora/empeora
+2026-11-16T16:04:33-03:00,Voii,Testing04,Operaciones,V4.738,8305.0,1991.0,3217.97,1,7058.5,-17.66
