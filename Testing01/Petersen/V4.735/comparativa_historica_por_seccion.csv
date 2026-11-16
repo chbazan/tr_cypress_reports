@@ -1,0 +1,6 @@
+Timestamp,Cliente,Ambiente,Sección,Versión,P95 (ms) actual,P50 (ms) actual,Stdev (ms) actual,N muestras,P95 (ms) histórico,Porcentaje de mejora/empeora
+2026-11-16T16:24:55-03:00,Petersen,Testing01,Cashflow,V4.735,14305.55,13707.5,664.5,1,29282.55,51.15
+2026-11-16T16:24:55-03:00,Petersen,Testing01,Consultas,V4.735,54585.9,30636.0,26611.0,1,41888.8,-30.31
+2026-11-16T16:24:55-03:00,Petersen,Testing01,Dashboard,V4.735,3806.95,1333.0,1284.65,1,3769.65,-0.99
+2026-11-16T16:24:55-03:00,Petersen,Testing01,Límites,V4.735,82294.4,2119.0,39883.1,1,80523.2,-2.2
+2026-11-16T16:24:55-03:00,Petersen,Testing01,Operaciones,V4.735,4080.6,2097.0,1618.18,1,8086.9,49.54
