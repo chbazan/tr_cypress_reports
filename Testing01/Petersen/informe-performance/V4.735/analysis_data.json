@@ -5,16 +5,16 @@
       "cliente": "Petersen",
       "version": "V4.735",
       "version_anterior": "V4.731",
-      "timestamp_informe": "2026-11-16T16:24:56-03:00",
-      "muestras": 1
+      "timestamp_informe": "2026-11-17T10:06:25-03:00",
+      "muestras": 2
     },
     "resumen": {
       "total_secciones": 5,
       "total_acciones": 0,
       "secciones_con_mejora": 2,
-      "secciones_con_degradacion": 1,
-      "secciones_con_alerta_15pct": 1,
-      "ux_health_score": 82,
+      "secciones_con_degradacion": 3,
+      "secciones_con_alerta_15pct": 3,
+      "ux_health_score": 66,
       "secciones_en_sla_critico": 0,
       "secciones_sobre_umbral": 1
     },
@@ -25,8 +25,8 @@
         "p95_historico_s": 29.28,
         "pct_mejora": 51.1,
         "estado": "mejora",
-        "p50_s": 14.37,
-        "ratio_p95_p50": 1.0,
+        "p50_s": 13.97,
+        "ratio_p95_p50": 1.02,
         "sla": {
           "color": "#27ae60",
           "bg": "#eafaf1",
@@ -36,12 +36,12 @@
       },
       {
         "seccion": "Consultas",
-        "p95_actual_s": 54.59,
+        "p95_actual_s": 54.67,
         "p95_historico_s": 41.89,
-        "pct_mejora": -30.3,
+        "pct_mejora": -30.5,
         "estado": "degradacion",
-        "p50_s": 57.25,
-        "ratio_p95_p50": 0.95,
+        "p50_s": 40.05,
+        "ratio_p95_p50": 1.36,
         "sla": {
           "color": "#27ae60",
           "bg": "#eafaf1",
@@ -51,12 +51,12 @@
       },
       {
         "seccion": "Dashboard",
-        "p95_actual_s": 3.81,
+        "p95_actual_s": 4.52,
         "p95_historico_s": 3.77,
-        "pct_mejora": -1.0,
-        "estado": "estable",
+        "pct_mejora": -20.0,
+        "estado": "degradacion",
         "p50_s": 1.37,
-        "ratio_p95_p50": 2.78,
+        "ratio_p95_p50": 3.3,
         "sla": {
           "color": "#27ae60",
           "bg": "#eafaf1",
@@ -66,12 +66,12 @@
       },
       {
         "seccion": "Límites",
-        "p95_actual_s": 82.29,
+        "p95_actual_s": 93.74,
         "p95_historico_s": 80.52,
-        "pct_mejora": -2.2,
-        "estado": "estable",
+        "pct_mejora": -16.4,
+        "estado": "degradacion",
         "p50_s": 2.12,
-        "ratio_p95_p50": 38.82,
+        "ratio_p95_p50": 44.22,
         "sla": {
           "color": "#e67e22",
           "bg": "#fef5e7",
@@ -81,12 +81,12 @@
       },
       {
         "seccion": "Operaciones",
-        "p95_actual_s": 4.08,
+        "p95_actual_s": 4.38,
         "p95_historico_s": 8.09,
-        "pct_mejora": 49.5,
+        "pct_mejora": 45.8,
         "estado": "mejora",
-        "p50_s": 2.11,
-        "ratio_p95_p50": 1.93,
+        "p50_s": 2.06,
+        "ratio_p95_p50": 2.13,
         "sla": {
           "color": "#27ae60",
           "bg": "#eafaf1",
@@ -98,8 +98,18 @@
     "alertas": [
       {
         "seccion": "Consultas",
-        "pct_degradacion": -30.3,
-        "p95_actual_s": 54.59
+        "pct_degradacion": -30.5,
+        "p95_actual_s": 54.67
+      },
+      {
+        "seccion": "Dashboard",
+        "pct_degradacion": -20.0,
+        "p95_actual_s": 4.52
+      },
+      {
+        "seccion": "Límites",
+        "pct_degradacion": -16.4,
+        "p95_actual_s": 93.74
       }
     ],
     "top_acciones_lentas": [],
@@ -115,27 +125,27 @@
       },
       {
         "seccion": "Consultas",
-        "p95_actual_s": 54.59,
+        "p95_actual_s": 54.67,
         "p95_anterior_s": 41.89,
-        "pct_mejora": -30.3
+        "pct_mejora": -30.5
       },
       {
         "seccion": "Dashboard",
-        "p95_actual_s": 3.81,
+        "p95_actual_s": 4.52,
         "p95_anterior_s": 3.77,
-        "pct_mejora": -1.0
+        "pct_mejora": -20.0
       },
       {
         "seccion": "Límites",
-        "p95_actual_s": 82.29,
+        "p95_actual_s": 93.74,
         "p95_anterior_s": 80.52,
-        "pct_mejora": -2.2
+        "pct_mejora": -16.4
       },
       {
         "seccion": "Operaciones",
-        "p95_actual_s": 4.08,
+        "p95_actual_s": 4.38,
         "p95_anterior_s": 8.09,
-        "pct_mejora": 49.5
+        "pct_mejora": 45.8
       }
     ],
     "impacto_cache": [],
@@ -158,14 +168,14 @@
       },
       {
         "version": "V4.735",
-        "p95_global_s": 13.84
+        "p95_global_s": 14.03
       }
     ],
     "nuevas_acciones": [
       {
         "seccion": "Parametria",
         "descripcion": "Dar de alta configuracion de Bancos",
-        "p95_s": 1.39
+        "p95_s": 1.38
       },
       {
         "seccion": "Parametria",
@@ -175,12 +185,12 @@
       {
         "seccion": "Parametria",
         "descripcion": "Dar de alta parametria de operaciones de cauciones BYMA",
-        "p95_s": 1.85
+        "p95_s": 1.9
       },
       {
         "seccion": "Parametria",
         "descripcion": "Dar de alta parametria de operaciones de titulos BYMA",
-        "p95_s": 2.04
+        "p95_s": 2.03
       },
       {
         "seccion": "Parametria",
@@ -190,12 +200,12 @@
       {
         "seccion": "Parametria",
         "descripcion": "Eliminar contrapartes de Siopel",
-        "p95_s": 0.94
+        "p95_s": 1.03
       },
       {
         "seccion": "Parametria",
         "descripcion": "Eliminar parametria de operaciones de cauciones BYMA",
-        "p95_s": 0.33
+        "p95_s": 0.36
       },
       {
         "seccion": "Parametria",
@@ -216,16 +226,16 @@
     "impact_ranking": [
       {
         "seccion": "Límites",
-        "p95_actual_s": 82.29,
+        "p95_actual_s": 93.74,
         "n_acciones": 1,
-        "impact_score": 82.3,
-        "estado": "estable"
+        "impact_score": 93.7,
+        "estado": "degradacion"
       },
       {
         "seccion": "Consultas",
-        "p95_actual_s": 54.59,
+        "p95_actual_s": 54.67,
         "n_acciones": 1,
-        "impact_score": 54.6,
+        "impact_score": 54.7,
         "estado": "degradacion"
       },
       {
@@ -236,18 +246,18 @@
         "estado": "mejora"
       },
       {
-        "seccion": "Operaciones",
-        "p95_actual_s": 4.08,
+        "seccion": "Dashboard",
+        "p95_actual_s": 4.52,
         "n_acciones": 1,
-        "impact_score": 4.1,
-        "estado": "mejora"
+        "impact_score": 4.5,
+        "estado": "degradacion"
       },
       {
-        "seccion": "Dashboard",
-        "p95_actual_s": 3.81,
+        "seccion": "Operaciones",
+        "p95_actual_s": 4.38,
         "n_acciones": 1,
-        "impact_score": 3.8,
-        "estado": "estable"
+        "impact_score": 4.4,
+        "estado": "mejora"
       }
     ],
     "tendencias_sostenidas": [
@@ -283,23 +293,16 @@
     "tendencias_acciones_por_seccion": {
       "Dashboard": {
         "n_improved": 0,
-        "n_degraded": 0,
+        "n_degraded": 1,
         "total_with_history": 4,
         "pct_improved": 0.0,
-        "pct_degraded": 0.0,
-        "best_improvement": {
-          "accion": "Cambio de vista a Default Tesorería",
-          "pct": -0.08,
-          "de_p95_s": 1.3,
-          "a_p95_s": 1.3,
-          "de_version": "V4.731",
-          "a_version": "V4.735"
-        },
+        "pct_degraded": 25.0,
+        "best_improvement": null,
         "worst_degradation": {
-          "accion": "Cambio de vista a Default Mesa",
-          "pct": 6.37,
-          "de_p95_s": 1.29,
-          "a_p95_s": 1.37,
+          "accion": "Cambio de vista a Default Tesorería",
+          "pct": 36.84,
+          "de_p95_s": 1.3,
+          "a_p95_s": 1.77,
           "de_version": "V4.731",
           "a_version": "V4.735"
         }
@@ -312,9 +315,9 @@
         "pct_degraded": 0.0,
         "best_improvement": {
           "accion": "Visualizar el cashflow Banco Central",
-          "pct": -56.61,
+          "pct": -56.97,
           "de_p95_s": 30.06,
-          "a_p95_s": 13.04,
+          "a_p95_s": 12.93,
           "de_version": "V4.731",
           "a_version": "V4.735"
         },
@@ -328,17 +331,17 @@
         "pct_degraded": 4.2,
         "best_improvement": {
           "accion": "Dar de alta una operación de Cambios Petersen",
-          "pct": -68.46,
+          "pct": -65.41,
           "de_p95_s": 13.03,
-          "a_p95_s": 4.11,
+          "a_p95_s": 4.51,
           "de_version": "V4.731",
           "a_version": "V4.735"
         },
         "worst_degradation": {
           "accion": "Anular una operación de Futuros Petersen",
-          "pct": 47.88,
+          "pct": 46.0,
           "de_p95_s": 0.71,
-          "a_p95_s": 1.04,
+          "a_p95_s": 1.03,
           "de_version": "V4.731",
           "a_version": "V4.735"
         }
@@ -351,7 +354,7 @@
         "pct_degraded": 0.0,
         "best_improvement": {
           "accion": "Eliminar el límite creado",
-          "pct": -33.91,
+          "pct": -34.01,
           "de_p95_s": 3.21,
           "a_p95_s": 2.12,
           "de_version": "V4.731",
@@ -359,9 +362,9 @@
         },
         "worst_degradation": {
           "accion": "Dar de alta una operación de Call afectada por un límite",
-          "pct": 2.45,
+          "pct": 1.53,
           "de_p95_s": 99.5,
-          "a_p95_s": 101.94,
+          "a_p95_s": 101.03,
           "de_version": "V4.731",
           "a_version": "V4.735"
         }
@@ -374,17 +377,17 @@
         "pct_degraded": 50.0,
         "best_improvement": {
           "accion": "Ingresar en consultas de operaciones",
-          "pct": -8.87,
+          "pct": -9.27,
           "de_p95_s": 4.42,
-          "a_p95_s": 4.03,
+          "a_p95_s": 4.01,
           "de_version": "V4.731",
           "a_version": "V4.735"
         },
         "worst_degradation": {
           "accion": "Consultar 3000 operaciones",
-          "pct": 30.52,
+          "pct": 28.56,
           "de_p95_s": 43.86,
-          "a_p95_s": 57.25,
+          "a_p95_s": 56.39,
           "de_version": "V4.731",
           "a_version": "V4.735"
         }
@@ -406,7 +409,7 @@
   },
   "conclusions": {
     "estado_general": "critico",
-    "resumen_ejecutivo": "Análisis de Petersen / V4.735 (Testing01) con 1 muestras. 2 de 5 secciones muestran mejoras, 1 degradaciones. ⚠️ 1 sección(es) con alerta >15% vs histórico — la más crítica es Consultas (-30.3%).",
+    "resumen_ejecutivo": "Análisis de Petersen / V4.735 (Testing01) con 2 muestras. 2 de 5 secciones muestran mejoras, 3 degradaciones. ⚠️ 3 sección(es) con alerta >15% vs histórico — la más crítica es Consultas (-30.5%).",
     "escalar": {
       "titulo": "\"Dar de alta una operación de Call afectada por un límit\" en Límites — 5 de 5 versiones sobre el umbral",
       "detalle": "P95 de 101.94s, nunca resuelto en 5 versiones consecutivas medidas. Es más grave que una degradación puntual: el problema no se resuelve solo."
@@ -417,7 +420,7 @@
     },
     "optimizar": {
       "titulo": "Acumular muestras para detectar tendencias",
-      "detalle": "Con 1 muestras el P95 se estabiliza. Ejecutar más corridas para mayor confianza."
+      "detalle": "Con 2 muestras el P95 se estabiliza. Ejecutar más corridas para mayor confianza."
     },
     "hallazgos": [
       {
@@ -430,33 +433,46 @@
         "tipo": "mejora",
         "seccion": "Cashflow",
         "descripcion": "Recuperación notable vs V4.731",
-        "evidencia": "29.28s → 14.31s (+51.1%) — acción destacada: \"Visualizar el cashflow Banco Central\": 30.06s → 13.04s (-56.61%)"
+        "evidencia": "29.28s → 14.31s (+51.1%) — acción destacada: \"Visualizar el cashflow Banco Central\": 30.06s → 12.93s (-56.97%)"
       },
       {
         "tipo": "mejora",
         "seccion": "Operaciones",
         "descripcion": "Recuperación notable vs V4.731",
-        "evidencia": "8.09s → 4.08s (+49.5%) — acción destacada: \"Dar de alta una operación de Cambios Petersen\": 13.03s → 4.11s (-68.46%)"
+        "evidencia": "8.09s → 4.38s (+45.8%) — acción destacada: \"Dar de alta una operación de Cambios Petersen\": 13.03s → 4.51s (-65.41%)"
       },
       {
         "tipo": "alerta",
         "seccion": "Consultas",
         "descripcion": "P95 empeoró respecto al histórico",
-        "evidencia": "Histórico: 41.89s → Actual: 54.59s (-30.3%)"
+        "evidencia": "Histórico: 41.89s → Actual: 54.67s (-30.5%)"
+      },
+      {
+        "tipo": "alerta",
+        "seccion": "Dashboard",
+        "descripcion": "P95 empeoró respecto al histórico",
+        "evidencia": "Histórico: 3.77s → Actual: 4.52s (-20.0%)"
       }
     ],
     "causa_raiz": [
       {
-        "seccion": "Consultas",
+        "seccion": "Dashboard",
         "hipotesis": [
-          "La acción con mayor impacto dentro de la sección es \"Consultar 3000 operaciones\": 43.86s → 57.25s (+30.52%) entre V4.731 y V4.735 (degradación vs. versión anterior).",
+          "La acción con mayor impacto dentro de la sección es \"Cambio de vista a Default Tesorería\": 1.3s → 1.77s (+36.84%) entre V4.731 y V4.735 (degradación vs. versión anterior).",
           "Revisar qué cambió puntualmente en esa acción entre esas versiones (código, datos de prueba, dependencias o infraestructura) — no hay información de deploys/commits disponible en este análisis para confirmar la causa, sólo el patrón de tiempos."
         ]
       },
       {
         "seccion": "Límites",
         "hipotesis": [
-          "La acción con mayor impacto dentro de la sección es \"Dar de alta una operación de Call afectada por un límite\": 99.5s → 101.94s (+2.45%) entre V4.731 y V4.735 (degradación vs. versión anterior).",
+          "La acción con mayor impacto dentro de la sección es \"Dar de alta una operación de Call afectada por un límite\": 99.5s → 101.03s (+1.53%) entre V4.731 y V4.735 (degradación vs. versión anterior).",
+          "Revisar qué cambió puntualmente en esa acción entre esas versiones (código, datos de prueba, dependencias o infraestructura) — no hay información de deploys/commits disponible en este análisis para confirmar la causa, sólo el patrón de tiempos."
+        ]
+      },
+      {
+        "seccion": "Consultas",
+        "hipotesis": [
+          "La acción con mayor impacto dentro de la sección es \"Consultar 3000 operaciones\": 43.86s → 56.39s (+28.56%) entre V4.731 y V4.735 (degradación vs. versión anterior).",
           "Revisar qué cambió puntualmente en esa acción entre esas versiones (código, datos de prueba, dependencias o infraestructura) — no hay información de deploys/commits disponible en este análisis para confirmar la causa, sólo el patrón de tiempos."
         ]
       }
@@ -478,13 +494,19 @@
         "prioridad": "P1",
         "seccion": "Consultas",
         "accion": "Investigar degradación crítica en Consultas — foco en \"Consultar 3000 operaciones\", la acción con mayor variación dentro de la sección",
-        "evidencia": "Degradación del 30.3% respecto al histórico"
+        "evidencia": "Degradación del 30.5% respecto al histórico"
+      },
+      {
+        "prioridad": "P1",
+        "seccion": "Dashboard",
+        "accion": "Investigar degradación crítica en Dashboard — foco en \"Cambio de vista a Default Tesorería\", la acción con mayor variación dentro de la sección",
+        "evidencia": "Degradación del 20.0% respecto al histórico"
       },
       {
         "prioridad": "P3",
         "seccion": "General",
         "accion": "Acumular más muestras para consolidar baseline de esta versión",
-        "evidencia": "Con 1 muestras, ≥5 dan P95 más estable y confiable"
+        "evidencia": "Con 2 muestras, ≥5 dan P95 más estable y confiable"
       }
     ]
   },
