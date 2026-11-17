@@ -2307,3 +2307,52 @@ Timestamp,Sección,Descripción,P95 (ms)
 2026-11-16T16:24:55-03:00,Parametria,Ingresar a la parametria de operaciones de titulos BYMA,435.0
 2026-11-16T16:24:55-03:00,Parametria,Ingresar en administrar Contrapartes,573.0
 2026-11-16T16:24:55-03:00,Parametria,Ingresar en configuraciones de Bancos,3821.0
+2026-11-17T10:06:24-03:00,Cashflow,Visualizar el cashflow Banco Central,10849.0
+2026-11-17T10:06:24-03:00,Cashflow,Visualizar el cashflow Intradiario,13971.0
+2026-11-17T10:06:24-03:00,Consultas,Consultar 3000 operaciones,40055.0
+2026-11-17T10:06:24-03:00,Consultas,Ingresar en consultas de operaciones,3676.0
+2026-11-17T10:06:24-03:00,Dashboard,Cambio de vista a Default Mesa,1250.0
+2026-11-17T10:06:24-03:00,Dashboard,Cambio de vista a Default Tesorería,1800.0
+2026-11-17T10:06:24-03:00,Dashboard,Login y primer ingreso al Dashboard,4680.0
+2026-11-17T10:06:24-03:00,Dashboard,Segundo ingreso al Dashboard,1183.0
+2026-11-17T10:06:24-03:00,Límites,Agregar un límite para un Call,1922.0
+2026-11-17T10:06:24-03:00,Límites,Dar de alta una operación de Call afectada por un límite,83722.0
+2026-11-17T10:06:24-03:00,Límites,Eliminar el límite creado,2052.0
+2026-11-17T10:06:24-03:00,Límites,Ingresar en Administrar Límites,3563.0
+2026-11-17T10:06:24-03:00,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1170.0
+2026-11-17T10:06:24-03:00,Operaciones,Anular una operación de Adelanto Petersen,1916.0
+2026-11-17T10:06:24-03:00,Operaciones,Anular una operación de Calls Petersen,882.0
+2026-11-17T10:06:24-03:00,Operaciones,Anular una operación de Cambios Petersen,769.0
+2026-11-17T10:06:24-03:00,Operaciones,Anular una operación de Caucion Petersen,776.0
+2026-11-17T10:06:24-03:00,Operaciones,Anular una operación de Cuenta Remunerada Petersen,790.0
+2026-11-17T10:06:24-03:00,Operaciones,Anular una operación de Futuros Petersen,779.0
+2026-11-17T10:06:24-03:00,Operaciones,Anular una operación de Repos Petersen,920.0
+2026-11-17T10:06:24-03:00,Operaciones,Anular una operación de Títulos Petersen,872.0
+2026-11-17T10:06:24-03:00,Operaciones,Dar de alta una operación de Adelantos Petersen,3494.0
+2026-11-17T10:06:24-03:00,Operaciones,Dar de alta una operación de Calls Petersen,3719.0
+2026-11-17T10:06:24-03:00,Operaciones,Dar de alta una operación de Cambios Petersen,4529.0
+2026-11-17T10:06:24-03:00,Operaciones,Dar de alta una operación de Caucion Petersen,3352.0
+2026-11-17T10:06:24-03:00,Operaciones,Dar de alta una operación de Cuenta Remunerada Petersen,2507.0
+2026-11-17T10:06:24-03:00,Operaciones,Dar de alta una operación de Futuros Petersen,3556.0
+2026-11-17T10:06:24-03:00,Operaciones,Dar de alta una operación de Repos Petersen,8477.0
+2026-11-17T10:06:24-03:00,Operaciones,Dar de alta una operación de Títulos Petersen,3952.0
+2026-11-17T10:06:24-03:00,Operaciones,Modificar una operación de Adelanto Petersen,2003.0
+2026-11-17T10:06:24-03:00,Operaciones,Modificar una operación de Calls Petersen,1936.0
+2026-11-17T10:06:24-03:00,Operaciones,Modificar una operación de Cambios Petersen,2097.0
+2026-11-17T10:06:24-03:00,Operaciones,Modificar una operación de Caucion Petersen,1902.0
+2026-11-17T10:06:24-03:00,Operaciones,Modificar una operación de Cuenta Remunerada Petersen,1659.0
+2026-11-17T10:06:24-03:00,Operaciones,Modificar una operación de Futuros Petersen,1828.0
+2026-11-17T10:06:24-03:00,Operaciones,Modificar una operación de Repos Petersen,2153.0
+2026-11-17T10:06:24-03:00,Operaciones,Modificar una operación de Títulos Petersen,2060.0
+2026-11-17T10:06:24-03:00,Parametria,Dar de alta configuracion de Bancos,1206.0
+2026-11-17T10:06:24-03:00,Parametria,Dar de alta contrapartes de Siopel,1426.0
+2026-11-17T10:06:24-03:00,Parametria,Dar de alta parametria de operaciones de cauciones BYMA,1899.0
+2026-11-17T10:06:24-03:00,Parametria,Dar de alta parametria de operaciones de titulos BYMA,1928.0
+2026-11-17T10:06:24-03:00,Parametria,Eliminar alta configuracion de Bancos,373.0
+2026-11-17T10:06:24-03:00,Parametria,Eliminar contrapartes de Siopel,1039.0
+2026-11-17T10:06:24-03:00,Parametria,Eliminar parametria de operaciones de cauciones BYMA,360.0
+2026-11-17T10:06:24-03:00,Parametria,Eliminar parametria de operaciones de titulos BYMA,354.0
+2026-11-17T10:06:24-03:00,Parametria,Ingresar a la parametria de operaciones de cauciones BYMA,337.0
+2026-11-17T10:06:24-03:00,Parametria,Ingresar a la parametria de operaciones de titulos BYMA,380.0
+2026-11-17T10:06:24-03:00,Parametria,Ingresar en administrar Contrapartes,550.0
+2026-11-17T10:06:24-03:00,Parametria,Ingresar en configuraciones de Bancos,3099.0
