@@ -1,22 +1,22 @@
 Timestamp,Cliente,Ambiente,Versión actual,Versión comparada,Sección,Descripción,P95 (ms) de la versión actual,P95 (ms) de la versión comparada,Porcentaje de mejora/empeora
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Adelanto,678.25,720.0,5.8
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Calls,722.45,713.0,-1.33
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Cambios,740.8,761.0,2.65
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Caucion,736.5,709.0,-3.88
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Futuros,686.45,711.0,3.45
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Repos,864.05,724.0,-19.34
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Títulos,842.2,823.0,-2.33
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Adelantos,3668.8,3461.0,-6.0
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Calls,3463.0,3409.0,-1.58
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Cambios,14452.15,8819.0,-63.88
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Caucion,3297.95,3316.0,0.54
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Futuros,3537.0,3405.0,-3.88
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Repos,8271.55,7710.0,-7.28
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Títulos,4185.75,4095.0,-2.22
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Adelanto,1768.8,1934.0,8.54
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Calls,1987.05,2029.0,2.07
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Cambios,2052.1,2060.0,0.38
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Caucion,1949.35,1866.0,-4.47
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Futuros,1788.75,1751.0,-2.16
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Repos,2172.1,2146.0,-1.22
-2026-11-17T09:35:57-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Títulos,2366.8,2253.0,-5.05
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Adelanto,677.5,720.0,5.9
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Calls,721.9,713.0,-1.25
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Cambios,776.1,761.0,-1.98
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Caucion,784.0,709.0,-10.58
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Futuros,684.9,711.0,3.67
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Repos,860.1,724.0,-18.8
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Anular una operación de Títulos,841.4,823.0,-2.24
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Adelantos,3663.8,3461.0,-5.86
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Calls,3454.5,3409.0,-1.33
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Cambios,14512.1,8819.0,-64.55
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Caucion,3296.9,3316.0,0.58
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Futuros,3535.0,3405.0,-3.82
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Repos,8581.3,7710.0,-11.3
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Dar de alta una operación de Títulos,4181.4,4095.0,-2.11
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Adelanto,1881.7,1934.0,2.7
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Calls,1983.1,2029.0,2.26
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Cambios,2051.2,2060.0,0.43
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Caucion,2097.7,1866.0,-12.42
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Futuros,1787.5,1751.0,-2.08
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Repos,2171.2,2146.0,-1.17
+2026-11-18T09:54:59-03:00,Voii,Testing04,V4.738,V4.736,Operaciones,Modificar una operación de Títulos,2360.6,2253.0,-4.78
