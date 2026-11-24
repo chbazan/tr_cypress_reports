@@ -1,61 +1,4 @@
 Timestamp,Sección,Descripción,P95 (ms)
-2025-11-18T10:12:34-03:00,Cashflow,Visualizar el cashflow Banco Central,17586.0
-2025-11-18T10:12:34-03:00,Cashflow,Visualizar el cashflow Intradiario,17302.0
-2025-11-18T10:12:34-03:00,Consultas,Consultar 3000 operaciones,270478.0
-2025-11-18T10:12:34-03:00,Consultas,Ingresar en consultas de operaciones,4003.0
-2025-11-18T10:12:34-03:00,Dashboard,Cambio de vista a Default Mesa,1339.0
-2025-11-18T10:12:34-03:00,Dashboard,Cambio de vista a Default Tesorería,1358.0
-2025-11-18T10:12:34-03:00,Dashboard,Login y primer ingreso al Dashboard,5085.0
-2025-11-18T10:12:34-03:00,Dashboard,Segundo ingreso al Dashboard,1170.0
-2025-11-18T10:12:34-03:00,Límites,Agregar un límite para un Call,1940.0
-2025-11-18T10:12:34-03:00,Límites,Dar de alta una operación de Call afectada por un límite,86622.0
-2025-11-18T10:12:34-03:00,Límites,Eliminar el límite creado,2105.0
-2025-11-18T10:12:34-03:00,Límites,Ingresar en Administrar Límites,4135.0
-2025-11-18T10:12:34-03:00,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1295.0
-2025-11-18T10:12:34-03:00,Operaciones,Anular una operación de Repos,867.0
-2025-11-18T10:12:34-03:00,Operaciones,Anular una operación de Títulos,923.0
-2025-11-18T10:12:34-03:00,Operaciones,Dar de alta una operación de Repos,8311.0
-2025-11-18T10:12:34-03:00,Operaciones,Dar de alta una operación de Títulos,4360.0
-2025-11-18T10:12:34-03:00,Operaciones,Modificar una operación de Repos,2424.0
-2025-11-18T10:12:34-03:00,Operaciones,Modificar una operación de Títulos,2249.0
-2025-11-19T10:11:16-03:00,Cashflow,Visualizar el cashflow Banco Central,55053.0
-2025-11-19T10:11:16-03:00,Cashflow,Visualizar el cashflow Intradiario,16658.0
-2025-11-19T10:11:16-03:00,Consultas,Consultar 3000 operaciones,75855.0
-2025-11-19T10:11:16-03:00,Consultas,Ingresar en consultas de operaciones,4629.0
-2025-11-19T10:11:16-03:00,Dashboard,Cambio de vista a Default Mesa,1346.0
-2025-11-19T10:11:16-03:00,Dashboard,Cambio de vista a Default Tesorería,1526.0
-2025-11-19T10:11:16-03:00,Dashboard,Login y primer ingreso al Dashboard,4758.0
-2025-11-19T10:11:16-03:00,Dashboard,Segundo ingreso al Dashboard,1177.0
-2025-11-19T10:11:16-03:00,Límites,Agregar un límite para un Call,1979.0
-2025-11-19T10:11:16-03:00,Límites,Dar de alta una operación de Call afectada por un límite,91854.0
-2025-11-19T10:11:16-03:00,Límites,Eliminar el límite creado,2093.0
-2025-11-19T10:11:16-03:00,Límites,Ingresar en Administrar Límites,3661.0
-2025-11-19T10:11:16-03:00,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1317.0
-2025-11-19T10:11:16-03:00,Operaciones,Anular una operación de Repos,959.0
-2025-11-19T10:11:16-03:00,Operaciones,Anular una operación de Títulos,871.0
-2025-11-19T10:11:16-03:00,Operaciones,Dar de alta una operación de Repos,11402.0
-2025-11-19T10:11:16-03:00,Operaciones,Dar de alta una operación de Títulos,4465.0
-2025-11-19T10:11:16-03:00,Operaciones,Modificar una operación de Repos,2422.0
-2025-11-19T10:11:16-03:00,Operaciones,Modificar una operación de Títulos,2391.0
-2025-11-20T10:08:34-03:00,Cashflow,Visualizar el cashflow Banco Central,17629.0
-2025-11-20T10:08:34-03:00,Cashflow,Visualizar el cashflow Intradiario,17412.0
-2025-11-20T10:08:34-03:00,Consultas,Consultar 3000 operaciones,62634.0
-2025-11-20T10:08:34-03:00,Consultas,Ingresar en consultas de operaciones,4012.0
-2025-11-20T10:08:34-03:00,Dashboard,Cambio de vista a Default Mesa,1790.0
-2025-11-20T10:08:34-03:00,Dashboard,Cambio de vista a Default Tesorería,1332.0
-2025-11-20T10:08:34-03:00,Dashboard,Login y primer ingreso al Dashboard,5600.0
-2025-11-20T10:08:34-03:00,Dashboard,Segundo ingreso al Dashboard,1152.0
-2025-11-20T10:08:34-03:00,Límites,Agregar un límite para un Call,1898.0
-2025-11-20T10:08:34-03:00,Límites,Dar de alta una operación de Call afectada por un límite,82917.0
-2025-11-20T10:08:34-03:00,Límites,Eliminar el límite creado,2116.0
-2025-11-20T10:08:34-03:00,Límites,Ingresar en Administrar Límites,4167.0
-2025-11-20T10:08:34-03:00,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1302.0
-2025-11-20T10:08:34-03:00,Operaciones,Anular una operación de Repos,907.0
-2025-11-20T10:08:34-03:00,Operaciones,Anular una operación de Títulos,809.0
-2025-11-20T10:08:34-03:00,Operaciones,Dar de alta una operación de Repos,8393.0
-2025-11-20T10:08:34-03:00,Operaciones,Dar de alta una operación de Títulos,4188.0
-2025-11-20T10:08:34-03:00,Operaciones,Modificar una operación de Repos,2330.0
-2025-11-20T10:08:34-03:00,Operaciones,Modificar una operación de Títulos,2311.0
 2025-11-24T10:09:09-03:00,Cashflow,Visualizar el cashflow Banco Central,14038.0
 2025-11-24T10:09:09-03:00,Cashflow,Visualizar el cashflow Intradiario,16820.0
 2025-11-24T10:09:09-03:00,Consultas,Consultar 3000 operaciones,62462.0
@@ -2368,3 +2311,52 @@ Timestamp,Sección,Descripción,P95 (ms)
 2026-11-18T10:06:21-03:00,Parametria,Ingresar a la parametria de operaciones de titulos BYMA,350.0
 2026-11-18T10:06:21-03:00,Parametria,Ingresar en administrar Contrapartes,588.0
 2026-11-18T10:06:21-03:00,Parametria,Ingresar en configuraciones de Bancos,3165.0
+2026-11-24T10:07:26-03:00,Cashflow,Visualizar el cashflow Banco Central,36489.0
+2026-11-24T10:07:26-03:00,Cashflow,Visualizar el cashflow Intradiario,13454.0
+2026-11-24T10:07:26-03:00,Consultas,Consultar 3000 operaciones,50995.0
+2026-11-24T10:07:26-03:00,Consultas,Ingresar en consultas de operaciones,4361.0
+2026-11-24T10:07:26-03:00,Dashboard,Cambio de vista a Default Mesa,1345.0
+2026-11-24T10:07:26-03:00,Dashboard,Cambio de vista a Default Tesorería,1396.0
+2026-11-24T10:07:26-03:00,Dashboard,Login y primer ingreso al Dashboard,4514.0
+2026-11-24T10:07:26-03:00,Dashboard,Segundo ingreso al Dashboard,1218.0
+2026-11-24T10:07:26-03:00,Límites,Agregar un límite para un Call,1938.0
+2026-11-24T10:07:26-03:00,Límites,Dar de alta una operación de Call afectada por un límite,85485.0
+2026-11-24T10:07:26-03:00,Límites,Eliminar el límite creado,2077.0
+2026-11-24T10:07:26-03:00,Límites,Ingresar en Administrar Límites,3697.0
+2026-11-24T10:07:26-03:00,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1119.0
+2026-11-24T10:07:26-03:00,Operaciones,Anular una operación de Adelanto Petersen,1883.0
+2026-11-24T10:07:26-03:00,Operaciones,Anular una operación de Calls Petersen,790.0
+2026-11-24T10:07:26-03:00,Operaciones,Anular una operación de Cambios Petersen,770.0
+2026-11-24T10:07:26-03:00,Operaciones,Anular una operación de Caucion Petersen,720.0
+2026-11-24T10:07:26-03:00,Operaciones,Anular una operación de Cuenta Remunerada Petersen,754.0
+2026-11-24T10:07:26-03:00,Operaciones,Anular una operación de Futuros Petersen,680.0
+2026-11-24T10:07:26-03:00,Operaciones,Anular una operación de Repos Petersen,882.0
+2026-11-24T10:07:26-03:00,Operaciones,Anular una operación de Títulos Petersen,884.0
+2026-11-24T10:07:26-03:00,Operaciones,Dar de alta una operación de Adelantos Petersen,3713.0
+2026-11-24T10:07:26-03:00,Operaciones,Dar de alta una operación de Calls Petersen,3578.0
+2026-11-24T10:07:26-03:00,Operaciones,Dar de alta una operación de Cambios Petersen,17691.0
+2026-11-24T10:07:26-03:00,Operaciones,Dar de alta una operación de Caucion Petersen,3378.0
+2026-11-24T10:07:26-03:00,Operaciones,Dar de alta una operación de Cuenta Remunerada Petersen,2583.0
+2026-11-24T10:07:26-03:00,Operaciones,Dar de alta una operación de Futuros Petersen,3654.0
+2026-11-24T10:07:26-03:00,Operaciones,Dar de alta una operación de Repos Petersen,7750.0
+2026-11-24T10:07:26-03:00,Operaciones,Dar de alta una operación de Títulos Petersen,3756.0
+2026-11-24T10:07:26-03:00,Operaciones,Modificar una operación de Adelanto Petersen,2002.0
+2026-11-24T10:07:26-03:00,Operaciones,Modificar una operación de Calls Petersen,1972.0
+2026-11-24T10:07:26-03:00,Operaciones,Modificar una operación de Cambios Petersen,2076.0
+2026-11-24T10:07:26-03:00,Operaciones,Modificar una operación de Caucion Petersen,1948.0
+2026-11-24T10:07:26-03:00,Operaciones,Modificar una operación de Cuenta Remunerada Petersen,1547.0
+2026-11-24T10:07:26-03:00,Operaciones,Modificar una operación de Futuros Petersen,1678.0
+2026-11-24T10:07:26-03:00,Operaciones,Modificar una operación de Repos Petersen,2106.0
+2026-11-24T10:07:26-03:00,Operaciones,Modificar una operación de Títulos Petersen,2194.0
+2026-11-24T10:07:26-03:00,Parametria,Dar de alta configuracion de Bancos,1251.0
+2026-11-24T10:07:26-03:00,Parametria,Dar de alta contrapartes de Siopel,1394.0
+2026-11-24T10:07:26-03:00,Parametria,Dar de alta parametria de operaciones de cauciones BYMA,1864.0
+2026-11-24T10:07:26-03:00,Parametria,Dar de alta parametria de operaciones de titulos BYMA,1999.0
+2026-11-24T10:07:26-03:00,Parametria,Eliminar alta configuracion de Bancos,410.0
+2026-11-24T10:07:26-03:00,Parametria,Eliminar contrapartes de Siopel,880.0
+2026-11-24T10:07:26-03:00,Parametria,Eliminar parametria de operaciones de cauciones BYMA,371.0
+2026-11-24T10:07:26-03:00,Parametria,Eliminar parametria de operaciones de titulos BYMA,376.0
+2026-11-24T10:07:26-03:00,Parametria,Ingresar a la parametria de operaciones de cauciones BYMA,349.0
+2026-11-24T10:07:26-03:00,Parametria,Ingresar a la parametria de operaciones de titulos BYMA,349.0
+2026-11-24T10:07:26-03:00,Parametria,Ingresar en administrar Contrapartes,582.0
+2026-11-24T10:07:26-03:00,Parametria,Ingresar en configuraciones de Bancos,3102.0
