@@ -1,38 +1,38 @@
 Timestamp,Cliente,Ambiente,Versión actual,Versión comparada,Sección,Descripción,P95 (ms) de la versión actual,P95 (ms) de la versión comparada,Porcentaje de mejora/empeora
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Cashflow,Visualizar el cashflow Banco Central,33978.75,30058.0,-13.04
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Cashflow,Visualizar el cashflow Intradiario,14311.85,14549.0,1.63
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Consultas,Consultar 3000 operaciones,56309.2,43861.0,-28.38
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Consultas,Ingresar en consultas de operaciones,4341.35,4417.0,1.71
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Dashboard,Cambio de vista a Default Mesa,1403.15,1288.0,-8.94
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Dashboard,Cambio de vista a Default Tesorería,1741.05,1297.0,-34.24
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Dashboard,Login y primer ingreso al Dashboard,4685.1,4206.0,-11.39
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Dashboard,Segundo ingreso al Dashboard,1248.6,1100.0,-13.51
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Agregar un límite para un Call,1963.5,1993.0,1.48
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Dar de alta una operación de Call afectada por un límite,99469.2,99499.0,0.03
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Eliminar el límite creado,2116.3,3206.0,33.99
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Ingresar en Administrar Límites,3900.8,4620.0,15.57
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1249.65,1396.0,10.48
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Adelanto Petersen,1959.5,1926.0,-1.74
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Calls Petersen,888.8,911.0,2.44
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Cambios Petersen,826.0,898.0,8.02
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Caucion Petersen,775.1,840.0,7.73
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Cuenta Remunerada Petersen,788.5,788.0,-0.06
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Futuros Petersen,1004.25,706.0,-42.25
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Repos Petersen,919.1,1175.0,21.78
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Títulos Petersen,887.4,831.0,-6.79
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Adelantos Petersen,3709.4,3859.0,3.88
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Calls Petersen,3713.3,3587.0,-3.52
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Cambios Petersen,15781.8,13031.0,-21.11
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Caucion Petersen,3477.55,3361.0,-3.47
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Cuenta Remunerada Petersen,2721.55,3260.0,16.52
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Futuros Petersen,3639.75,3631.0,-0.24
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Repos Petersen,8440.25,8833.0,4.45
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Títulos Petersen,4037.0,3822.0,-5.63
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Adelanto Petersen,2010.65,1979.0,-1.6
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Calls Petersen,2092.7,1978.0,-5.8
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Cambios Petersen,2204.05,2060.0,-6.99
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Caucion Petersen,2060.2,1823.0,-13.01
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Cuenta Remunerada Petersen,1670.05,1683.0,0.77
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Futuros Petersen,1817.95,1802.0,-0.89
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Repos Petersen,2152.55,2133.0,-0.92
-2026-11-24T10:07:26-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Títulos Petersen,2184.1,2035.0,-7.33
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Cashflow,Visualizar el cashflow Banco Central,33142.0,30058.0,-10.26
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Cashflow,Visualizar el cashflow Intradiario,14291.8,14549.0,1.77
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Consultas,Consultar 3000 operaciones,55996.6,43861.0,-27.67
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Consultas,Ingresar en consultas de operaciones,4334.8,4417.0,1.86
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Dashboard,Cambio de vista a Default Mesa,1401.2,1288.0,-8.79
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Dashboard,Cambio de vista a Default Tesorería,1729.4,1297.0,-33.34
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Dashboard,Login y primer ingreso al Dashboard,4684.8,4206.0,-11.38
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Dashboard,Segundo ingreso al Dashboard,1246.8,1100.0,-13.35
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Agregar un límite para un Call,1982.4,1993.0,0.53
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Dar de alta una operación de Call afectada por un límite,98646.6,99499.0,0.86
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Eliminar el límite creado,2117.2,3206.0,33.96
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Ingresar en Administrar Límites,3890.4,4620.0,15.79
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Límites,Revisar que la operación afectada por el límite se muestre en el menú Pendiente de Autorización,1246.2,1396.0,10.73
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Adelanto Petersen,1958.0,1926.0,-1.66
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Calls Petersen,890.0,911.0,2.31
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Cambios Petersen,861.8,898.0,4.03
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Caucion Petersen,791.2,840.0,5.81
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Cuenta Remunerada Petersen,788.0,788.0,0.0
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Futuros Petersen,991.8,706.0,-40.48
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Repos Petersen,918.8,1175.0,21.8
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Anular una operación de Títulos Petersen,887.2,831.0,-6.76
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Adelantos Petersen,3708.2,3859.0,3.91
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Calls Petersen,3711.4,3587.0,-3.47
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Cambios Petersen,15145.4,13031.0,-16.23
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Caucion Petersen,3472.4,3361.0,-3.31
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Cuenta Remunerada Petersen,2713.4,3260.0,16.77
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Futuros Petersen,3635.0,3631.0,-0.11
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Repos Petersen,8497.0,8833.0,3.8
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Dar de alta una operación de Títulos Petersen,4032.0,3822.0,-5.49
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Adelanto Petersen,2075.2,1979.0,-4.86
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Calls Petersen,2085.6,1978.0,-5.44
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Cambios Petersen,2202.4,2060.0,-6.91
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Caucion Petersen,2054.2,1823.0,-12.68
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Cuenta Remunerada Petersen,1675.2,1683.0,0.46
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Futuros Petersen,1903.2,1802.0,-5.62
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Repos Petersen,2200.2,2133.0,-3.15
+2026-11-25T10:06:27-03:00,Petersen,Testing01,V4.735,V4.731,Operaciones,Modificar una operación de Títulos Petersen,2254.8,2035.0,-10.8

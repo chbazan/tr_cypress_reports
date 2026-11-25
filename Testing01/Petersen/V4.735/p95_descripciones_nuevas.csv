@@ -1,13 +1,13 @@
 Timestamp,Cliente,Ambiente,Sección,Descripción,Versión,P95 (ms) actual,Cantidad de muestras
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Dar de alta configuracion de Bancos,V4.735,1368.3,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Dar de alta contrapartes de Siopel,V4.735,1446.45,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Dar de alta parametria de operaciones de cauciones BYMA,V4.735,1935.55,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Dar de alta parametria de operaciones de titulos BYMA,V4.735,2031.3,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Eliminar alta configuracion de Bancos,V4.735,407.3,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Eliminar contrapartes de Siopel,V4.735,1032.85,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Eliminar parametria de operaciones de cauciones BYMA,V4.735,393.95,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Eliminar parametria de operaciones de titulos BYMA,V4.735,390.85,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Ingresar a la parametria de operaciones de cauciones BYMA,V4.735,516.1,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Ingresar a la parametria de operaciones de titulos BYMA,V4.735,426.75,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Ingresar en administrar Contrapartes,V4.735,587.1,4
-2026-11-24T10:07:26-03:00,Petersen,Testing01,Parametria,Ingresar en configuraciones de Bancos,V4.735,3722.6,4
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Dar de alta configuracion de Bancos,V4.735,1365.8,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Dar de alta contrapartes de Siopel,V4.735,1461.0,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Dar de alta parametria de operaciones de cauciones BYMA,V4.735,1974.0,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Dar de alta parametria de operaciones de titulos BYMA,V4.735,2036.6,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Eliminar alta configuracion de Bancos,V4.735,406.4,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Eliminar contrapartes de Siopel,V4.735,1030.8,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Eliminar parametria de operaciones de cauciones BYMA,V4.735,409.2,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Eliminar parametria de operaciones de titulos BYMA,V4.735,399.0,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Ingresar a la parametria de operaciones de cauciones BYMA,V4.735,507.4,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Ingresar a la parametria de operaciones de titulos BYMA,V4.735,424.0,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Ingresar en administrar Contrapartes,V4.735,586.8,5
+2026-11-25T10:06:27-03:00,Petersen,Testing01,Parametria,Ingresar en configuraciones de Bancos,V4.735,3705.6,5
