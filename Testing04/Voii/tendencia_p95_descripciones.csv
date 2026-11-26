@@ -230,3 +230,24 @@ Timestamp,Sección,Descripción,P95 (ms)
 2026-11-25T09:35:11-03:00,Operaciones,Modificar una operación de Futuros,1860.0
 2026-11-25T09:35:11-03:00,Operaciones,Modificar una operación de Repos,2066.0
 2026-11-25T09:35:11-03:00,Operaciones,Modificar una operación de Títulos,2272.0
+2026-11-26T09:34:56-03:00,Operaciones,Anular una operación de Adelanto,648.0
+2026-11-26T09:34:56-03:00,Operaciones,Anular una operación de Calls,711.0
+2026-11-26T09:34:56-03:00,Operaciones,Anular una operación de Cambios,751.0
+2026-11-26T09:34:56-03:00,Operaciones,Anular una operación de Caucion,688.0
+2026-11-26T09:34:56-03:00,Operaciones,Anular una operación de Futuros,684.0
+2026-11-26T09:34:56-03:00,Operaciones,Anular una operación de Repos,945.0
+2026-11-26T09:34:56-03:00,Operaciones,Anular una operación de Títulos,782.0
+2026-11-26T09:34:56-03:00,Operaciones,Dar de alta una operación de Adelantos,3428.0
+2026-11-26T09:34:56-03:00,Operaciones,Dar de alta una operación de Calls,3475.0
+2026-11-26T09:34:56-03:00,Operaciones,Dar de alta una operación de Cambios,3564.0
+2026-11-26T09:34:56-03:00,Operaciones,Dar de alta una operación de Caucion,3240.0
+2026-11-26T09:34:56-03:00,Operaciones,Dar de alta una operación de Futuros,3336.0
+2026-11-26T09:34:56-03:00,Operaciones,Dar de alta una operación de Repos,7438.0
+2026-11-26T09:34:56-03:00,Operaciones,Dar de alta una operación de Títulos,4001.0
+2026-11-26T09:34:56-03:00,Operaciones,Modificar una operación de Adelanto,1777.0
+2026-11-26T09:34:56-03:00,Operaciones,Modificar una operación de Calls,1903.0
+2026-11-26T09:34:56-03:00,Operaciones,Modificar una operación de Cambios,1995.0
+2026-11-26T09:34:56-03:00,Operaciones,Modificar una operación de Caucion,1912.0
+2026-11-26T09:34:56-03:00,Operaciones,Modificar una operación de Futuros,1724.0
+2026-11-26T09:34:56-03:00,Operaciones,Modificar una operación de Repos,2042.0
+2026-11-26T09:34:56-03:00,Operaciones,Modificar una operación de Títulos,2188.0
